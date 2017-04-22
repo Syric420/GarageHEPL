@@ -12,5 +12,5 @@ package Activites;
  */
 public class Entretien extends Travail
 {
-    Salut beau gosse
+    
 }
