@@ -51,7 +51,7 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="TF_Immatriculation" min="-2" pref="105" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="CB_New1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="CB_PlaqueBelge" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="TF_TypeVoiture" min="-2" pref="210" max="-2" attributes="0"/>
                                           </Group>
@@ -97,7 +97,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TF_Immatriculation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CB_New1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CB_PlaqueBelge" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -178,6 +178,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="New"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CB_NewActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="CB_TypeTravail">
       <Properties>
@@ -198,11 +201,18 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="R&#xe9;paration"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RB_ReparationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="RB_Entretien">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Entretien"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RB_EntretienActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -235,7 +245,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_AnnulerActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="CB_New1">
+    <Component class="javax.swing.JCheckBox" name="CB_PlaqueBelge">
       <Properties>
         <Property name="text" type="java.lang.String" value="Plaque belge"/>
       </Properties>

@@ -5,12 +5,14 @@
  */
 package Gui;
 
+import java.util.Vector;
+
 /**
  *
  * @author Vince
  */
 public class InterfaceRdv extends javax.swing.JDialog {
-
+    Vector vec = new Vector();
     /**
      * Creates new form InterfaceRdv
      */
@@ -44,7 +46,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         TA_Instructions = new javax.swing.JTextArea();
         JB_Ok = new javax.swing.JButton();
         JB_Annuler = new javax.swing.JButton();
-        CB_New1 = new javax.swing.JCheckBox();
+        CB_PlaqueBelge = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,12 +63,28 @@ public class InterfaceRdv extends javax.swing.JDialog {
         CB_Proprietaire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mtre Dieu", "Vince", "Thibault" }));
 
         CB_New.setText("New");
+        CB_New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_NewActionPerformed(evt);
+            }
+        });
 
         CB_TypeTravail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         RB_Reparation.setText("Réparation");
+        RB_Reparation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_ReparationActionPerformed(evt);
+            }
+        });
 
+        RB_Entretien.setSelected(true);
         RB_Entretien.setText("Entretien");
+        RB_Entretien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RB_EntretienActionPerformed(evt);
+            }
+        });
 
         TA_Instructions.setColumns(20);
         TA_Instructions.setRows(5);
@@ -86,7 +104,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
             }
         });
 
-        CB_New1.setText("Plaque belge");
+        CB_PlaqueBelge.setText("Plaque belge");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,7 +136,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(TF_Immatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(CB_New1))
+                                                    .addComponent(CB_PlaqueBelge))
                                                 .addComponent(TF_TypeVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(47, 47, 47))))
                             .addGroup(layout.createSequentialGroup()
@@ -149,7 +167,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(TF_Immatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CB_New1))
+                    .addComponent(CB_PlaqueBelge))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -179,12 +197,47 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     private void JB_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AnnulerActionPerformed
         // TODO add your handling code here:
+        TF_TypeVoiture.setText("");
+        TF_Immatriculation.setText("");
+        CB_PlaqueBelge.setSelected(false);
+        CB_New.setSelected(false);
+        CB_Proprietaire.setSelectedIndex(0);
+        CB_TypeTravail.setSelectedIndex(0);
+        TA_Instructions.setText("");
+        RB_Entretien.setSelected(true);
+        RB_Reparation.setSelected(false);
         this.setVisible(false);
     }//GEN-LAST:event_JB_AnnulerActionPerformed
 
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
+        vec.add(TF_TypeVoiture.getText());
+        vec.add(TF_Immatriculation.getText());
+        vec.add(CB_Proprietaire.getSelectedItem().toString());
+        vec.add(CB_TypeTravail.getSelectedItem().toString());
+        
+                
     }//GEN-LAST:event_JB_OkActionPerformed
+
+    private void CB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NewActionPerformed
+        // TODO add your handling code here:
+        if(CB_New.isSelected()==true)
+        {
+            CB_Proprietaire.setEditable(true);
+        }
+        else
+            CB_Proprietaire.setEditable(false);
+    }//GEN-LAST:event_CB_NewActionPerformed
+
+    private void RB_EntretienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_EntretienActionPerformed
+        // TODO add your handling code here:
+        RB_Reparation.setSelected(false);
+    }//GEN-LAST:event_RB_EntretienActionPerformed
+
+    private void RB_ReparationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_ReparationActionPerformed
+        // TODO add your handling code here:
+        RB_Entretien.setSelected(false);
+    }//GEN-LAST:event_RB_ReparationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,7 +283,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CB_New;
-    private javax.swing.JCheckBox CB_New1;
+    private javax.swing.JCheckBox CB_PlaqueBelge;
     private javax.swing.JComboBox<String> CB_Proprietaire;
     private javax.swing.JComboBox<String> CB_TypeTravail;
     private javax.swing.JButton JB_Annuler;
