@@ -38,6 +38,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Garage HEPL: Prise en charge du véhicule");
 
         jLabTravaux.setText("Travaux en attente");
 
