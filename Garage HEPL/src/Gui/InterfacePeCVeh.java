@@ -5,6 +5,9 @@
  */
 package Gui;
 
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tibha
@@ -16,18 +19,25 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
      */
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        /*Linked list
-        ((InterfaceApplication)getParent()).PeC;*/
         initComponents();
-        //jTable1.add(((InterfaceApplication)getParent()).PeC.getComponents());
-        int i=((InterfaceApplication)getParent()).PeC.getComponentCount();
-        int temp=0;
-        while(temp<i)
+
+        DefaultTableModel dtm = new DefaultTableModel();
+        jTable1.setModel(dtm);
+        int i=((InterfaceApplication)getParent()).Travail.size();
+        int col=0,line=0;
+        if(i>0)
+        while(line*col <= i)
         {
-            jTable1.add(((InterfaceApplication)getParent()).PeC.getComponent(temp));
-            temp++;
+                dtm.setValueAt(modal, col, line);
+                if(col==4)
+                {
+                    col=0;
+                    line++;
+                }
+                col++;
+                
         }
- 
+
     }
 
     /**
@@ -39,6 +49,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabTravaux = new javax.swing.JLabel();
         jRaBuPont = new javax.swing.JRadioButton();
         jRaBuSol = new javax.swing.JRadioButton();
@@ -53,9 +64,16 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
 
         jLabTravaux.setText("Travaux en attente");
 
+        buttonGroup1.add(jRaBuPont);
         jRaBuPont.setText("Pont");
 
+        buttonGroup1.add(jRaBuSol);
         jRaBuSol.setText("Sol");
+        jRaBuSol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRaBuSolActionPerformed(evt);
+            }
+        });
 
         jComboBoxPont.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
@@ -136,6 +154,10 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_jBuCancelActionPerformed
 
+    private void jRaBuSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRaBuSolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRaBuSolActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +201,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBuCancel;
     private javax.swing.JButton jBuOk;
     private javax.swing.JComboBox<String> jComboBoxPont;
