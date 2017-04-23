@@ -14,9 +14,10 @@ import java.util.Vector;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
+    LinkedList Travail=new LinkedList();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
-    LinkedList Travail=new LinkedList();
+
     /**
      * Creates new form InterfaceApplication
      */
@@ -54,7 +55,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuAPrevoir = new javax.swing.JMenuItem();
-        jMenuPEC = new javax.swing.JMenu();
+        jMenuPeC = new javax.swing.JMenuItem();
         jMenuTerminé = new javax.swing.JMenuItem();
         jMenuListes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -108,13 +109,13 @@ public class InterfaceApplication extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuAPrevoir);
 
-        jMenuPEC.setText("Prise en charge");
-        jMenuPEC.addActionListener(new java.awt.event.ActionListener() {
+        jMenuPeC.setText("Prise en charge");
+        jMenuPeC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuPECActionPerformed(evt);
+                jMenuPeCActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuPEC);
+        jMenu1.add(jMenuPeC);
 
         jMenuTerminé.setText("Terminé");
         jMenuTerminé.addActionListener(new java.awt.event.ActionListener() {
@@ -249,9 +250,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuTerminéActionPerformed
 
-    private void jMenuPECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPECActionPerformed
+    private void jMenuPeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPeCActionPerformed
         PeC.setVisible(true);
-    }//GEN-LAST:event_jMenuPECActionPerformed
+    }//GEN-LAST:event_jMenuPeCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +317,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuAPrevoir;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuListes;
-    private javax.swing.JMenu jMenuPEC;
+    private javax.swing.JMenuItem jMenuPeC;
     private javax.swing.JMenuItem jMenuTerminé;
     // End of variables declaration//GEN-END:variables
 }

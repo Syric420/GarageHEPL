@@ -17,14 +17,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAPrevoirActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMenuPEC">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuPeC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Prise en charge"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuPECActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuPeCActionPerformed"/>
               </Events>
-            </Menu>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuTermin&#xe9;">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Termin&#xe9;"/>
