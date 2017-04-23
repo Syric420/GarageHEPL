@@ -16,7 +16,18 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
      */
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        /*Linked list
+        ((InterfaceApplication)getParent()).PeC;*/
         initComponents();
+        //jTable1.add(((InterfaceApplication)getParent()).PeC.getComponents());
+        int i=((InterfaceApplication)getParent()).PeC.getComponentCount();
+        int temp=0;
+        while(temp<i)
+        {
+            jTable1.add(((InterfaceApplication)getParent()).PeC.getComponent(temp));
+            temp++;
+        }
+ 
     }
 
     /**
