@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,23 +21,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        DefaultTableModel dtm = new DefaultTableModel();
-        jTable1.setModel(dtm);
-        int i=((InterfaceApplication)getParent()).Travail.size();
-        int col=0,line=0;
-        if(i>0)
-        while(line*col <= i)
-        {
-                dtm.setValueAt(modal, col, line);
-                if(col==4)
-                {
-                    col=0;
-                    line++;
-                }
-                col++;
-                
-        }
 
     }
 
@@ -155,7 +139,12 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     }//GEN-LAST:event_jBuCancelActionPerformed
 
     private void jRaBuSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRaBuSolActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
+        //jTable1.setModel(dtm);
+        Vector ligne = new Vector();
+        ligne = ((InterfaceApplication)getParent()).Travail.get(0);
+        dtm.addRow(ligne);
+        jTable1.setModel(dtm);
     }//GEN-LAST:event_jRaBuSolActionPerformed
 
     /**

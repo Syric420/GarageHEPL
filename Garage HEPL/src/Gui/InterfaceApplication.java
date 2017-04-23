@@ -14,7 +14,8 @@ import java.util.Vector;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
-    LinkedList Travail=new LinkedList();
+    LinkedList<Vector> Travail=new LinkedList<Vector>();
+    Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
 
@@ -23,6 +24,13 @@ public class InterfaceApplication extends javax.swing.JFrame {
      */
     public InterfaceApplication() {
         initComponents();
+        
+        temp.add("cc");
+        temp.add("yo");
+        temp.add("la");
+        temp.add("io");
+        temp.add("pd");
+        Travail.add(temp);
         Login.setVisible(true);
     }
 
