@@ -9,12 +9,13 @@ package Gui;
  *
  * @author tibha
  */
-public class InterfacePECVehicule extends javax.swing.JFrame {
+public class InterfacePeCVeh extends javax.swing.JDialog {
 
     /**
-     * Creates new form InterfacePECVehicule
+     * Creates new form InterfacePeCVeh
      */
-    public InterfacePECVehicule() {
+    public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -27,7 +28,6 @@ public class InterfacePECVehicule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabTravaux = new javax.swing.JLabel();
         jRaBuPont = new javax.swing.JRadioButton();
         jRaBuSol = new javax.swing.JRadioButton();
@@ -37,15 +37,12 @@ public class InterfacePECVehicule extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Garage HEPL: Prise en charge d'un travail");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabTravaux.setText("Travaux en attente");
 
-        buttonGroup1.add(jRaBuPont);
         jRaBuPont.setText("Pont");
 
-        buttonGroup1.add(jRaBuSol);
         jRaBuSol.setText("Sol");
 
         jComboBoxPont.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
@@ -96,7 +93,7 @@ public class InterfacePECVehicule extends javax.swing.JFrame {
                                 .addComponent(jBuOk)
                                 .addGap(238, 238, 238)
                                 .addComponent(jBuCancel)))
-                        .addContainerGap(116, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +110,7 @@ public class InterfacePECVehicule extends javax.swing.JFrame {
                     .addComponent(jRaBuSol)
                     .addComponent(jRaBuPont)
                     .addComponent(jComboBoxPont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBuOk)
                     .addComponent(jBuCancel))
@@ -144,26 +141,32 @@ public class InterfacePECVehicule extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfacePECVehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfacePeCVeh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfacePECVehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfacePeCVeh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfacePECVehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfacePeCVeh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfacePECVehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfacePeCVeh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfacePECVehicule().setVisible(true);
+                InterfacePeCVeh dialog = new InterfacePeCVeh(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBuCancel;
     private javax.swing.JButton jBuOk;
     private javax.swing.JComboBox<String> jComboBoxPont;
