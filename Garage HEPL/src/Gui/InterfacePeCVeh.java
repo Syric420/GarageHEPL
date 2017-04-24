@@ -68,6 +68,11 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         jComboBoxPont.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
         jBuOk.setText("OK");
+        jBuOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuOkActionPerformed(evt);
+            }
+        });
 
         jBuCancel.setText("Annuler");
         jBuCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +170,22 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         dtm.addRow(ligne);
         jTable1.setModel(dtm);
     }//GEN-LAST:event_jTable1FocusGained
+
+    private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
+        int line;
+        Vector ligne=new Vector();
+        line=jTable1.getSelectedRow();
+        ligne.add(jTable1.getValueAt(line, 0));
+        ligne.add(jTable1.getValueAt(line, 1));
+        ligne.add(jTable1.getValueAt(line, 2));
+        ligne.add(jTable1.getValueAt(line, 3));
+        ligne.add(jTable1.getValueAt(line, 4));
+        if(jRaBuSol.isSelected())
+            ligne.add("Sol");
+        else
+            if(jRaBuPont.isSelected())
+        this.setVisible(false);
+    }//GEN-LAST:event_jBuOkActionPerformed
 
     /**
      * @param args the command line arguments
