@@ -184,6 +184,9 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             ligne.add("Sol");
         else
             if(jRaBuPont.isSelected())
+                ligne.add("Pont " + jComboBoxPont.getSelectedItem().toString());
+            else
+                ligne.clear();
         this.setVisible(false);
     }//GEN-LAST:event_jBuOkActionPerformed
 
