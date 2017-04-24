@@ -24,13 +24,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
      */
     public InterfaceApplication() {
         initComponents();
-        
-        temp.add("cc");
-        temp.add("yo");
-        temp.add("la");
-        temp.add("io");
-        temp.add("pd");
-        Travail.add(temp);
         Login.setVisible(true);
     }
 
