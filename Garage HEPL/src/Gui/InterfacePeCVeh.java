@@ -21,6 +21,12 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {},
+        new String [] {
+        "Type voiture", "Immatriculation", "Propriétaire","Travail","Remarques"
+        }
+        ));
 
     }
 
@@ -81,6 +87,11 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                 "Type voiture", "Immatriculation", "Propriétaire", "Travail", "Remarques"
             }
         ));
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,24 +101,27 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabTravaux)
-                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRaBuPont)
-                        .addGap(73, 73, 73)
-                        .addComponent(jComboBoxPont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRaBuSol)
-                        .addGap(181, 181, 181))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jRaBuPont)
+                                .addGap(73, 73, 73)
+                                .addComponent(jComboBoxPont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRaBuSol)
+                                .addGap(181, 181, 181))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(jBuOk)
                                 .addGap(238, 238, 238)
-                                .addComponent(jBuCancel)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jBuCancel)
+                                .addContainerGap(93, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,11 +129,12 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
-                        .addComponent(jLabTravaux))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
+                        .addComponent(jLabTravaux)
+                        .addGap(72, 72, 72))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRaBuSol)
                     .addComponent(jRaBuPont)
@@ -139,13 +154,17 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     }//GEN-LAST:event_jBuCancelActionPerformed
 
     private void jRaBuSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRaBuSolActionPerformed
-        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
+        
         //jTable1.setModel(dtm);
+    }//GEN-LAST:event_jRaBuSolActionPerformed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne = new Vector();
         ligne = ((InterfaceApplication)getParent()).Travail.get(0);
         dtm.addRow(ligne);
         jTable1.setModel(dtm);
-    }//GEN-LAST:event_jRaBuSolActionPerformed
+    }//GEN-LAST:event_jTable1FocusGained
 
     /**
      * @param args the command line arguments
