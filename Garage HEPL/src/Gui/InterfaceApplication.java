@@ -304,9 +304,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuInfoSystemeActionPerformed
 
     
-    private void ajoutLinkedList(Vector unVec)
+    public void ajoutLinkedList(Vector unVec)
     {
         Travail.add(unVec);
+        
     }
     /**
      * @param args the command line arguments
