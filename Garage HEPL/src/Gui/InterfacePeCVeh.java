@@ -7,6 +7,7 @@ package Gui;
 
 import java.util.Vector;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -166,13 +167,16 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne = new Vector();
+        
         ligne = ((InterfaceApplication)getParent()).Travail.get(0);
+        ((InterfaceApplication)getParent()).Travail.remove(0);
         dtm.addRow(ligne);
         jTable1.setModel(dtm);
     }//GEN-LAST:event_jTable1FocusGained
 
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
+        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne=new Vector();
         line=jTable1.getSelectedRow();
         ligne.add(jTable1.getValueAt(line, 0));
@@ -186,8 +190,18 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             if(jRaBuPont.isSelected())
                 ligne.add("Pont " + jComboBoxPont.getSelectedItem().toString());
             else
+            {
                 ligne.clear();
-        this.setVisible(false);
+                JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+            }
+        if(!ligne.isEmpty())
+        {
+            dtm.removeRow(line);
+            jTable1.setModel(dtm);
+            this.setVisible(false);
+        }
+            
+       
     }//GEN-LAST:event_jBuOkActionPerformed
 
     /**
