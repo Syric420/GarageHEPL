@@ -6,6 +6,7 @@
 package Gui;
 
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -13,12 +14,28 @@ import java.util.Vector;
  */
 public class InterfaceRdv extends javax.swing.JDialog {
     Vector vec = new Vector();
+    DefaultComboBoxModel dmcbTravailEntretien = new DefaultComboBoxModel();
+    DefaultComboBoxModel dmcbTravailReparation = new DefaultComboBoxModel();
+    DefaultComboBoxModel dmcbProprio = new DefaultComboBoxModel();
     /**
      * Creates new form InterfaceRdv
      */
     public InterfaceRdv(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        dmcbTravailEntretien.addElement("Entretien annuel");
+        dmcbTravailEntretien.addElement("Entretien 40000");
+        dmcbTravailEntretien.addElement("Pneus hiver");
+        CB_TypeTravail.setModel(dmcbTravailEntretien);
+        
+        dmcbTravailReparation.addElement("Reparation clim");
+        dmcbTravailReparation.addElement("Reparation phares");
+        
+        dmcbProprio.addElement("Mtre Dieu");
+        dmcbProprio.addElement("ProprioThib");
+        dmcbProprio.addElement("ProprioVince");
+        CB_Proprietaire.setModel(dmcbProprio);
     }
 
     /**
@@ -215,14 +232,16 @@ public class InterfaceRdv extends javax.swing.JDialog {
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());
         vec.add(CB_TypeTravail.getSelectedItem().toString());
-        
-                
+        vec.add(TA_Instructions.getText());
+        this.JB_AnnulerActionPerformed(null);
     }//GEN-LAST:event_JB_OkActionPerformed
 
     private void CB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NewActionPerformed
         // TODO add your handling code here:
         if(CB_New.isSelected()==true)
         {
+            dmcbProprio.addElement("New Proprio");
+            CB_Proprietaire.setSelectedIndex(dmcbProprio.getSize()-1);
             CB_Proprietaire.setEditable(true);
         }
         else
@@ -232,11 +251,15 @@ public class InterfaceRdv extends javax.swing.JDialog {
     private void RB_EntretienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_EntretienActionPerformed
         // TODO add your handling code here:
         RB_Reparation.setSelected(false);
+        RB_Entretien.setSelected(true);
+        CB_TypeTravail.setModel(dmcbTravailEntretien);
     }//GEN-LAST:event_RB_EntretienActionPerformed
 
     private void RB_ReparationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_ReparationActionPerformed
         // TODO add your handling code here:
         RB_Entretien.setSelected(false);
+        RB_Reparation.setSelected(true);
+        CB_TypeTravail.setModel(dmcbTravailReparation);
     }//GEN-LAST:event_RB_ReparationActionPerformed
 
     /**
