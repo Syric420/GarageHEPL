@@ -7,6 +7,7 @@ package Gui;
 
 import java.util.LinkedList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,7 +65,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
+        jMenuInfoSysteme = new javax.swing.JMenuItem();
+        jMenuAide = new javax.swing.JMenu();
+        jMenuPourDebuter = new javax.swing.JMenuItem();
+        jMenuAProposDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,10 +153,36 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Paramètres");
+
+        jMenuInfoSysteme.setText("Infos systèmes");
+        jMenuInfoSysteme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuInfoSystemeActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuInfoSysteme);
+
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setText("Aide");
-        jMenuBar1.add(jMenu7);
+        jMenuAide.setText("Aide");
+
+        jMenuPourDebuter.setText("Pour débuter");
+        jMenuPourDebuter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPourDebuterActionPerformed(evt);
+            }
+        });
+        jMenuAide.add(jMenuPourDebuter);
+
+        jMenuAProposDe.setText("A propos de ...");
+        jMenuAProposDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAProposDeActionPerformed(evt);
+            }
+        });
+        jMenuAide.add(jMenuAProposDe);
+
+        jMenuBar1.add(jMenuAide);
 
         setJMenuBar(jMenuBar1);
 
@@ -255,6 +285,24 @@ public class InterfaceApplication extends javax.swing.JFrame {
         PeC.setVisible(true);
     }//GEN-LAST:event_jMenuPeCActionPerformed
 
+    private void jMenuAProposDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAProposDeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAProposDeActionPerformed
+
+    private void jMenuPourDebuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPourDebuterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuPourDebuterActionPerformed
+
+    private void jMenuInfoSystemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInfoSystemeActionPerformed
+        String nomUser, userDir, repCourant, newLigne; 
+        newLigne = System.getProperty("line.separator");
+        nomUser = System.getProperty("user.name");
+        userDir = System.getProperty("os.name");
+        repCourant = System.getProperty("user.dir");
+        
+        JOptionPane.showMessageDialog(this, "Nom du user : "+nomUser+newLigne+"Nom de l'os : "+userDir+newLigne+"Repertoire courant : "+repCourant, "Informations système", JOptionPane.INFORMATION_MESSAGE, null);
+    }//GEN-LAST:event_jMenuInfoSystemeActionPerformed
+
     
     private void ajoutLinkedList(Vector unVec)
     {
@@ -319,11 +367,14 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuItem jMenuAPrevoir;
+    private javax.swing.JMenuItem jMenuAProposDe;
+    private javax.swing.JMenu jMenuAide;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuInfoSysteme;
     private javax.swing.JMenuItem jMenuListes;
     private javax.swing.JMenuItem jMenuPeC;
+    private javax.swing.JMenuItem jMenuPourDebuter;
     private javax.swing.JMenuItem jMenuTerminé;
     // End of variables declaration//GEN-END:variables
 }
