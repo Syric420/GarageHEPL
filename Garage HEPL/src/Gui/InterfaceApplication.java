@@ -262,6 +262,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         PeC.setVisible(true);
     }//GEN-LAST:event_jMenuPeCActionPerformed
 
+    
+    private void ajoutLinkedList(Vector unVec)
+    {
+        Travail.add(unVec);
+    }
     /**
      * @param args the command line arguments
      */
