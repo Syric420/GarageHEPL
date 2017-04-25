@@ -11,7 +11,7 @@ import authenticate.*;
  *
  * @author Vince
  */
-public class Client implements Identifiable
+public class Client extends Personne implements Identifiable
 {
     private String numClient;
     
