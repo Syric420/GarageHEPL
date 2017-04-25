@@ -93,11 +93,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                 "Type voiture", "Immatriculation", "Propriétaire", "Travail", "Remarques"
             }
         ));
-        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTable1FocusGained(evt);
-            }
-        });
         jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,17 +158,15 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         
         //jTable1.setModel(dtm);
     }//GEN-LAST:event_jRaBuSolActionPerformed
-
-    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+    public void ajouterLigneTable()
+    {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne = new Vector();
+        ligne = ((InterfaceApplication)getParent()).Travail.getLast();
         
-        ligne = ((InterfaceApplication)getParent()).Travail.get(0);
-        ((InterfaceApplication)getParent()).Travail.remove(0);
         dtm.addRow(ligne);
-        jTable1.setModel(dtm);
-    }//GEN-LAST:event_jTable1FocusGained
-
+        jTable1.setModel(dtm); 
+    }
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
@@ -197,6 +190,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         if(!ligne.isEmpty())
         {
             dtm.removeRow(line);
+            ((InterfaceApplication)getParent()).Travail.remove(line);
             jTable1.setModel(dtm);
             this.setVisible(false);
         }
