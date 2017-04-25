@@ -193,14 +193,27 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         if(jRaBuSol.isSelected())
         {
             r.setPontTravail("Sol");
-            ok=true;
+            if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
+                ok=true;
+            else
+                {
+                    ok=false;
+                    JOptionPane.showMessageDialog( this,"Le sol n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                }
         }
 
         else
             if(jRaBuPont.isSelected())
             {
                 r.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
-                ok=true;
+                if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
+                    ok=true;
+                else
+                {
+                    ok=false;
+                    JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                }
+                    
             }
 
             else
@@ -211,6 +224,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         if(ok)
         {
             ((InterfaceApplication)getParent()).TravailEnCours.add(r);
+            ((InterfaceApplication)getParent()).AfficheTF(r.getPontTravail(), r);
             dtm.removeRow(line);
             ((InterfaceApplication)getParent()).Travail.remove(line);
             jTable1.setModel(dtm);
