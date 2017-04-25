@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 package Vehicules;
+
+import people.Client;
+
 /**
  *
  * @author tibha
  */
 public class Voiture extends Vehicule
 { 
-    private String proprietaire;
+    private Client proprietaire;
     private TypeVoiture type;
     public Voiture()
     {
         super();
-        proprietaire="NULL";
+        proprietaire=null;
         type = new TypeVoiture();
     }
-    public Voiture(String mat,String prop,String marque,String typ,String porte)
+    public Voiture(String mat,Client prop,String marque,String typ,String porte)
     {
         super(mat);
         setProprietaire(prop);
@@ -29,7 +32,7 @@ public class Voiture extends Vehicule
         catch(MissingTradeMarkException e){ System.out.println("Erreur : " + e.getMessage());}
     }
     
-    public Voiture(String mat,String prop,TypeVoiture voit)
+    public Voiture(String mat,Client prop,TypeVoiture voit)
     {
         super(mat);
         setProprietaire(prop);
@@ -41,19 +44,6 @@ public class Voiture extends Vehicule
     }
     
     
-    /**
-     * @return the proprietaire
-     */
-    public String getProprietaire() {
-        return proprietaire;
-    }
-
-    /**
-     * @param proprietaire the proprietaire to set
-     */
-    public void setProprietaire(String proprietaire) {
-        this.proprietaire = proprietaire;
-    }
 
     /**
      * @return the type
@@ -83,6 +73,20 @@ public class Voiture extends Vehicule
     public void affiche()
     {
         System.out.println(this);
+    }
+
+    /**
+     * @return the proprietaire
+     */
+    public Client getProprietaire() {
+        return proprietaire;
+    }
+
+    /**
+     * @param proprietaire the proprietaire to set
+     */
+    public void setProprietaire(Client proprietaire) {
+        this.proprietaire = proprietaire;
     }
     
 }
