@@ -5,6 +5,7 @@
  */
 package people;
 import authenticate.*;
+import java.util.Hashtable;
 /**
  *
  * @author Vince
@@ -12,6 +13,7 @@ import authenticate.*;
 public abstract class PersonnelGarage extends Personne implements Identifiable, AValider
 {
     private String matricule;
+    private String login;
     
     public PersonnelGarage()
     {
@@ -40,8 +42,25 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
     @Override
-    public boolean validate() {
+    public boolean validate(Hashtable h) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // if(h.get(login))
+            
+    }
+
+    /**
+     * @return the login
+     */
+    public String getLogin() {
+        return login;
+    }
+
+    /**
+     * @param login the login to set
+     */
+    public void setLogin(String login) {
+        this.login = login;
     }
 }
