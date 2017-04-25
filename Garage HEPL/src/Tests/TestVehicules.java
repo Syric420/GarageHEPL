@@ -30,12 +30,13 @@ public class TestVehicules {
                 new Client("C250", "Sarkozy", "Nicolas","El Champ","0478fauxnum"),
             };
             voitures[0]= new Voiture("1-XCV-699",clients[0],"Suzuki","SUV","5");
-            voitures[1]= new Voiture("1-ABC-354",clients[1],"toyota","vroum vroum","5");
-            voitures[2]= new Voiture("1-FGH-472",clients[2],"porsche","berline","3");
-            voitures[3]= new Voiture("1-DJY-972",clients[0],"audi","SUV","5");
-            voitures[4]= new Voiture("1-CVD-652",clients[1],"renault","monospace","5");
+            voitures[1]= new Voiture("1-ABC-354",clients[1],"Toyota","vroum vroum","5");
+            voitures[2]= new Voiture("1-FGH-472",clients[2],"Porsche","berline","3");
+            voitures[3]= new Voiture("1-DJY-972",clients[2],"Audi","SUV","5");
+            voitures[4]= new Voiture("1-CVD-652",clients[1],"Renault","monospace","5");
             int compt=0;
             compt = Integer.parseInt(args[0]);
+            //compt=5;
             //System.out.println("Nombre inséré: "+compt);
             int i=0;
             while(compt>0)
