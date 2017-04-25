@@ -17,11 +17,13 @@ public class Client extends Personne implements Identifiable
     
     public Client()
     {
+        super();
         this.numClient="NULL";
     }
     
-    public Client(String numCli)
+    public Client(String numCli, String n, String p, String a, String num)
     {
+        super(n,p,a,num);
         this.numClient=numCli;
     }
 
@@ -34,4 +36,11 @@ public class Client extends Personne implements Identifiable
     public void setID(String i) {
         this.numClient = i;
     }
+    
+    @Override
+    public String toString()
+    {
+        return this.getNom()+" "+this.getPrenom();
+    }
+    
 }
