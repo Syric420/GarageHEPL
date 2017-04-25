@@ -67,7 +67,7 @@ public class Voiture extends Vehicule
     @Override
     public String toString()
     {
-        return "Immatriculation: "+this.getID()+ "\nProprietaire: \n"+this.getProprietaire() +"\n" + this.getType().toString()+"\n";
+        return this.getProprietaire() + " " + this.getType().toString();
     }
     
     public void affiche()

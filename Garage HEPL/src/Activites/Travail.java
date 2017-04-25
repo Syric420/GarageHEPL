@@ -85,6 +85,10 @@ public abstract class Travail {
     public void setPontTravail(String pontTravail) {
         this.pontTravail = pontTravail;
     }
-    
+    @Override
+    public String toString()
+    {
+        return vehicule.toString() + travail;
+    }
     
 }

@@ -79,7 +79,7 @@ public class TypeVoiture
     @Override
     public String toString()
     {
-        return "Marque: "+getMarque()+"\nType: "+getType();
+        return getMarque() + " ";
     }
     
     public void affiche()

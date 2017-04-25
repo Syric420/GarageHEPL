@@ -182,8 +182,9 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         voiture.setID((String)jTable1.getValueAt(line, 1));
         voiture.setProprietaire((String)jTable1.getValueAt(line, 2));
         type.setMarque((String)jTable1.getValueAt(line, 0));
+        voiture.setType(type);
         r.setTravail((String)jTable1.getValueAt(line, 3));
-        r.setTravail((String)jTable1.getValueAt(line, 4));
+        r.setRemarque((String)jTable1.getValueAt(line, 4));
         r.setVehicule(voiture);
         /*ligne.add(jTable1.getValueAt(line, 0));
         ligne.add(jTable1.getValueAt(line, 1));
