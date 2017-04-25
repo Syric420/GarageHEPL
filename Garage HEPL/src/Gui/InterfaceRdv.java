@@ -228,6 +228,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
+        vec.clear();
         vec.add(TF_TypeVoiture.getText());
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());

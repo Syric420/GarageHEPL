@@ -163,7 +163,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne = new Vector();
         ligne = ((InterfaceApplication)getParent()).Travail.getLast();
-        
         dtm.addRow(ligne);
         jTable1.setModel(dtm); 
     }
