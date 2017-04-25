@@ -233,7 +233,11 @@ public class InterfaceRdv extends javax.swing.JDialog {
         vec.add(CB_Proprietaire.getSelectedItem().toString());
         vec.add(CB_TypeTravail.getSelectedItem().toString());
         vec.add(TA_Instructions.getText());
+        ((InterfaceApplication)getParent()).ajoutLinkedList(vec);
+        ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();
         this.JB_AnnulerActionPerformed(null);
+
+                
     }//GEN-LAST:event_JB_OkActionPerformed
 
     private void CB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NewActionPerformed
