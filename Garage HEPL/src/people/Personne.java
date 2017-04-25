@@ -11,10 +11,10 @@ package people;
  */
 public class Personne 
 {
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private String numTel;
+    protected String nom;
+    protected String prenom;
+    protected String adresse;
+    protected String numTel;
     
     public Personne()
     {
