@@ -13,7 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author Vince
  */
 public class InterfaceRdv extends javax.swing.JDialog {
-    Vector vec = new Vector();
+    
     DefaultComboBoxModel dmcbTravailEntretien = new DefaultComboBoxModel();
     DefaultComboBoxModel dmcbTravailReparation = new DefaultComboBoxModel();
     DefaultComboBoxModel dmcbProprio = new DefaultComboBoxModel();
@@ -228,7 +228,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
-        vec.clear();
+        Vector vec = new Vector();
         vec.add(TF_TypeVoiture.getText());
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());
