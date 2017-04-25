@@ -307,7 +307,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public void ajoutLinkedList(Vector unVec)
     {
         Travail.add(unVec);
-        
     }
     /**
      * @param args the command line arguments
