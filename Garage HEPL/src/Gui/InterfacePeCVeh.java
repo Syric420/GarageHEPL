@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import Activites.Reparation;
+import Vehicules.*;
 import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -168,26 +170,47 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     }
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
+        boolean ok=false;
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
-        Vector ligne=new Vector();
+        Reparation r = new Reparation();
+        Voiture voiture = new Voiture();
+        TypeVoiture type = new TypeVoiture();
+        
+
+        
         line=jTable1.getSelectedRow();
-        ligne.add(jTable1.getValueAt(line, 0));
+        voiture.setID((String)jTable1.getValueAt(line, 1));
+        voiture.setProprietaire((String)jTable1.getValueAt(line, 2));
+        type.setMarque((String)jTable1.getValueAt(line, 0));
+        r.setTravail((String)jTable1.getValueAt(line, 3));
+        r.setTravail((String)jTable1.getValueAt(line, 4));
+        r.setVehicule(voiture);
+        /*ligne.add(jTable1.getValueAt(line, 0));
         ligne.add(jTable1.getValueAt(line, 1));
-        ligne.add(jTable1.getValueAt(line, 2));
-        ligne.add(jTable1.getValueAt(line, 3));
-        ligne.add(jTable1.getValueAt(line, 4));
+        ligne.add(jTable1.getValueAt(line, 2));*/
+        //ligne.add(jTable1.getValueAt(line, 3));
+        //ligne.add(jTable1.getValueAt(line, 4));
         if(jRaBuSol.isSelected())
-            ligne.add("Sol");
+        {
+            r.setPontTravail("Sol");
+            ok=true;
+        }
+
         else
             if(jRaBuPont.isSelected())
-                ligne.add("Pont " + jComboBoxPont.getSelectedItem().toString());
+            {
+                r.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
+                ok=true;
+            }
+
             else
             {
-                ligne.clear();
+                ok=false;
                 JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
             }
-        if(!ligne.isEmpty())
+        if(ok)
         {
+            ((InterfaceApplication)getParent()).TravailEnCours.add(r);
             dtm.removeRow(line);
             ((InterfaceApplication)getParent()).Travail.remove(line);
             jTable1.setModel(dtm);

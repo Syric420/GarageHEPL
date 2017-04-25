@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import Activites.Travail;
 import java.util.LinkedList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
     LinkedList<Vector> Travail=new LinkedList<Vector>();
+    Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);

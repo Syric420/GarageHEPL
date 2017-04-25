@@ -13,7 +13,9 @@ import people.*;
 public abstract class Travail {
     private Mecanicien mecanicien;
     private Vehicule vehicule;
-
+    private String travail;
+    private String remarque;
+    private String pontTravail;
     /**
      * @return the mecanicien
      */
@@ -40,6 +42,48 @@ public abstract class Travail {
      */
     public void setVehicule(Vehicule vehicule) {
         this.vehicule = vehicule;
+    }
+
+    /**
+     * @return the travail
+     */
+    public String getTravail() {
+        return travail;
+    }
+
+    /**
+     * @param travail the travail to set
+     */
+    public void setTravail(String travail) {
+        this.travail = travail;
+    }
+
+    /**
+     * @return the remarque
+     */
+    public String getRemarque() {
+        return remarque;
+    }
+
+    /**
+     * @param remarque the remarque to set
+     */
+    public void setRemarque(String remarque) {
+        this.remarque = remarque;
+    }
+
+    /**
+     * @return the pontTravail
+     */
+    public String getPontTravail() {
+        return pontTravail;
+    }
+
+    /**
+     * @param pontTravail the pontTravail to set
+     */
+    public void setPontTravail(String pontTravail) {
+        this.pontTravail = pontTravail;
     }
     
     
