@@ -164,7 +164,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         Vector ligne = new Vector();
         ligne = ((InterfaceApplication)getParent()).Travail.getLast();
         dtm.addRow(ligne);
-        jTable1.setModel(dtm); 
+        jTable1.setModel(dtm);
     }
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
