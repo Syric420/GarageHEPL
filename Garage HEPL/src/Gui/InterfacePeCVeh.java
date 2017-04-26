@@ -192,7 +192,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         ligne.add(jTable1.getValueAt(line, 2));*/
         //ligne.add(jTable1.getValueAt(line, 3));
         //ligne.add(jTable1.getValueAt(line, 4));
-        int pos=-1;
         if(jRaBuSol.isSelected())
         {
             r.setPontTravail("Sol");
