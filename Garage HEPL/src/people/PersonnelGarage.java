@@ -14,6 +14,7 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
 {
     private String matricule;
     private String login;
+    private Hashtable hash;
     
     public PersonnelGarage()
     {
@@ -43,10 +44,13 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
     }
 
    
-    //@Override
-    public boolean validate(Hashtable h) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       // if(h.get(login))
+    @Override
+    public boolean validate(String mdp) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(hash.get(login).equals(mdp))
+           return true;
+       else
+           return false;
             
     }
 
@@ -62,5 +66,19 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
      */
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    /**
+     * @return the hash
+     */
+    public Hashtable getHash() {
+        return hash;
+    }
+
+    /**
+     * @param hash the hash to set
+     */
+    public void setHash(Hashtable hash) {
+        this.hash = hash;
     }
 }
