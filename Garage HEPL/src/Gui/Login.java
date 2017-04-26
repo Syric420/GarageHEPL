@@ -160,7 +160,7 @@ public class Login extends java.awt.Dialog {
         
         Mecanicien unMecano = new Mecanicien();
         unMecano.setLogin("Vince");
-        unMecano.setHashpswd(hashpswd);
+        unMecano.setHash(hashpswd);
         
         
         login=tfUser.getText();
