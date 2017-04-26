@@ -21,6 +21,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
+    InterfaceTermine End = new InterfaceTermine(this,true);
 
     /**
      * Creates new form InterfaceApplication
@@ -320,7 +321,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAPrevoirActionPerformed
 
     private void jMenuTerminéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTerminéActionPerformed
-        
+        End.setVisible(true);
     }//GEN-LAST:event_jMenuTerminéActionPerformed
 
     private void jMenuPeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPeCActionPerformed

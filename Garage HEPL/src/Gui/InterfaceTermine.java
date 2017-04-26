@@ -5,6 +5,10 @@
  */
 package Gui;
 
+import Activites.Travail;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 /**
  *
  * @author tibha
@@ -14,9 +18,12 @@ public class InterfaceTermine extends javax.swing.JDialog {
     /**
      * Creates new form InterfaceTermine
      */
+    DefaultListModel lmd;
     public InterfaceTermine(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        lmd = (DefaultListModel) jListTravail.getModel();
+        //((InterfaceApplication)getparent()).TravailEnCours
     }
 
     /**
@@ -42,8 +49,18 @@ public class InterfaceTermine extends javax.swing.JDialog {
         jLabel1.setText("Travaux en cours");
 
         jButtonTerminer.setText("Terminer");
+        jButtonTerminer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTerminerActionPerformed(evt);
+            }
+        });
 
         jButtonCancel.setText("Annuler");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +95,21 @@ public class InterfaceTermine extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
+    public void ajoutListe(Travail t)
+    {
+        int taille =lmd.size();
+        lmd.add(taille-1, t);
+        //((InterfaceApplication)getparent()).TravailEnCours
+    }
+    private void jButtonTerminerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminerActionPerformed
+        
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonTerminerActionPerformed
 
     /**
      * @param args the command line arguments
