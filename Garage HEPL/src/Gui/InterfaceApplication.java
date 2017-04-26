@@ -320,7 +320,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAPrevoirActionPerformed
 
     private void jMenuTerminéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTerminéActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuTerminéActionPerformed
 
     private void jMenuPeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPeCActionPerformed

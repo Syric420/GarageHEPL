@@ -13,11 +13,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceRdv.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/people/Mecanicien.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/people/Employe.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Activites/Travail.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfacePeCVeh.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Vehicules/Voiture.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Activites/Entretien.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Vehicules/TypeVoiture.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/people/PersonnelGarage.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Vehicules/Vehicule.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceApplication.java</file>
         </group>
