@@ -15,9 +15,4 @@ public class Employe extends PersonnelGarage
     {
         super();
     }
-
-    @Override
-    public boolean validate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
