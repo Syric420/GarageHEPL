@@ -18,11 +18,12 @@ public class InterfaceTermine extends javax.swing.JDialog {
     /**
      * Creates new form InterfaceTermine
      */
-    DefaultListModel lmd;
+    DefaultListModel dlm = new DefaultListModel();
     public InterfaceTermine(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        lmd = (DefaultListModel) jListTravail.getModel();
+        
+        jListTravail.setModel(dlm);
         //((InterfaceApplication)getparent()).TravailEnCours
     }
 
@@ -99,10 +100,10 @@ public class InterfaceTermine extends javax.swing.JDialog {
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelActionPerformed
-    public void ajoutListe(Travail t)
+    public void ajoutListe(Travail t,int pos)
     {
-        int taille =lmd.size();
-        lmd.add(taille-1, t);
+        
+        dlm.addElement(t);
         //((InterfaceApplication)getparent()).TravailEnCours
     }
     private void jButtonTerminerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminerActionPerformed
@@ -157,7 +158,7 @@ public class InterfaceTermine extends javax.swing.JDialog {
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonTerminer;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jListTravail;
+    private javax.swing.JList<Travail> jListTravail;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
