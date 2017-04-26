@@ -6,6 +6,7 @@
 package Gui;
 
 import Activites.Travail;
+import java.text.DateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -30,11 +31,16 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public InterfaceApplication() {
         initComponents();
         Login.setVisible(true);
+        String maDate;
         Date date = new Date();
+        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+        TimeZone cetTime = TimeZone.getTimeZone("CET");
         
+        df.setTimeZone(cetTime);
         
+        maDate = df.format(date);
+        jLabelDate.setText(maDate);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
