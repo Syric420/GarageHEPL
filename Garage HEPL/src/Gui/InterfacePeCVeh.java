@@ -198,7 +198,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             r.setPontTravail("Sol");
             if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
             {
-                pos=0;
                 ok=true;
             }
             else
@@ -212,12 +211,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             if(jRaBuPont.isSelected())
             {
                 r.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
-                if(jComboBoxPont.getSelectedItem().toString().equals("1"))
-                    pos=1;
-                else if(jComboBoxPont.getSelectedItem().toString().equals("2"))
-                    pos=2;
-                else if(jComboBoxPont.getSelectedItem().toString().equals("3"))
-                    pos=3;
                 if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
                     ok=true;
                 else
@@ -236,7 +229,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         if(ok)
         {
             ((InterfaceApplication)getParent()).TravailEnCours.add(r);
-            ((InterfaceApplication)getParent()).End.ajoutListe(r,pos);
+            ((InterfaceApplication)getParent()).End.ajoutListe(r);
             ((InterfaceApplication)getParent()).AfficheTF(r.getPontTravail(), r);
             dtm.removeRow(line);
             ((InterfaceApplication)getParent()).Travail.remove(line);

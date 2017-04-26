@@ -100,7 +100,7 @@ public class InterfaceTermine extends javax.swing.JDialog {
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButtonCancelActionPerformed
-    public void ajoutListe(Travail t,int pos)
+    public void ajoutListe(Travail t)
     {
         
         dlm.addElement(t);
@@ -108,6 +108,9 @@ public class InterfaceTermine extends javax.swing.JDialog {
     }
     private void jButtonTerminerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminerActionPerformed
         
+        int indice;
+        indice = jListTravail.getSelectedIndex();
+        dlm.remove(indice);
         
         this.setVisible(false);
     }//GEN-LAST:event_jButtonTerminerActionPerformed
