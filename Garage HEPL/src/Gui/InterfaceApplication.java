@@ -6,8 +6,7 @@
 package Gui;
 
 import Activites.Travail;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +30,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public InterfaceApplication() {
         initComponents();
         Login.setVisible(true);
+        Date date = new Date();
+        
+        
     }
 
     /**
