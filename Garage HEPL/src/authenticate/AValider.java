@@ -11,5 +11,5 @@ package authenticate;
  */
 public interface AValider {
     boolean isValid();
-    boolean validate();
+    boolean validate(String mdp);
 }
