@@ -43,7 +43,7 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
     }
 
    
-    @Override
+    //@Override
     public boolean validate(Hashtable h) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
        // if(h.get(login))
