@@ -18,6 +18,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
     LinkedList<Vector> Travail=new LinkedList<Vector>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
+    Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
@@ -255,7 +256,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
                     .addComponent(JTFPont3)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelCom)
-                        .addGap(0, 317, Short.MAX_VALUE))
+                        .addGap(0, 323, Short.MAX_VALUE))
                     .addComponent(JTFPont1))
                 .addGap(241, 241, 241))
             .addGroup(layout.createSequentialGroup()
@@ -270,7 +271,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5))
                     .addComponent(jLabelBureau))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
                 .addComponent(jLabelDate)
                 .addGap(57, 57, 57))
         );
