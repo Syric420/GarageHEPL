@@ -85,7 +85,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonTerminer">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Terminer"/>
+        <Property name="text" type="java.lang.String" value="Terminer travail"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTerminerActionPerformed"/>
@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCancel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Annuler"/>
+        <Property name="text" type="java.lang.String" value="Quitter"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelActionPerformed"/>

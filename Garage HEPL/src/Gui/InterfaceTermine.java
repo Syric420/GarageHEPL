@@ -49,14 +49,14 @@ public class InterfaceTermine extends javax.swing.JDialog {
 
         jLabel1.setText("Travaux en cours");
 
-        jButtonTerminer.setText("Terminer");
+        jButtonTerminer.setText("Terminer travail");
         jButtonTerminer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTerminerActionPerformed(evt);
             }
         });
 
-        jButtonCancel.setText("Annuler");
+        jButtonCancel.setText("Quitter");
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelActionPerformed(evt);
@@ -116,7 +116,6 @@ public class InterfaceTermine extends javax.swing.JDialog {
         ((InterfaceApplication)getParent()).VideTF(t.getPontTravail());
         ((InterfaceApplication)getParent()).TravailTermine.add(t);
         ((InterfaceApplication)getParent()).TravailEnCours.removeElement(t);
-        this.setVisible(false);
     }//GEN-LAST:event_jButtonTerminerActionPerformed
 
     /**
