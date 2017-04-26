@@ -11,7 +11,7 @@ import authenticate.*;
  *
  * @author tibha
  */
-public abstract class Vehicule  implements Identifiable, AValider
+public abstract class Vehicule  implements Identifiable
 {
     private String immatriculation;
     static String caracteresValides="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- ";
@@ -45,11 +45,6 @@ public abstract class Vehicule  implements Identifiable, AValider
         }
         else
             return false;
-        return true;
-    }
-    @Override
-    public boolean validate()
-    {
         return true;
     }
     
