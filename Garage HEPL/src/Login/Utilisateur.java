@@ -86,7 +86,7 @@ public class Utilisateur implements AValider {
     }
 
     @Override
-    public boolean validate() {
+    public boolean validate(String mdp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
