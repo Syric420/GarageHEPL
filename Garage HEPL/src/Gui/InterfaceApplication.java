@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
+    InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
     LinkedList<Vector> Travail=new LinkedList<Vector>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
@@ -341,6 +342,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuAProposDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAProposDeActionPerformed
         // TODO add your handling code here:
+        APropos.setVisible(true);
     }//GEN-LAST:event_jMenuAProposDeActionPerformed
 
     private void jMenuPourDebuterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPourDebuterActionPerformed
