@@ -10,6 +10,7 @@ import Login.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import people.*;
 /**
  *
  * @author Vince
@@ -147,6 +148,7 @@ public class Login extends java.awt.Dialog {
 
     private void buokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buokActionPerformed
         String login, password,role;
+        
         Hashtable hashpswd = new Hashtable();
         hashpswd .put("Vince","123");
         hashpswd .put("Thib","321");
@@ -154,6 +156,11 @@ public class Login extends java.awt.Dialog {
         Hashtable hashrole = new Hashtable();
         hashrole.put("Vince","Membre");
         hashrole.put("Thib","Exterieur");
+        
+        
+        Mecanicien unMecano = new Mecanicien();
+        unMecano.setLogin("Vince");
+        unMecano.setHashpswd(hashpswd);
         
         
         login=tfUser.getText();
@@ -172,7 +179,7 @@ public class Login extends java.awt.Dialog {
                     throw new ExUtilisateurInconnu("Utilisateur inconnu");
                 else
                 {
-                    if(password.equals(hashpswd .get(login)))
+                    if(unMecano.validate(password)==true)
                     {
                         if(!hashrole.get(login).equals(role))
                         {
