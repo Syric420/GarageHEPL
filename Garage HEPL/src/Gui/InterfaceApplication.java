@@ -74,6 +74,17 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else if(nom.equalsIgnoreCase("Sol"))
                 JTFSol.setText(t.toString());
     }
+    public void VideTF(String nom)
+    {
+        if(nom.equalsIgnoreCase("Pont 1"))
+            JTFPont1.setText("");
+        else if(nom.equalsIgnoreCase("Pont 2"))
+                    JTFPont2.setText("");
+            else if(nom.equalsIgnoreCase("Pont 3"))
+                    JTFPont3.setText("");
+            else if(nom.equalsIgnoreCase("Sol"))
+                JTFSol.setText("");
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

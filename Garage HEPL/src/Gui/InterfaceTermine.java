@@ -109,9 +109,11 @@ public class InterfaceTermine extends javax.swing.JDialog {
     private void jButtonTerminerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminerActionPerformed
         
         int indice;
+        Travail t;
         indice = jListTravail.getSelectedIndex();
+        t = (Travail)dlm.getElementAt(indice);
         dlm.remove(indice);
-        
+        ((InterfaceApplication)getParent()).VideTF(t.getPontTravail());
         this.setVisible(false);
     }//GEN-LAST:event_jButtonTerminerActionPerformed
 
