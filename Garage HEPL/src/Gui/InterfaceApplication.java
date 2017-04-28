@@ -26,6 +26,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
     InterfaceTermine End = new InterfaceTermine(this,true);
+    InterfaceNewClient intNewClient = new InterfaceNewClient(this, true);
 
     /**
      * Creates new form InterfaceApplication
@@ -381,7 +382,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        
+        this.intNewClient.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     

@@ -36,6 +36,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         dmcbProprio.addElement("Mtre Dieu");
         dmcbProprio.addElement("ProprioThib");
         dmcbProprio.addElement("ProprioVince");
+        //dmcbProprio.
         CB_Proprietaire.setModel(dmcbProprio);
     }
 
@@ -262,6 +263,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     private void JB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_NewActionPerformed
         // TODO add your handling code here:
+        ((InterfaceApplication)getParent()).intNewClient.setVisible(true);
         
     }//GEN-LAST:event_JB_NewActionPerformed
 

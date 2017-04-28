@@ -144,12 +144,14 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         unClient.setNom(TF_Nom.getText());
         unClient.setPrenom(TF_Prenom.getText());
         unClient.setNumTel(TF_NumTel.getText());
+        
+        ((InterfaceApplication)getParent()).vecClient.add(unClient);
+        this.clearAll();
     }//GEN-LAST:event_JB_OkActionPerformed
 
     private void JB_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AnnulerActionPerformed
         // TODO add your handling code here:
         this.clearAll();
-        this.setVisible(false);
     }//GEN-LAST:event_JB_AnnulerActionPerformed
 
     
@@ -160,6 +162,7 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         this.TF_NumClient.setText("");
         this.TF_Prenom.setText("");
         this.TF_NumTel.setText("");
+        this.setVisible(false);
     }
     /**
      * @param args the command line arguments
