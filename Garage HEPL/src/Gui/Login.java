@@ -76,7 +76,7 @@ public class Login extends java.awt.Dialog {
         });
 
         buttonGroup1.add(jExterieurButton);
-        jExterieurButton.setText("Extérieur habillé");
+        jExterieurButton.setText("Extérieur habililité");
         jExterieurButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jExterieurButtonActionPerformed(evt);
