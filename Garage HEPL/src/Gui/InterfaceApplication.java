@@ -9,6 +9,7 @@ import Activites.Travail;
 import java.text.DateFormat;
 import java.util.*;
 import javax.swing.JOptionPane;
+import people.*;
 
 /**
  *
@@ -20,6 +21,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     LinkedList<Vector> Travail=new LinkedList<Vector>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
+    Vector<Client> vecClient=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
     InterfaceRdv Rdv = new InterfaceRdv(this, true);
@@ -123,6 +125,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuListes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -200,6 +203,15 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Clients");
+
+        jMenuItem1.setText("Ajouter client");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Factures");
@@ -367,6 +379,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Nom du user : "+nomUser+newLigne+"Nom de l'os : "+userDir+newLigne+"Repertoire courant : "+repCourant, "Informations système", JOptionPane.INFORMATION_MESSAGE, null);
     }//GEN-LAST:event_jMenuInfoSystemeActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     
     public void ajoutLinkedList(Vector unVec)
     {
@@ -436,6 +453,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAide;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuInfoSysteme;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuListes;
     private javax.swing.JMenuItem jMenuPeC;
     private javax.swing.JMenuItem jMenuPourDebuter;
