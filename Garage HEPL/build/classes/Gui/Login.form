@@ -134,7 +134,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ext&#xe9;rieur habill&#xe9;"/>
+        <Property name="text" type="java.lang.String" value="Ext&#xe9;rieur habililit&#xe9;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jExterieurButtonActionPerformed"/>
