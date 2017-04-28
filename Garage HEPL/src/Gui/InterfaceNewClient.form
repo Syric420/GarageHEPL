@@ -45,11 +45,11 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="TF_Adresse" min="-2" pref="190" max="-2" attributes="0"/>
                           <Component id="TF_NumTel" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="TF_NumTel2" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="TF_NumTel1" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="TF_NumTel3" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="TF_NumTel4" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="TF_NumClient" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="TF_Nom" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="TF_Prenom" min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -69,27 +69,27 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_NumTel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_NumClient" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_NumTel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_Nom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_NumTel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_Prenom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_NumTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_Adresse" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TF_NumTel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TF_NumTel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="18" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -127,25 +127,31 @@
         <Property name="text" type="java.lang.String" value="Num&#xe9;ro de t&#xe9;l&#xe9;phone:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="TF_Adresse">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TF_NumClient">
+    </Component>
     <Component class="javax.swing.JTextField" name="TF_NumTel">
     </Component>
-    <Component class="javax.swing.JTextField" name="TF_NumTel1">
+    <Component class="javax.swing.JTextField" name="TF_Nom">
     </Component>
-    <Component class="javax.swing.JTextField" name="TF_NumTel2">
-    </Component>
-    <Component class="javax.swing.JTextField" name="TF_NumTel3">
-    </Component>
-    <Component class="javax.swing.JTextField" name="TF_NumTel4">
+    <Component class="javax.swing.JTextField" name="TF_Prenom">
     </Component>
     <Component class="javax.swing.JButton" name="JB_Ok">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ok"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_OkActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JB_Annuler">
       <Properties>
         <Property name="text" type="java.lang.String" value="Annuler"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JB_AnnulerActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

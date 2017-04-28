@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import people.Client;
+
 /**
  *
  * @author Vince
@@ -35,11 +37,11 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        TF_Adresse = new javax.swing.JTextField();
+        TF_NumClient = new javax.swing.JTextField();
         TF_NumTel = new javax.swing.JTextField();
-        TF_NumTel1 = new javax.swing.JTextField();
-        TF_NumTel2 = new javax.swing.JTextField();
-        TF_NumTel3 = new javax.swing.JTextField();
-        TF_NumTel4 = new javax.swing.JTextField();
+        TF_Nom = new javax.swing.JTextField();
+        TF_Prenom = new javax.swing.JTextField();
         JB_Ok = new javax.swing.JButton();
         JB_Annuler = new javax.swing.JButton();
 
@@ -60,8 +62,18 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         jLabel5.setText("Numéro de téléphone:");
 
         JB_Ok.setText("Ok");
+        JB_Ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_OkActionPerformed(evt);
+            }
+        });
 
         JB_Annuler.setText("Annuler");
+        JB_Annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AnnulerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,11 +91,11 @@ public class InterfaceNewClient extends javax.swing.JDialog {
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TF_Adresse, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TF_NumTel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_NumTel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_NumTel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_NumTel3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TF_NumTel4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TF_NumClient, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TF_Prenom, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(JB_Ok)
@@ -97,23 +109,23 @@ public class InterfaceNewClient extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TF_NumTel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_NumClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(TF_NumTel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_Nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TF_NumTel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_Prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(TF_NumTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_Adresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(TF_NumTel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TF_NumTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Ok)
@@ -124,6 +136,31 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
+        // TODO add your handling code here:
+        Client unClient = new Client();
+        unClient.setID(TF_NumClient.getText());
+        unClient.setAdresse(TF_Adresse.getText());
+        unClient.setNom(TF_Nom.getText());
+        unClient.setPrenom(TF_Prenom.getText());
+        unClient.setNumTel(TF_NumTel.getText());
+    }//GEN-LAST:event_JB_OkActionPerformed
+
+    private void JB_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AnnulerActionPerformed
+        // TODO add your handling code here:
+        this.clearAll();
+        this.setVisible(false);
+    }//GEN-LAST:event_JB_AnnulerActionPerformed
+
+    
+    private void clearAll()
+    {
+        this.TF_Nom.setText("");
+        this.TF_Adresse.setText("");
+        this.TF_NumClient.setText("");
+        this.TF_Prenom.setText("");
+        this.TF_NumTel.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -169,11 +206,11 @@ public class InterfaceNewClient extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JB_Annuler;
     private javax.swing.JButton JB_Ok;
+    private javax.swing.JTextField TF_Adresse;
+    private javax.swing.JTextField TF_Nom;
+    private javax.swing.JTextField TF_NumClient;
     private javax.swing.JTextField TF_NumTel;
-    private javax.swing.JTextField TF_NumTel1;
-    private javax.swing.JTextField TF_NumTel2;
-    private javax.swing.JTextField TF_NumTel3;
-    private javax.swing.JTextField TF_NumTel4;
+    private javax.swing.JTextField TF_Prenom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
