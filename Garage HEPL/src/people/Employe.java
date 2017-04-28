@@ -5,11 +5,13 @@
  */
 package people;
 
+import authenticate.*;
+
 /**
  *
  * @author Vince
  */
-public class Employe extends PersonnelGarage 
+public class Employe extends PersonnelGarage implements Identifiable
 {
     public Employe()
     {

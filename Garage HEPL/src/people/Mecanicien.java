@@ -5,11 +5,13 @@
  */
 package people;
 
+import authenticate.*;
+
 /**
  *
  * @author Vince
  */
-public class Mecanicien extends PersonnelGarage {
+public class Mecanicien extends PersonnelGarage implements Identifiable {
     private String specialite;
     
     public Mecanicien()
@@ -37,5 +39,4 @@ public class Mecanicien extends PersonnelGarage {
         this.specialite = specialite;
     }
 
-    
 }

@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import Activites.*;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 
@@ -229,6 +230,14 @@ public class InterfaceRdv extends javax.swing.JDialog {
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
         Vector vec = new Vector();
+        
+        if(RB_Entretien.isSelected())
+        {
+            //On initialise un entretien
+            Entretien unEntretien = new Entretien();
+            
+            //unEntretien.setVehicule();
+        }
         vec.add(TF_TypeVoiture.getText());
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());
