@@ -36,6 +36,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         dmcbProprio.addElement("Mtre Dieu");
         dmcbProprio.addElement("ProprioThib");
         dmcbProprio.addElement("ProprioVince");
+        //dmcbProprio.
         CB_Proprietaire.setModel(dmcbProprio);
     }
 
@@ -56,7 +57,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         TF_TypeVoiture = new javax.swing.JTextField();
         TF_Immatriculation = new javax.swing.JTextField();
         CB_Proprietaire = new javax.swing.JComboBox<>();
-        CB_New = new javax.swing.JCheckBox();
         CB_TypeTravail = new javax.swing.JComboBox<>();
         RB_Reparation = new javax.swing.JRadioButton();
         RB_Entretien = new javax.swing.JRadioButton();
@@ -65,6 +65,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         JB_Ok = new javax.swing.JButton();
         JB_Annuler = new javax.swing.JButton();
         CB_PlaqueBelge = new javax.swing.JCheckBox();
+        JB_New = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,13 +80,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         jLabel5.setText("Instructions particulières:");
 
         CB_Proprietaire.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mtre Dieu", "Vince", "Thibault" }));
-
-        CB_New.setText("New");
-        CB_New.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_NewActionPerformed(evt);
-            }
-        });
 
         CB_TypeTravail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -124,6 +118,13 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
         CB_PlaqueBelge.setText("Plaque belge");
 
+        JB_New.setText("New");
+        JB_New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_NewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,22 +142,19 @@ public class InterfaceRdv extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CB_Proprietaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(CB_New)
-                                        .addGap(19, 19, 19))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(CB_TypeTravail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(TF_Immatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(CB_PlaqueBelge))
-                                                .addComponent(TF_TypeVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(47, 47, 47))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CB_TypeTravail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(TF_TypeVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(TF_Immatriculation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(CB_Proprietaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(JB_New)
+                                                .addComponent(CB_PlaqueBelge)))))
+                                .addGap(47, 47, 47))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,7 +188,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(CB_Proprietaire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CB_New))
+                    .addComponent(JB_New))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RB_Reparation)
@@ -218,7 +216,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         TF_TypeVoiture.setText("");
         TF_Immatriculation.setText("");
         CB_PlaqueBelge.setSelected(false);
-        CB_New.setSelected(false);
         CB_Proprietaire.setSelectedIndex(0);
         CB_TypeTravail.setSelectedIndex(0);
         TA_Instructions.setText("");
@@ -250,18 +247,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
                 
     }//GEN-LAST:event_JB_OkActionPerformed
 
-    private void CB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NewActionPerformed
-        // TODO add your handling code here:
-        if(CB_New.isSelected()==true)
-        {
-            dmcbProprio.addElement("New Proprio");
-            CB_Proprietaire.setSelectedIndex(dmcbProprio.getSize()-1);
-            CB_Proprietaire.setEditable(true);
-        }
-        else
-            CB_Proprietaire.setEditable(false);
-    }//GEN-LAST:event_CB_NewActionPerformed
-
     private void RB_EntretienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_EntretienActionPerformed
         // TODO add your handling code here:
         RB_Reparation.setSelected(false);
@@ -275,6 +260,12 @@ public class InterfaceRdv extends javax.swing.JDialog {
         RB_Reparation.setSelected(true);
         CB_TypeTravail.setModel(dmcbTravailReparation);
     }//GEN-LAST:event_RB_ReparationActionPerformed
+
+    private void JB_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_NewActionPerformed
+        // TODO add your handling code here:
+        ((InterfaceApplication)getParent()).intNewClient.setVisible(true);
+        
+    }//GEN-LAST:event_JB_NewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,11 +310,11 @@ public class InterfaceRdv extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox CB_New;
     private javax.swing.JCheckBox CB_PlaqueBelge;
     private javax.swing.JComboBox<String> CB_Proprietaire;
     private javax.swing.JComboBox<String> CB_TypeTravail;
     private javax.swing.JButton JB_Annuler;
+    private javax.swing.JButton JB_New;
     private javax.swing.JButton JB_Ok;
     private javax.swing.JRadioButton RB_Entretien;
     private javax.swing.JRadioButton RB_Reparation;
