@@ -14,12 +14,19 @@
         <group>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceRdv.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceAProposDe.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Activites/Reparation.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/people/TechnicienExterieur.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Activites/Travail.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Vehicules/MissingTradeMarkException.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceNewClient.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceApplication.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceTermine.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Tests/TestVehicules.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/Login.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfacePeCVeh.java</file>
             <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Activites/Entretien.java</file>
-            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceApplication.java</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/properties.properties</file>
+            <file>file:/C:/Users/tibha/Desktop/Java/GarageHEPL/Garage%20HEPL/src/Gui/InterfaceCentrale.java</file>
         </group>
     </open-files>
 </project-private>
