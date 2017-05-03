@@ -14,8 +14,20 @@ public class InterfaceCentrale extends javax.swing.JDialog {
     /**
      * Creates new form InterfaceCentrale
      */
-    public InterfaceCentrale(java.awt.Frame parent, boolean modal) {
+    public InterfaceCentrale(java.awt.Frame parent, boolean modal,int type) {
         super(parent, modal);
+        switch (type){
+                case 1:
+                    jTextArea1.setText("Pièces");
+                     break;
+                case 2:
+                    jTextArea1.setText("Pneus");
+                    break;
+                case 3:
+                    jTextArea1.setText("Lubrifiants");
+                    break;
+        }
+        
         initComponents();
     }
 
@@ -185,7 +197,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceCentrale dialog = new InterfaceCentrale(new javax.swing.JFrame(), true);
+                InterfaceCentrale dialog = new InterfaceCentrale(new javax.swing.JFrame(), true , 1);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
