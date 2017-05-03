@@ -18,6 +18,9 @@ import people.*;
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login = new Login(this, true);
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
+    InterfaceCentrale Pneus = new InterfaceCentrale(this,true,2);
+    InterfaceCentrale Pieces = new InterfaceCentrale(this,true,1);
+    InterfaceCentrale Lubrifiants = new InterfaceCentrale(this,true,3);
     LinkedList<Vector> Travail=new LinkedList<Vector>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
