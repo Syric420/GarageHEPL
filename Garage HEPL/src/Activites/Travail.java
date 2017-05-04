@@ -11,11 +11,11 @@ import people.*;
  * @author tibha
  */
 public abstract class Travail {
-    private Mecanicien mecanicien;
-    private Vehicule vehicule;
-    private String travail;
-    private String remarque;
-    private String pontTravail;
+    protected Mecanicien mecanicien;
+    protected Vehicule vehicule;
+    protected String travail;
+    protected String remarque;
+    protected String pontTravail;
     /**
      * @return the mecanicien
      */
