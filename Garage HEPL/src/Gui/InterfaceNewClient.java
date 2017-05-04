@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import javax.swing.JOptionPane;
 import people.Client;
 
 /**
@@ -138,15 +139,22 @@ public class InterfaceNewClient extends javax.swing.JDialog {
 
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
-        Client unClient = new Client();
-        unClient.setID(TF_NumClient.getText());
-        unClient.setAdresse(TF_Adresse.getText());
-        unClient.setNom(TF_Nom.getText());
-        unClient.setPrenom(TF_Prenom.getText());
-        unClient.setNumTel(TF_NumTel.getText());
+        if(verify()==true)
+        {
+            Client unClient = new Client();
+            unClient.setID(TF_NumClient.getText());
+            unClient.setAdresse(TF_Adresse.getText());
+            unClient.setNom(TF_Nom.getText());
+            unClient.setPrenom(TF_Prenom.getText());
+            unClient.setNumTel(TF_NumTel.getText());
+            ((InterfaceApplication)getParent()).vecClient.add(unClient);
+            this.clearAll();
+        }
+        else
+            JOptionPane.showMessageDialog(this,"Veuillez remplir toutes les cases" ,"Erreur", JOptionPane.ERROR_MESSAGE);
         
-        ((InterfaceApplication)getParent()).vecClient.add(unClient);
-        this.clearAll();
+        
+        
     }//GEN-LAST:event_JB_OkActionPerformed
 
     private void JB_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AnnulerActionPerformed
@@ -163,6 +171,22 @@ public class InterfaceNewClient extends javax.swing.JDialog {
         this.TF_Prenom.setText("");
         this.TF_NumTel.setText("");
         this.setVisible(false);
+    }
+    
+    private boolean verify()
+    {
+        if(TF_NumClient.getText().equals(""))
+            return false;
+        if(TF_Nom.getText().equals(""))
+            return false;
+        if(TF_Prenom.getText().equals(""))
+            return false;
+        if(TF_NumTel.getText().equals(""))
+            return false;
+        if(TF_Adresse.getText().equals(""))
+            return false;
+        
+        return true;
     }
     /**
      * @param args the command line arguments
