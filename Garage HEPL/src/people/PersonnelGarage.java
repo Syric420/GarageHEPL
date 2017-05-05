@@ -82,18 +82,4 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
     public void setHash(Hashtable hash) {
         this.hash = hash;
     }
-    
-    public void charger() throws FileNotFoundException, IOException 
-    {
-        
-        /*FileOutputStream fos=new FileOutputStream("e:\\java-application\\EnregObjets\\personnel.data");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);*/
-        
-        
-    }
-    
-    public void sauvegarder()
-    {
-        
-    }
 }

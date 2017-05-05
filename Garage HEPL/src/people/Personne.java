@@ -5,6 +5,9 @@
  */
 package people;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  *
  * @author Vince
@@ -87,5 +90,19 @@ public class Personne
      */
     public void setNumTel(String numTel) {
         this.numTel = numTel;
+    }
+    
+    public void charger() throws FileNotFoundException, IOException 
+    {
+        
+        /*FileOutputStream fos=new FileOutputStream("e:\\java-application\\EnregObjets\\personnel.data");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);*/
+        
+        
+    }
+    
+    public void sauvegarder()
+    {
+        
     }
 }
