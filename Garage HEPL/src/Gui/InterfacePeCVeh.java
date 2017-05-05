@@ -165,7 +165,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector ligne = new Vector();
-        ligne = ((InterfaceApplication)getParent()).Travail.getLast();
+        ligne = ((InterfaceApplication)getParent()).Travaux.getLast();
         dtm.addRow(ligne);
         jTable1.setModel(dtm);
     }
@@ -231,7 +231,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             ((InterfaceApplication)getParent()).End.ajoutListe(r);
             ((InterfaceApplication)getParent()).AfficheTF(r.getPontTravail(), r);
             dtm.removeRow(line);
-            ((InterfaceApplication)getParent()).Travail.remove(line);
+            ((InterfaceApplication)getParent()).Travaux.remove(line);
             jTable1.setModel(dtm);
             this.setVisible(false);
         }

@@ -21,7 +21,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
     InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
     InterfaceCentrale Lubrifiants = new InterfaceCentrale(this,false,3);
-    LinkedList<Vector> Travail=new LinkedList<Vector>();
+    LinkedList<Vector> Travaux=new LinkedList<Vector>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClient=new Vector<Client>();
@@ -43,6 +43,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
         }*/
+        TravailEnCours= Travail.charger();
         String maDate;
         Date date = new Date();
         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
@@ -411,7 +412,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     
     public void ajoutLinkedList(Vector unVec)
     {
-        Travail.add(unVec);
+        Travaux.add(unVec);
     }
     /**
      * @param args the command line arguments
