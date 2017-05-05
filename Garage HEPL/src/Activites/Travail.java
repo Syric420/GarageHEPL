@@ -9,13 +9,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Vector;
 import people.*;
 /**
  *
  * @author tibha
  */
-public abstract class Travail {
+public abstract class Travail implements Serializable {
     protected Mecanicien mecanicien;
     protected Vehicule vehicule;
     protected String travail;

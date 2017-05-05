@@ -20,7 +20,7 @@ public class Entretien extends Travail
     {
         try
         {
-            oos.write(2);
+            oos.writeInt(2);
             oos.writeObject(T);
             oos.flush();
 
