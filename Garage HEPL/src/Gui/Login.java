@@ -21,7 +21,7 @@ public class Login extends java.awt.Dialog {
      * Creates new form Login
      */
     private String role;
-    Vector<PersonnelGarage> vecUtilisateurs = new Vector<PersonnelGarage>();
+    Vector<Personne> vecUtilisateurs = new Vector<Personne>();
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
