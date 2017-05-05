@@ -86,8 +86,8 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
     public void charger() throws FileNotFoundException, IOException 
     {
         
-        FileOutputStream fos=new FileOutputStream("e:\\java-application\\EnregObjets\\personnel.data");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        /*FileOutputStream fos=new FileOutputStream("e:\\java-application\\EnregObjets\\personnel.data");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);*/
         
         
     }
