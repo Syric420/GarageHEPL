@@ -20,6 +20,7 @@ public class Login extends java.awt.Dialog {
     /**
      * Creates new form Login
      */
+    private String role;
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -147,7 +148,7 @@ public class Login extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void buokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buokActionPerformed
-        String login, password,role;
+        String login, password;
         
         Hashtable hashpswd = new Hashtable();
         hashpswd .put("Vince","123");
@@ -183,11 +184,11 @@ public class Login extends java.awt.Dialog {
                     {
                         if(!hashrole.get(login).equals(role))
                         {
-                            if(role.equals("Membre"))
+                            if(getRole().equals("Membre"))
                                 jMembreButton.setSelected(false);
                             else
                                 jMembreButton.setSelected(true);
-                            if(role.equals("Exterieur"))
+                            if(getRole().equals("Exterieur"))
                                 jExterieurButton.setSelected(false);
                             else
                                 jExterieurButton.setSelected(true);
@@ -246,4 +247,11 @@ public class Login extends java.awt.Dialog {
     private java.awt.TextField tfPw;
     private java.awt.TextField tfUser;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
 }

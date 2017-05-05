@@ -37,6 +37,12 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public InterfaceApplication() {
         initComponents();
         Login.setVisible(true);
+        if(Login.getRole().equals("Membre"))
+        {
+            Pneus.setVisible(true);
+            Pieces.setVisible(true);
+            Lubrifiants.setVisible(true);
+        }
         String maDate;
         Date date = new Date();
         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
