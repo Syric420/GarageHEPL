@@ -88,6 +88,4 @@ public class Personne
     public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
-    
-    
 }
