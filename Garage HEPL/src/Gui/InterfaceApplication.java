@@ -44,6 +44,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Lubrifiants.setVisible(true);
         }*/
         TravailEnCours= Travail.charger();
+        //ATTENTION
+        //BESOIN D AJOUTER LE VECTEUR A INTERFACE PECVEH
         String maDate;
         Date date = new Date();
         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
