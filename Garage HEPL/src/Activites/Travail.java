@@ -102,9 +102,9 @@ public abstract class Travail {
         Entretien unEntretien = new Entretien();
         int type=0;
         //unTravail.nom="first";
-        String user = System.getProperty("user.home");
+        String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Desktop"+separator+"java"+separator+"Travaux.data";
+        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
         try
         {
             FileInputStream fis = new FileInputStream(cheminFichier);
