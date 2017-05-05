@@ -25,7 +25,11 @@ public class Login extends java.awt.Dialog {
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        String separator = System.getProperty("file.separator");
+        String user = System.getProperty("user.dir");
+        String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
         
+        System.out.println(cheminFichier);
         
     }
 
