@@ -5,6 +5,11 @@
  */
 package Activites;
 import Vehicules.Vehicule;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Vector;
 import people.*;
 /**
  *
@@ -90,5 +95,44 @@ public abstract class Travail {
     {
         return vehicule.toString() + travail;
     }
-    
+    public static Vector charger()
+    {    
+        Vector<Travail> VecTrav= new Vector<Travail>();
+        Reparation uneReparation = new Reparation();
+        Entretien unEntretien = new Entretien();
+        int type=0;
+        //unTravail.nom="first";
+        String user = System.getProperty("user.home");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Dropbox"+separator+"java"+separator+"Travails.data";
+        try
+        {
+            FileInputStream fis = new FileInputStream(cheminFichier);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while(type != 0)
+            {
+                type = ois.readInt();
+                if(type == 1)
+                    uneReparation = (Reparation)ois.readObject();
+                else if(type == 2)
+                    unEntretien = (Entretien)ois.readObject();
+                
+                VecTrav.add(uneReparation);
+            }
+            fis.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erreur ! ? [" + e + "]");
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.err.println("Erreur ! Classe non trouvée [" + e + "]");
+        }
+        return VecTrav;
+    }
 }
