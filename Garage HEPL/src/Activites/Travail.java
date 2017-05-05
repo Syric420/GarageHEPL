@@ -104,7 +104,7 @@ public abstract class Travail {
         //unTravail.nom="first";
         String user = System.getProperty("user.home");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Dropbox"+separator+"java"+separator+"Travails.data";
+        String cheminFichier = user+separator+"Desktop"+separator+"java"+separator+"Travaux.data";
         try
         {
             FileInputStream fis = new FileInputStream(cheminFichier);
