@@ -6,6 +6,10 @@
 package Gui;
 
 import Activites.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 
@@ -13,18 +17,37 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author Vince
  */
+
 public class InterfaceRdv extends javax.swing.JDialog {
     
     DefaultComboBoxModel dmcbTravailEntretien = new DefaultComboBoxModel();
     DefaultComboBoxModel dmcbTravailReparation = new DefaultComboBoxModel();
     DefaultComboBoxModel dmcbProprio = new DefaultComboBoxModel();
+    FileOutputStream fos ;
+    ObjectOutputStream oos;
     /**
      * Creates new form InterfaceRdv
      */
     public InterfaceRdv(java.awt.Frame parent, boolean modal) {
+        
         super(parent, modal);
         initComponents();
-        
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        try
+        {
+            fos=new FileOutputStream(cheminFichier);
+            oos = new ObjectOutputStream(fos);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erreur ! ? [" + e + "]");
+        }
         dmcbTravailEntretien.addElement("Entretien annuel");
         dmcbTravailEntretien.addElement("Entretien 40000");
         dmcbTravailEntretien.addElement("Pneus hiver");
@@ -227,14 +250,9 @@ public class InterfaceRdv extends javax.swing.JDialog {
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
         Vector vec = new Vector();
-        
-        if(RB_Entretien.isSelected())
-        {
-            //On initialise un entretien
-            Entretien unEntretien = new Entretien();
-            
-            //unEntretien.setVehicule();
-        }
+        Reparation uneReparation = new Reparation();
+        Entretien unEntretien = new Entretien();
+
         vec.add(TF_TypeVoiture.getText());
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());
@@ -242,6 +260,18 @@ public class InterfaceRdv extends javax.swing.JDialog {
         vec.add(TA_Instructions.getText());
         ((InterfaceApplication)getParent()).ajoutLinkedList(vec);
         ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();
+        
+        if(RB_Entretien.isSelected())
+        {
+            //On initialise un entretien
+            Entretien.enregistrer(oos, unEntretien);
+            
+            //unEntretien.setVehicule();
+        }
+        else
+        {
+            Reparation.enregistrer(oos,uneReparation);
+        }
         this.JB_AnnulerActionPerformed(null);
 
                 
