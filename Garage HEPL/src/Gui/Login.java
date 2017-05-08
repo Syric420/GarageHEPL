@@ -33,10 +33,15 @@ public class Login extends java.awt.Dialog {
         };
         for(int i=0; i<3;i++)
             vecUtilisateurs.add(tabMecanicien[i]);
+        TechnicienExterieur[] tabTechnicien=
+        {
+            new TechnicienExterieur("Patoche", "Sebastien", "Rue des Flans 157", "04987847", "TechExt001"),
+            new TechnicienExterieur("Malah", "Adrien", "Rue des vaches 10", "04786514", "TechExt120"),
+            new TechnicienExterieur("Cara", "Pils", "Rue de la sottise", "04478533", "TechExt52")  
+        };
         
-        
-        
-        
+        for(int i=0; i<3;i++)
+            vecUtilisateurs.add(tabTechnicien[i]);
     }
 
     /**
