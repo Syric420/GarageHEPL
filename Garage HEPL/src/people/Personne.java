@@ -92,17 +92,5 @@ public class Personne
         this.numTel = numTel;
     }
     
-    public void charger() throws FileNotFoundException, IOException 
-    {
-        
-        /*FileOutputStream fos=new FileOutputStream("e:\\java-application\\EnregObjets\\personnel.data");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);*/
-        
-        
-    }
     
-    public void sauvegarder()
-    {
-        
-    }
 }

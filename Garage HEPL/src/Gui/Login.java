@@ -21,15 +21,11 @@ public class Login extends java.awt.Dialog {
      * Creates new form Login
      */
     private String role;
-    Vector<Personne> vecUtilisateurs = new Vector<Personne>();
+    Vector<PersonnelGarage> vecUtilisateurs = new Vector<PersonnelGarage>();
+    Vector<TechnicienExterieur> vecTechnicien = new Vector<TechnicienExterieur>();
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        String separator = System.getProperty("file.separator");
-        String user = System.getProperty("user.dir");
-        String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
-        
-        System.out.println(cheminFichier);
         
     }
 
