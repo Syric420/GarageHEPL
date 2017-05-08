@@ -21,11 +21,21 @@ public class Login extends java.awt.Dialog {
      * Creates new form Login
      */
     private String role;
-    Vector<PersonnelGarage> vecUtilisateurs = new Vector<PersonnelGarage>();
-    Vector<TechnicienExterieur> vecTechnicien = new Vector<TechnicienExterieur>();
+    Vector<Personne> vecUtilisateurs = new Vector<Personne>();
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        Mecanicien [] tabMecanicien = {
+            new Mecanicien("Jean", "Albert", "Rue des prés 15", "0474142536", "Mec201", "Pneus"),
+            new Mecanicien("Cavas", "Philippe", "Rue de Stockis", "04742578", "Mec202", "Portes"),
+            new Mecanicien("Poluche", "Remy", "Boulevard des anes", "04642541", "Mec205", "Electronique")
+        };
+        for(int i=0; i<3;i++)
+            vecUtilisateurs.add(tabMecanicien[i]);
+        
+        
+        
         
     }
 
