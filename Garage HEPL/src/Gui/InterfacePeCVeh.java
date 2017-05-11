@@ -174,9 +174,12 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector <Travail>ligne = new <Travail>Vector();
-        ligne = ((InterfaceApplication)getParent()).TravailEnCours;
-        dtm.addRow(ligne);
-        int i=ligne.capacity();
+        int temp = ((InterfaceApplication)getParent()).Travaux.size();
+        for(int i=0 ; i< temp ; i++)
+        {
+            dtm.addRow(((InterfaceApplication)getParent()).Travaux.get(i));
+        }
+        //dtm.addRow(ligne);
         jTable1.setModel(dtm);
     }
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
