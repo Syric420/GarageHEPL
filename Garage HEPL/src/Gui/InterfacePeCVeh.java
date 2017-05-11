@@ -6,6 +6,7 @@
 package Gui;
 
 import Activites.Reparation;
+import Activites.Travail;
 import Vehicules.*;
 import java.util.Vector;
 import javax.swing.DefaultListModel;
@@ -167,6 +168,15 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         Vector ligne = new Vector();
         ligne = ((InterfaceApplication)getParent()).Travaux.getLast();
         dtm.addRow(ligne);
+        jTable1.setModel(dtm);
+    }
+    public void ajouterVecTable()
+    {
+        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
+        Vector <Travail>ligne = new <Travail>Vector();
+        ligne = ((InterfaceApplication)getParent()).TravailEnCours;
+        dtm.addRow(ligne);
+        int i=ligne.capacity();
         jTable1.setModel(dtm);
     }
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
