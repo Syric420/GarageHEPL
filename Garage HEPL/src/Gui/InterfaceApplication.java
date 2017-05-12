@@ -44,6 +44,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Lubrifiants.setVisible(true);
         }*/
         Travaux = Travail.chargerLL();
+        //ne marche pas encore
+        System.out.println(Travaux.toString());
         PeC.ajouterVecTable();
         //ATTENTION
         //Normalement il faudrait mettre la linked list a charger
