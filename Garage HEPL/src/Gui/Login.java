@@ -277,7 +277,7 @@ public class Login extends java.awt.Dialog {
     {
         for(int i=0; i<vecUtilisateurs.size()-1;i++)
         {
-            if(vecUtilisateurs.elementAt(i).getLogin().equalsIgnoreCase(log)==true)
+            if(vecUtilisateurs.elementAt(i).getLogin().equals(log)==true)
                 return true;
         }
         
