@@ -14,7 +14,6 @@ import java.util.Hashtable;
 public abstract class PersonnelGarage extends Personne implements Identifiable, AValider, Serializable
 {
     private String matricule;
-    private String login;
     private Hashtable hash;
     
     public PersonnelGarage()
@@ -23,11 +22,10 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
         this.matricule="NULL";
     }
     
-    public PersonnelGarage(String nom, String prenom, String adresse, String numTel, String log, String matricule, String login)
+    public PersonnelGarage(String nom, String prenom, String adresse, String numTel, String log, String matricule)
     {
-        super(nom, prenom, adresse, numTel, log);
+        super(nom, prenom, adresse, numTel);
         this.matricule=matricule;
-        this.login = login;
     }
 
     @Override
