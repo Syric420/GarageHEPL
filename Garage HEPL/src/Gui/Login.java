@@ -194,7 +194,7 @@ public class Login extends java.awt.Dialog {
                 throw new ExUtilisateurVide("Utilisateur ou mot de passe vide");
             else
             {
-                if(hashpswd.get(login)==null)
+                if(isUtilisateurInVector(login)==false)
                     throw new ExUtilisateurInconnu("Utilisateur inconnu");
                 else
                 {
