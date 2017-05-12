@@ -21,7 +21,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
     InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
     InterfaceCentrale Lubrifiants = new InterfaceCentrale(this,false,3);
-    LinkedList<Vector> Travaux=new LinkedList<Vector>();
+    LinkedList<Travail> Travaux=new LinkedList<Travail>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClient=new Vector<Client>();
@@ -44,7 +44,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Lubrifiants.setVisible(true);
         }*/
         TravailEnCours= Travail.charger();
-        PeC.ajouterVecTable();
+        //PeC.ajouterVecTable();
         //ATTENTION
         //Normalement il faudrait mettre la linked list a charger
         String maDate;
@@ -413,9 +413,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     
-    public void ajoutLinkedList(Vector unVec)
+    public void ajoutLinkedList(Travail unTrav)
     {
-        Travaux.add(unVec);
+        Travaux.add(unTrav);
     }
     /**
      * @param args the command line arguments

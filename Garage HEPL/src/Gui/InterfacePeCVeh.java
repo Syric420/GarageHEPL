@@ -5,6 +5,7 @@
  */
 package Gui;
 
+import Activites.Entretien;
 import Activites.Reparation;
 import Activites.Travail;
 import Vehicules.*;
@@ -165,12 +166,23 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     public void ajouterLigneTable()
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
-        Vector ligne = new Vector();
-        ligne = ((InterfaceApplication)getParent()).Travaux.getLast();
-        dtm.addRow(ligne);
+        Entretien unEntretien = new Entretien();
+        Reparation uneReparation = new Reparation();
+        if(((InterfaceApplication)getParent()).Travaux.getLast().getClass().equals("Entretien"))
+        {
+            unEntretien = (Entretien) ((InterfaceApplication)getParent()).Travaux.getLast();
+            dtm.addRow(unEntretien.AfficheJTable());
+        }     
+        else
+        {
+            uneReparation = (Reparation) ((InterfaceApplication)getParent()).Travaux.getLast();
+            dtm.addRow(uneReparation.AfficheJTable());
+        }
+
+        
         jTable1.setModel(dtm);
     }
-    public void ajouterVecTable()
+    /*public void ajouterVecTable()
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
         Vector <Travail>ligne = new <Travail>Vector();
@@ -181,7 +193,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         }
         //dtm.addRow(ligne);
         jTable1.setModel(dtm);
-    }
+    }*/
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
         boolean ok=false;
@@ -199,7 +211,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         voiture.setType(type);
         r.setTravail((String)jTable1.getValueAt(line, 3));
         r.setRemarque((String)jTable1.getValueAt(line, 4));
-        r.setVehicule(voiture);
+        r.setVoiture(voiture);
         /*ligne.add(jTable1.getValueAt(line, 0));
         ligne.add(jTable1.getValueAt(line, 1));
         ligne.add(jTable1.getValueAt(line, 2));*/

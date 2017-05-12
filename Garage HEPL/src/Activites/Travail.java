@@ -5,6 +5,7 @@
  */
 package Activites;
 import Vehicules.Vehicule;
+import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import people.*;
  */
 public abstract class Travail implements Serializable {
     protected Mecanicien mecanicien;
-    protected Vehicule vehicule;
+    protected Voiture voiture;
     protected String travail;
     protected String remarque;
     protected String pontTravail;
@@ -37,17 +38,17 @@ public abstract class Travail implements Serializable {
     }
 
     /**
-     * @return the vehicule
+     * @return the voiture
      */
-    public Vehicule getVehicule() {
-        return vehicule;
+    public Voiture getVoiture() {
+        return voiture;
     }
 
     /**
-     * @param vehicule the vehicule to set
+     * @param voiture the voiture to set
      */
-    public void setVehicule(Vehicule vehicule) {
-        this.vehicule = vehicule;
+    public void setVoiture(Voiture voiture) {
+        this.voiture = voiture;
     }
 
     /**
@@ -94,7 +95,17 @@ public abstract class Travail implements Serializable {
     @Override
     public String toString()
     {
-        return vehicule.toString() + travail;
+        return voiture.toString() + travail;
+    }
+    public Vector AfficheJTable()
+    {
+        Vector v = new Vector();
+        v.add(voiture.getType().getType());
+        v.add(voiture.getID());
+        v.add(voiture.getProprietaire());
+        v.add(getTravail());
+        v.add(getRemarque());
+        return v;
     }
     public static Vector charger()
     {    

@@ -6,12 +6,15 @@
 package Gui;
 
 import Activites.*;
+import Vehicules.TypeVoiture;
+import Vehicules.Voiture;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import people.Client;
 
 /**
  *
@@ -249,29 +252,46 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
     private void JB_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_OkActionPerformed
         // TODO add your handling code here:
-        Vector vec = new Vector();
+        //Vector vec = new Vector();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
 
-        vec.add(TF_TypeVoiture.getText());
+        /*vec.add(TF_TypeVoiture.getText());
         vec.add(TF_Immatriculation.getText());
         vec.add(CB_Proprietaire.getSelectedItem().toString());
         vec.add(CB_TypeTravail.getSelectedItem().toString());
-        vec.add(TA_Instructions.getText());
-        ((InterfaceApplication)getParent()).ajoutLinkedList(vec);
-        ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();
+        vec.add(TA_Instructions.getText());*/
+        
+        Reparation r = new Reparation();
+        Voiture voiture = new Voiture();
+        TypeVoiture type = new TypeVoiture();
+        
+
+        voiture.setID(TF_Immatriculation.getText());
+        voiture.setProprietaire(new Client ("A520",CB_Proprietaire.getSelectedItem().toString(),"Jean","Adr","0478222"));
+        type.setMarque(TF_TypeVoiture.getText());
+        voiture.setType(type);
         
         if(RB_Entretien.isSelected())
         {
             //On initialise un entretien
+            unEntretien.setTravail(CB_TypeTravail.getSelectedItem().toString());
+            unEntretien.setRemarque(TA_Instructions.getText());
+            unEntretien.setVoiture(voiture);
+            ((InterfaceApplication)getParent()).ajoutLinkedList(unEntretien);
             Entretien.enregistrer(oos, unEntretien);
-            
             //unEntretien.setVehicule();
         }
         else
         {
+            uneReparation.setTravail(CB_TypeTravail.getSelectedItem().toString());
+            uneReparation.setRemarque(TA_Instructions.getText());
+            uneReparation.setVoiture(voiture);
+            ((InterfaceApplication)getParent()).ajoutLinkedList(uneReparation);
             Reparation.enregistrer(oos,uneReparation);
         }
+        
+        ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();
         this.JB_AnnulerActionPerformed(null);
 
                 
