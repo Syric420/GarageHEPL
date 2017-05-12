@@ -272,4 +272,15 @@ public class Login extends java.awt.Dialog {
     public String getRole() {
         return role;
     }
+    
+    public boolean isUtilisateurInVector(String log)
+    {
+        for(int i=0; i<vecUtilisateurs.size();i++)
+        {
+            if(vecUtilisateurs.elementAt(i).getLogin().equalsIgnoreCase(log)==true)
+                return true;
+        }
+        
+        return false;
+    }
 }
