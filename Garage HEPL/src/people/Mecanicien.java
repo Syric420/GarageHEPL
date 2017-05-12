@@ -20,9 +20,9 @@ public class Mecanicien extends PersonnelGarage implements Identifiable {
         this.specialite = "NULL";
     }
 
-    public Mecanicien(String nom, String prenom, String adresse, String numTel, String mat, String spe)
+    public Mecanicien(String nom, String prenom, String adresse, String numTel, String mat, String spe, String log)
     {
-        super(nom, prenom, adresse, numTel, mat);
+        super(nom, prenom, adresse, numTel, mat, log);
         this.specialite = spe;
     }
     /**

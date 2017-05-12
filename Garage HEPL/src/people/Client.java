@@ -42,5 +42,15 @@ public class Client extends Personne implements Identifiable
     {
         return this.getNom()+" "+this.getPrenom();
     }
+
+    @Override
+    public String getLogin() {
+        return this.login;
+    }
+
+    @Override
+    public void setLogin(String login) {
+        this.login=login;
+    }
     
 }

@@ -17,12 +17,14 @@ public class TechnicienExterieur extends Personne implements Identifiable
     {
         super();
         this.matricule="NULL";
+        this.login="NULL";
     }
     
-    public TechnicienExterieur(String n, String p, String a, String num, String mat)
+    public TechnicienExterieur(String n, String p, String a, String num, String mat, String log)
     {
         super(n, p, a, num);
         this.matricule=mat;
+        this.login=log;
     }
     
     @Override
@@ -33,5 +35,15 @@ public class TechnicienExterieur extends Personne implements Identifiable
     @Override
     public void setID(String i) {
         this.matricule = i;
+    }
+
+    @Override
+    public String getLogin() {
+        return this.getLogin();
+    }
+
+    @Override
+    public void setLogin(String login) {
+        this.setLogin(login);
     }
 }
