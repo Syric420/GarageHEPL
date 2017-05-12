@@ -43,8 +43,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
         }*/
-        TravailEnCours= Travail.charger();
-        //PeC.ajouterVecTable();
+        Travaux = Travail.chargerLL();
+        PeC.ajouterVecTable();
         //ATTENTION
         //Normalement il faudrait mettre la linked list a charger
         String maDate;

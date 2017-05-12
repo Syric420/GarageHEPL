@@ -183,18 +183,28 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         
         jTable1.setModel(dtm);
     }
-    /*public void ajouterVecTable()
+    public void ajouterVecTable()
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
-        Vector <Travail>ligne = new <Travail>Vector();
-        int temp = ((InterfaceApplication)getParent()).Travaux.size();
-        for(int i=0 ; i< temp ; i++)
+        int Taille=((InterfaceApplication)getParent()).Travaux.size();
+        for(int i=0 ; i < Taille ; i++)
         {
-            dtm.addRow(((InterfaceApplication)getParent()).Travaux.get(i));
+            Entretien unEntretien = new Entretien();
+            Reparation uneReparation = new Reparation();
+            if((((InterfaceApplication)getParent()).Travaux.get(i).getClass()).getName().equals("Activites.Entretien"))
+            {
+                unEntretien = (Entretien) ((InterfaceApplication)getParent()).Travaux.get(i);
+                dtm.addRow(unEntretien.AfficheJTable());
+            }     
+            else
+            {
+                uneReparation = (Reparation) ((InterfaceApplication)getParent()).Travaux.get(i);
+                dtm.addRow(uneReparation.AfficheJTable());
+            }
         }
-        //dtm.addRow(ligne);
         jTable1.setModel(dtm);
-    }*/
+    }
+    
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
         int line;
         boolean ok=false;
