@@ -275,7 +275,7 @@ public class Login extends java.awt.Dialog {
     
     public boolean isUtilisateurInVector(String log)
     {
-        for(int i=0; i<vecUtilisateurs.size();i++)
+        for(int i=0; i<vecUtilisateurs.size()-1;i++)
         {
             if(vecUtilisateurs.elementAt(i).getLogin().equalsIgnoreCase(log)==true)
                 return true;

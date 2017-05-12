@@ -39,11 +39,11 @@ public class TechnicienExterieur extends Personne implements Identifiable
 
     @Override
     public String getLogin() {
-        return this.getLogin();
+        return this.login;
     }
 
     @Override
     public void setLogin(String login) {
-        this.setLogin(login);
+        this.login = login;
     }
 }
