@@ -24,6 +24,7 @@ public class Mecanicien extends PersonnelGarage implements Identifiable {
     {
         super(nom, prenom, adresse, numTel, mat);
         this.specialite = spe;
+        this.login=log;
     }
     /**
      * @return the specialite

@@ -22,7 +22,7 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
         this.matricule="NULL";
     }
     
-    public PersonnelGarage(String nom, String prenom, String adresse, String numTel, String log, String matricule)
+    public PersonnelGarage(String nom, String prenom, String adresse, String numTel, String matricule)
     {
         super(nom, prenom, adresse, numTel);
         this.matricule=matricule;
