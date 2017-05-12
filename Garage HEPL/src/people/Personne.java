@@ -12,12 +12,13 @@ import java.io.IOException;
  *
  * @author Vince
  */
-public class Personne 
+public abstract class Personne 
 {
     protected String nom;
     protected String prenom;
     protected String adresse;
     protected String numTel;
+    protected String login;
     
     public Personne()
     {
@@ -25,6 +26,7 @@ public class Personne
         this.prenom="NULL";
         this.adresse="NULL";
         this.numTel="NULL";
+        this.login="NULL";
     }
     
     public Personne(String n, String p, String a, String num)
@@ -91,6 +93,16 @@ public class Personne
     public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
+
+    /**
+     * @return the login
+     */
+    public abstract String getLogin();
+
+    /**
+     * @param login the login to set
+     */
+    public abstract void setLogin(String login);
     
     
 }

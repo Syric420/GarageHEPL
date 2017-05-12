@@ -14,7 +14,6 @@ import java.util.Hashtable;
 public abstract class PersonnelGarage extends Personne implements Identifiable, AValider, Serializable
 {
     private String matricule;
-    private String login;
     private Hashtable hash;
     
     public PersonnelGarage()

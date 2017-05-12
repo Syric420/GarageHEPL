@@ -27,17 +27,17 @@ public class Login extends java.awt.Dialog {
         initComponents();
         
         Mecanicien [] tabMecanicien = {
-            new Mecanicien("Jean", "Albert", "Rue des prés 15", "0474142536", "Mec201", "Pneus"),
-            new Mecanicien("Cavas", "Philippe", "Rue de Stockis", "04742578", "Mec202", "Portes"),
-            new Mecanicien("Poluche", "Remy", "Boulevard des anes", "04642541", "Mec205", "Electronique")
+            new Mecanicien("Jean", "Albert", "Rue des prés 15", "0474142536", "Mec201", "Pneus", "Jeanjean"),
+            new Mecanicien("Cavas", "Philippe", "Rue de Stockis", "04742578", "Mec202", "Portes", "CavaCava"),
+            new Mecanicien("Poluche", "Remy", "Boulevard des anes", "04642541", "Mec205", "Electronique", "Vince")
         };
         for(int i=0; i<3;i++)
             vecUtilisateurs.add(tabMecanicien[i]);
         TechnicienExterieur[] tabTechnicien=
         {
-            new TechnicienExterieur("Patoche", "Sebastien", "Rue des Flans 157", "04987847", "TechExt001"),
-            new TechnicienExterieur("Malah", "Adrien", "Rue des vaches 10", "04786514", "TechExt120"),
-            new TechnicienExterieur("Cara", "Pils", "Rue de la sottise", "04478533", "TechExt52")  
+            new TechnicienExterieur("Patoche", "Sebastien", "Rue des Flans 157", "04987847", "TechExt001", "Pat"),
+            new TechnicienExterieur("Malah", "Adrien", "Rue des vaches 10", "04786514", "TechExt120", "Mal"),
+            new TechnicienExterieur("Cara", "Pils", "Rue de la sottise", "04478533", "TechExt52", "Car")  
         };
         
         for(int i=0; i<3;i++)
