@@ -255,12 +255,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         //Vector vec = new Vector();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
-
-        /*vec.add(TF_TypeVoiture.getText());
-        vec.add(TF_Immatriculation.getText());
-        vec.add(CB_Proprietaire.getSelectedItem().toString());
-        vec.add(CB_TypeTravail.getSelectedItem().toString());
-        vec.add(TA_Instructions.getText());*/
         
         Reparation r = new Reparation();
         Voiture voiture = new Voiture();
@@ -280,7 +274,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
             unEntretien.setVoiture(voiture);
             ((InterfaceApplication)getParent()).ajoutLinkedList(unEntretien);
             Entretien.enregistrer(oos, unEntretien);
-            //unEntretien.setVehicule();
         }
         else
         {

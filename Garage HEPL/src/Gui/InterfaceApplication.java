@@ -6,8 +6,14 @@
 package Gui;
 
 import Activites.Travail;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import people.*;
 
@@ -26,38 +32,70 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClient=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
-    InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
-    InterfaceRdv Rdv = new InterfaceRdv(this, true);
-    InterfaceTermine End = new InterfaceTermine(this,true);
-    InterfaceNewClient intNewClient = new InterfaceNewClient(this, true);
+    InterfacePeCVeh PeC;
+    InterfaceRdv Rdv;
+    InterfaceTermine End;
+    InterfaceNewClient intNewClient;
+    FileOutputStream fos ;
+    ObjectOutputStream oos;
 
     /**
      * Creates new form InterfaceApplication
      */
     public InterfaceApplication() {
-        initComponents();
-        Login.setVisible(true);
-        /*if(Login.getRole().equals("Membre"))
+        try
         {
+            Travaux = Travail.chargerLL();
+            
+            
+            String user = System.getProperty("user.dir");
+            String separator = System.getProperty("file.separator");
+            String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+            try
+            {
+                fos=new FileOutputStream(cheminFichier);
+                oos = new ObjectOutputStream(fos);
+            }
+            catch (FileNotFoundException e)
+            {
+                System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            }
+            catch (IOException e)
+            {
+                System.err.println("Erreur ! ? [" + e + "]");
+            }
+            
+            Travail.enregistrerLL(Travaux,oos);//marche pas encore
+            fos.close();
+            initComponents();
+            PeC= new InterfacePeCVeh(this, true);
+            Rdv = new InterfaceRdv(this, true);
+            End = new InterfaceTermine(this,true);
+            intNewClient = new InterfaceNewClient(this, true);
+            Login.setVisible(true);
+            /*if(Login.getRole().equals("Membre"))
+            {
             Pneus.setVisible(true);
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
-        }*/
-        Travaux = Travail.chargerLL();
-        //ne marche pas encore
-        System.out.println("Vecteur "+Travaux.toString());
-        PeC.ajouterVecTable();
-        //ATTENTION
-        //Normalement il faudrait mettre la linked list a charger
-        String maDate;
-        Date date = new Date();
-        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-        TimeZone cetTime = TimeZone.getTimeZone("CET");
-        
-        df.setTimeZone(cetTime);
-        
-        maDate = df.format(date);
-        jLabelDate.setText(maDate);
+            }*/
+            //ne marche pas encore
+            System.out.println("Vecteur "+Travaux.toString());
+            PeC.ajouterVecTable();
+            //ATTENTION
+            //Normalement il faudrait mettre la linked list a charger
+            String maDate;
+            Date date = new Date();
+            DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+            TimeZone cetTime = TimeZone.getTimeZone("CET");
+            df.setTimeZone(cetTime);
+            maDate = df.format(date);
+            jLabelDate.setText(maDate);
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(InterfaceApplication.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

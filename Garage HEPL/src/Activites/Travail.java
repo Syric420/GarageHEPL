@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package Activites;
-import Vehicules.Vehicule;
 import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import people.*;
 /**
  *
@@ -101,7 +103,7 @@ public abstract class Travail implements Serializable {
     public Vector AfficheJTable()
     {
         Vector v = new Vector();
-        v.add(voiture.getType().getType());
+        v.add(voiture.getType().getMarque());
         v.add(voiture.getID());
         v.add(voiture.getProprietaire());
         v.add(getTravail());
@@ -145,7 +147,7 @@ public abstract class Travail implements Serializable {
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.err.println("Erreur lecture ! ? [" + e + "]");
         }
         catch (ClassNotFoundException e)
         {
@@ -153,13 +155,31 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
-
+    public static void enregistrerLL(LinkedList list,ObjectOutputStream oos) throws IOException
+    {
+        int taille=list.size();
+        for(int i =0;i<taille;i++)
+        {
+            if(list.get(i).getClass().getName().equals("Activites.Entretien"))
+            {
+                    oos.writeInt(2);
+                    oos.writeObject(list.get(i));
+                    oos.flush();
+            }     
+            else
+            {
+                oos.writeInt(1);
+                oos.writeObject(list.get(i));
+                oos.flush();
+            }
+        }
+    }
     public static LinkedList chargerLL()
     {    
         LinkedList<Travail> VecTrav= new LinkedList<Travail>();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
-        int type=1;
+        int type=0;
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
@@ -168,6 +188,7 @@ public abstract class Travail implements Serializable {
             System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            System.out.println(ois.available());
             type = ois.readInt();
             System.out.println("type" + type);
             while(type != 0)
@@ -198,7 +219,7 @@ public abstract class Travail implements Serializable {
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.err.println("Erreur lecture ! ? [" + e + "]");
         }
         catch (ClassNotFoundException e)
         {
