@@ -5,12 +5,9 @@
  */
 package Activites;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Vector;
 
 /**
  *
@@ -33,7 +30,7 @@ public class Reparation extends Travail
     }
     catch (IOException e)
     {
-        System.err.println("Erreur ! ? [" + e + "]");
+        System.err.println("Erreur ecriture ! ? [" + e + "]");
     }
 }
     

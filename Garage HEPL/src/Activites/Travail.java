@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Activites;
-import Vehicules.Vehicule;
 import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -145,7 +144,7 @@ public abstract class Travail implements Serializable {
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.err.println("Erreur lecture ! ? [" + e + "]");
         }
         catch (ClassNotFoundException e)
         {
@@ -159,7 +158,7 @@ public abstract class Travail implements Serializable {
         LinkedList<Travail> VecTrav= new LinkedList<Travail>();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
-        int type=1;
+        int type=0;
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
@@ -168,6 +167,7 @@ public abstract class Travail implements Serializable {
             System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            System.out.println(ois.available());
             type = ois.readInt();
             System.out.println("type" + type);
             while(type != 0)
@@ -198,7 +198,7 @@ public abstract class Travail implements Serializable {
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.err.println("Erreur lecture ! ? [" + e + "]");
         }
         catch (ClassNotFoundException e)
         {
