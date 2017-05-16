@@ -6,12 +6,13 @@
 package Vehicules;
 
 import authenticate.*;
+import java.io.Serializable;
 
 /**
  *
  * @author tibha
  */
-public abstract class Vehicule  implements Identifiable
+public abstract class Vehicule  implements Identifiable,Serializable
 {
     private String immatriculation;
     static String caracteresValides="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789- ";

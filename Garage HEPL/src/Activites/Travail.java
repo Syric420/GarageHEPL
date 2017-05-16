@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.Vector;
 import people.*;
 /**
@@ -125,11 +126,69 @@ public abstract class Travail implements Serializable {
             {
                 type = ois.readInt();
                 if(type == 1)
+                {
                     uneReparation = (Reparation)ois.readObject();
+                    VecTrav.add(uneReparation);
+                }
+                    
                 else if(type == 2)
+                {
                     unEntretien = (Entretien)ois.readObject();
+                    VecTrav.add(unEntretien);
+                }
+            }
+            fis.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erreur ! ? [" + e + "]");
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.err.println("Erreur ! Classe non trouvée [" + e + "]");
+        }
+        return VecTrav;
+    }
+
+    public static LinkedList chargerLL()
+    {    
+        LinkedList<Travail> VecTrav= new LinkedList<Travail>();
+        Reparation uneReparation = new Reparation();
+        Entretien unEntretien = new Entretien();
+        int type=1;
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        try
+        {
+            System.out.println("cc");
+            FileInputStream fis = new FileInputStream(cheminFichier);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            type = ois.readInt();
+            System.out.println("type" + type);
+            while(type != 0)
+            {
                 
-                VecTrav.add(uneReparation);
+                if(type == 1)
+                {
+                    uneReparation = (Reparation)ois.readObject();
+                    System.out.println("Reparation ajoutée");
+                    VecTrav.add(uneReparation);
+                }
+                    
+                else if(type == 2)
+                {
+                    unEntretien = (Entretien)ois.readObject();
+                    System.out.println("Entretien ajouté");
+                    VecTrav.add(unEntretien);
+                }
+                else
+                    System.out.println("Type incorrect");
+                type = ois.readInt();
             }
             fis.close();
         }

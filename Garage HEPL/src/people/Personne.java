@@ -7,12 +7,13 @@ package people;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  * @author Vince
  */
-public abstract class Personne 
+public abstract class Personne implements Serializable
 {
     protected String nom;
     protected String prenom;
