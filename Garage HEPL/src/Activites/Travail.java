@@ -9,9 +9,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import people.*;
 /**
  *
@@ -152,7 +155,25 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
-
+    public static void enregistrerLL(LinkedList list,ObjectOutputStream oos) throws IOException
+    {
+        int taille=list.size();
+        for(int i =0;i<taille;i++)
+        {
+            if(list.get(i).getClass().getName().equals("Activites.Entretien"))
+            {
+                    oos.writeInt(2);
+                    oos.writeObject(list.get(i));
+                    oos.flush();
+            }     
+            else
+            {
+                oos.writeInt(1);
+                oos.writeObject(list.get(i));
+                oos.flush();
+            }
+        }
+    }
     public static LinkedList chargerLL()
     {    
         LinkedList<Travail> VecTrav= new LinkedList<Travail>();
