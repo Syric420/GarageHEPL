@@ -222,11 +222,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         r.setTravail((String)jTable1.getValueAt(line, 3));
         r.setRemarque((String)jTable1.getValueAt(line, 4));
         r.setVoiture(voiture);
-        /*ligne.add(jTable1.getValueAt(line, 0));
-        ligne.add(jTable1.getValueAt(line, 1));
-        ligne.add(jTable1.getValueAt(line, 2));*/
-        //ligne.add(jTable1.getValueAt(line, 3));
-        //ligne.add(jTable1.getValueAt(line, 4));
         if(jRaBuSol.isSelected())
         {
             r.setPontTravail("Sol");

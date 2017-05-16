@@ -103,7 +103,7 @@ public abstract class Travail implements Serializable {
     public Vector AfficheJTable()
     {
         Vector v = new Vector();
-        v.add(voiture.getType().getType());
+        v.add(voiture.getType().getMarque());
         v.add(voiture.getID());
         v.add(voiture.getProprietaire());
         v.add(getTravail());

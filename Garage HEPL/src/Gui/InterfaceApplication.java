@@ -46,6 +46,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
+            
+            
             String user = System.getProperty("user.dir");
             String separator = System.getProperty("file.separator");
             String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
@@ -63,7 +65,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 System.err.println("Erreur ! ? [" + e + "]");
             }
             
-            Travail.enregistrerLL(Travaux,oos);
+            Travail.enregistrerLL(Travaux,oos);//marche pas encore
             fos.close();
             initComponents();
             PeC= new InterfacePeCVeh(this, true);
