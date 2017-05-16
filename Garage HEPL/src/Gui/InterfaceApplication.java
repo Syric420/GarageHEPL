@@ -45,7 +45,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         }*/
         Travaux = Travail.chargerLL();
         //ne marche pas encore
-        System.out.println(Travaux.toString());
+        System.out.println("Vecteur "+Travaux.toString());
         PeC.ajouterVecTable();
         //ATTENTION
         //Normalement il faudrait mettre la linked list a charger

@@ -126,11 +126,16 @@ public abstract class Travail implements Serializable {
             {
                 type = ois.readInt();
                 if(type == 1)
+                {
                     uneReparation = (Reparation)ois.readObject();
+                    VecTrav.add(uneReparation);
+                }
+                    
                 else if(type == 2)
+                {
                     unEntretien = (Entretien)ois.readObject();
-                
-                VecTrav.add(uneReparation);
+                    VecTrav.add(unEntretien);
+                }
             }
             fis.close();
         }
@@ -154,7 +159,7 @@ public abstract class Travail implements Serializable {
         LinkedList<Travail> VecTrav= new LinkedList<Travail>();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
-        int type=0;
+        int type=1;
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
@@ -162,15 +167,26 @@ public abstract class Travail implements Serializable {
         {
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            type = ois.readInt();
             while(type != 0)
             {
-                type = ois.readInt();
-                if(type == 1)
-                    uneReparation = (Reparation)ois.readObject();
-                else if(type == 2)
-                    unEntretien = (Entretien)ois.readObject();
                 
-                VecTrav.add(uneReparation);
+                if(type == 1)
+                {
+                    uneReparation = (Reparation)ois.readObject();
+                    System.out.println("Reparation ajoutée");
+                    VecTrav.add(uneReparation);
+                }
+                    
+                else if(type == 2)
+                {
+                    unEntretien = (Entretien)ois.readObject();
+                    System.out.println("Entretien ajouté");
+                    VecTrav.add(unEntretien);
+                }
+                else
+                    System.out.println("Type incorrect");
+                type = ois.readInt();
             }
             fis.close();
         }

@@ -22,7 +22,7 @@ public class Reparation extends Travail
 {
     try
     {
-        oos.write(1);
+        oos.writeInt(1);
         oos.writeObject(T);
         oos.flush();
 
