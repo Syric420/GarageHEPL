@@ -165,9 +165,11 @@ public abstract class Travail implements Serializable {
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
         try
         {
+            System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
             type = ois.readInt();
+            System.out.println("type" + type);
             while(type != 0)
             {
                 
