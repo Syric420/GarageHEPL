@@ -166,7 +166,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     public void ajouterLigneTable()
     {
         DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
-        System.out.println((((InterfaceApplication)getParent()).Travaux.getLast().getClass().getName()).toString());
         Entretien unEntretien = new Entretien();
         Reparation uneReparation = new Reparation();
         if((((InterfaceApplication)getParent()).Travaux.getLast().getClass()).getName().equals("Activites.Entretien"))

@@ -26,16 +26,21 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClient=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
-    InterfacePeCVeh PeC= new InterfacePeCVeh(this, true);
-    InterfaceRdv Rdv = new InterfaceRdv(this, true);
-    InterfaceTermine End = new InterfaceTermine(this,true);
-    InterfaceNewClient intNewClient = new InterfaceNewClient(this, true);
+    InterfacePeCVeh PeC;
+    InterfaceRdv Rdv;
+    InterfaceTermine End;
+    InterfaceNewClient intNewClient;
 
     /**
      * Creates new form InterfaceApplication
      */
     public InterfaceApplication() {
+        Travaux = Travail.chargerLL();
         initComponents();
+        PeC= new InterfacePeCVeh(this, true);
+        Rdv = new InterfaceRdv(this, true);
+        End = new InterfaceTermine(this,true);
+        intNewClient = new InterfaceNewClient(this, true);
         Login.setVisible(true);
         /*if(Login.getRole().equals("Membre"))
         {
@@ -43,7 +48,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
         }*/
-        Travaux = Travail.chargerLL();
+        
         //ne marche pas encore
         System.out.println("Vecteur "+Travaux.toString());
         PeC.ajouterVecTable();
