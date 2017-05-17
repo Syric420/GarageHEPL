@@ -52,6 +52,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             End = new InterfaceTermine(this,true);
             intNewClient = new InterfaceNewClient(this, true);
             Login.setVisible(true);
+            //cc
             /*if(Login.getRole().equals("Membre"))
             {
             Pneus.setVisible(true);
