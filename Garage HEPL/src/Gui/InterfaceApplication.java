@@ -185,6 +185,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuAProposDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("Pont n 1:");
 
@@ -446,6 +451,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, vecClient);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //Enregistre le vecteur Personne
+    }//GEN-LAST:event_formWindowClosed
 
     
     public void ajoutLinkedList(Travail unTrav)

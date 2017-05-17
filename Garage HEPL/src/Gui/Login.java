@@ -46,6 +46,7 @@ public class Login extends java.awt.Dialog {
         for(int i=0; i<3;i++)
             vecUtilisateurs.add(tabTechnicien[i]);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
