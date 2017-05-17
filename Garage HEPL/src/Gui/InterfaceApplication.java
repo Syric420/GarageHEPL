@@ -46,27 +46,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
-            
-            
-            String user = System.getProperty("user.dir");
-            String separator = System.getProperty("file.separator");
-            String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
-            try
-            {
-                fos=new FileOutputStream(cheminFichier);
-                oos = new ObjectOutputStream(fos);
-            }
-            catch (FileNotFoundException e)
-            {
-                System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
-            }
-            catch (IOException e)
-            {
-                System.err.println("Erreur ! ? [" + e + "]");
-            }
-            
-            Travail.enregistrerLL(Travaux,oos);//marche pas encore
-            fos.close();
             initComponents();
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
