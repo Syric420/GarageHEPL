@@ -31,9 +31,11 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
