@@ -66,7 +66,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         dmcbProprio.addElement("Mtre Dieu");
         dmcbProprio.addElement("ProprioThib");
         dmcbProprio.addElement("ProprioVince");
-        //dmcbProprio.
         CB_Proprietaire.setModel(dmcbProprio);
     }
 
