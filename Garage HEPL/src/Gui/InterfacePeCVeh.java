@@ -223,7 +223,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         
         line=jTable1.getSelectedRow();
         voiture.setID((String)jTable1.getValueAt(line, 1));
-        voiture.setProprietaire(new Client ("A520",(String)jTable1.getValueAt(line, 2),"Jean","Adr","0478222"));
+        voiture.setProprietaire((Client)jTable1.getValueAt(line, 2));
         type.setMarque((String)jTable1.getValueAt(line, 0));
         voiture.setType(type);
         r.setTravail((String)jTable1.getValueAt(line, 3));

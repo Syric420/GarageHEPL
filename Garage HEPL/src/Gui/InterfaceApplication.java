@@ -108,7 +108,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
     {
         try
         {
-            Rdv.fos=new FileOutputStream(cheminFichier);
+            
+            Rdv.fos = new FileOutputStream(cheminFichier);
             Rdv.oos = new ObjectOutputStream(Rdv.fos);
         }
         catch (FileNotFoundException e)

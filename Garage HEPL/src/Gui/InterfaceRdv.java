@@ -292,7 +292,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
 
                 
     }//GEN-LAST:event_JB_OkActionPerformed
-
+    
     private void RB_EntretienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RB_EntretienActionPerformed
         // TODO add your handling code here:
         RB_Reparation.setSelected(false);
