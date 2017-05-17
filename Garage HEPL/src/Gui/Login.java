@@ -38,7 +38,7 @@ public class Login extends java.awt.Dialog {
             vecUtilisateurs.add(tabMecanicien[i]);
         TechnicienExterieur[] tabTechnicien=
         {
-            new TechnicienExterieur("Patoche", "Sebastien", "Rue des Flans 157", "04987847", "TechExt001", "Pat"),
+            new TechnicienExterieur("Patoche", "Sebastien", "Rue des Flans 157", "04987847", "TechExt001", "Thib"),
             new TechnicienExterieur("Malah", "Adrien", "Rue des vaches 10", "04786514", "TechExt120", "Mal"),
             new TechnicienExterieur("Cara", "Pils", "Rue de la sottise", "04478533", "TechExt52", "Car")  
         };
@@ -229,7 +229,7 @@ public class Login extends java.awt.Dialog {
 
     public boolean isUserAMember(String login)
     {
-        for(int i=0; i<vecUtilisateurs.size()-1; i++)
+        for(int i=0; i<vecUtilisateurs.size(); i++)
         {
             if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
             {
@@ -242,7 +242,7 @@ public class Login extends java.awt.Dialog {
     }
     public boolean existUser(String login)
     {
-        for(int i=0; i<vecUtilisateurs.size()-1; i++)
+        for(int i=0; i<vecUtilisateurs.size(); i++)
         {
             if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
                 return true;
@@ -267,7 +267,7 @@ public class Login extends java.awt.Dialog {
         TempLog=propLogin.getProperty("Id").split(",");
         TempPwd=propLogin.getProperty("Psw").split(",");
         
-        for(int i=0; i<TempLog.length-1;i++)
+        for(int i=0; i<TempLog.length;i++)
         {
             if(TempLog[i].equals(login))
             {
