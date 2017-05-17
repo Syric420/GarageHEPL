@@ -187,10 +187,6 @@ public class Login extends java.awt.Dialog {
         
         login=tfUser.getText();
         password=tfPw.getText();
-        if(jMembreButton.isSelected())
-            role="Membre";
-        else
-            role="Exterieur";
         try
         {
             if(login.equals("") || password.equals(""))//Si ils sont vides
@@ -203,18 +199,18 @@ public class Login extends java.awt.Dialog {
                 {
                     if(checkPassword(login, password))
                     {
-                        if(!hashrole.get(login).equals(role))
+                        if(!isUserAMember(login))
                         {
-                            if(getRole().equals("Membre"))
-                                jMembreButton.setSelected(false);
-                            else
-                                jMembreButton.setSelected(true);
-                            if(getRole().equals("Exterieur"))
-                                jExterieurButton.setSelected(false);
-                            else
-                                jExterieurButton.setSelected(true);
-                            JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                            //C'est un extérieur habilité mais qu'il a coché la mauvaise case
+                            if(jMembreButton.isSelected())
+                                JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
                         }
+                        else
+                        {
+                            if(jExterieurButton.isSelected())
+                                JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                            
                         this.dispose();
                     }  
                     else
@@ -231,12 +227,16 @@ public class Login extends java.awt.Dialog {
        
     }//GEN-LAST:event_buokActionPerformed
 
-    public boolean isMember(String login)
+    public boolean isUserAMember(String login)
     {
         for(int i=0; i<vecUtilisateurs.size()-1; i++)
         {
             if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
-                return true;
+            {
+                //Il l'a trouvé
+                if(vecUtilisateurs.elementAt(i).isMember())
+                    return true;
+            }
         }
         return false;
     }
