@@ -36,8 +36,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceRdv Rdv;
     InterfaceTermine End;
     InterfaceNewClient intNewClient;
-    FileOutputStream fos ;
-    ObjectOutputStream oos;
 
     /**
      * Creates new form InterfaceApplication
@@ -105,6 +103,26 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else
                 return false;
             
+    }
+    public void ViderFichier(String cheminFichier)
+    {
+        //ObjectOutputStream oos;
+        try
+        {
+            Rdv.fos.close();
+            Rdv.fos=null;
+            Rdv.oos=null;
+            Rdv.fos = new FileOutputStream(cheminFichier);
+            Rdv.oos = new ObjectOutputStream(Rdv.fos);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erreur ! ? [" + e + "]");
+        }
     }
     public void AfficheTF(String nom,Travail t)
     {
