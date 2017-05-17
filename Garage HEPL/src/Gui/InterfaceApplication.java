@@ -58,11 +58,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
             }*/
-            //ne marche pas encore
             System.out.println("Vecteur "+Travaux.toString());
             PeC.ajouterVecTable();
-            //ATTENTION
-            //Normalement il faudrait mettre la linked list a charger
             String maDate;
             Date date = new Date();
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
