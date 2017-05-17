@@ -9,7 +9,10 @@ import Activites.Entretien;
 import Activites.Reparation;
 import Activites.Travail;
 import Vehicules.*;
+import java.io.IOException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,9 +27,15 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     /**
      * Creates new form InterfacePeCVeh
      */
+    String cheminFichier;
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
@@ -216,7 +225,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         
         line=jTable1.getSelectedRow();
         voiture.setID((String)jTable1.getValueAt(line, 1));
-        voiture.setProprietaire(new Client ("A520",(String)jTable1.getValueAt(line, 2),"Jean","Adr","0478222"));
+        voiture.setProprietaire((Client)jTable1.getValueAt(line, 2));
         type.setMarque((String)jTable1.getValueAt(line, 0));
         voiture.setType(type);
         r.setTravail((String)jTable1.getValueAt(line, 3));
@@ -262,6 +271,12 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
             ((InterfaceApplication)getParent()).AfficheTF(r.getPontTravail(), r);
             dtm.removeRow(line);
             ((InterfaceApplication)getParent()).Travaux.remove(line);
+            ((InterfaceApplication)getParent()).ViderFichier(cheminFichier);
+            try {
+                Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux, ((InterfaceApplication)getParent()).Rdv.oos);
+            } catch (IOException ex) {
+                Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
+            }
             jTable1.setModel(dtm);
             this.setVisible(false);
         }
