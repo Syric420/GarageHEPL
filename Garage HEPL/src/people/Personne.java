@@ -153,7 +153,6 @@ public abstract class Personne implements Serializable, AValider
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
         
-        System.out.println("CheminFichier = "+cheminFichier);
         FileOutputStream fos;
         ObjectOutputStream oos;
         try {
@@ -176,7 +175,6 @@ public abstract class Personne implements Serializable, AValider
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
         
-        System.out.println("CheminFichier = "+cheminFichier);
         FileInputStream fis;
         ObjectInputStream ois;
         try {
