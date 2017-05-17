@@ -52,5 +52,10 @@ public class Client extends Personne implements Identifiable
     public void setLogin(String login) {
         this.login=login;
     }
+
+    @Override
+    public boolean isMember() {
+        return false;
+    }
     
 }

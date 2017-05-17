@@ -11,7 +11,7 @@ import java.util.Hashtable;
  *
  * @author Vince
  */
-public abstract class PersonnelGarage extends Personne implements Identifiable, AValider, Serializable
+public abstract class PersonnelGarage extends Personne implements Identifiable, Serializable
 {
     private String matricule;
     private Hashtable hash;
@@ -36,22 +36,6 @@ public abstract class PersonnelGarage extends Personne implements Identifiable, 
     @Override
     public void setID(String i) {
         this.matricule = i;
-    }
-
-    @Override
-    public boolean isValid() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    @Override
-    public boolean validate(String mdp) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       if(hash.get(login).equals(mdp))
-           return true;
-       else
-           return false;
-            
     }
 
     /**

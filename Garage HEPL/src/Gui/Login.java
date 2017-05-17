@@ -231,6 +231,15 @@ public class Login extends java.awt.Dialog {
        
     }//GEN-LAST:event_buokActionPerformed
 
+    public boolean isMember(String login)
+    {
+        for(int i=0; i<vecUtilisateurs.size()-1; i++)
+        {
+            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+                return true;
+        }
+        return false;
+    }
     public boolean existUser(String login)
     {
         for(int i=0; i<vecUtilisateurs.size()-1; i++)
