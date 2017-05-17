@@ -17,4 +17,10 @@ public class Employe extends PersonnelGarage implements Identifiable
     {
         super();
     }
+    
+    @Override
+    public boolean isMember()
+    {
+        return false;
+    }
 }

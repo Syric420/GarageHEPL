@@ -40,4 +40,9 @@ public class Mecanicien extends PersonnelGarage implements Identifiable {
         this.specialite = specialite;
     }
 
+    @Override
+    public boolean isMember() {
+        return true;
+    }
+
 }

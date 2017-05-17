@@ -5,6 +5,7 @@
  */
 package people;
 
+import authenticate.AValider;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  *
  * @author Vince
  */
-public abstract class Personne implements Serializable
+public abstract class Personne implements Serializable, AValider
 {
     protected String nom;
     protected String prenom;
@@ -99,11 +100,24 @@ public abstract class Personne implements Serializable
      * @return the login
      */
     public abstract String getLogin();
+    
+    public abstract boolean isMember();
 
     /**
      * @param login the login to set
      */
     public abstract void setLogin(String login);
     
+    @Override
+    public boolean isValid()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean validate(String mdp)
+    {
+        return false;
+    }
     
 }
