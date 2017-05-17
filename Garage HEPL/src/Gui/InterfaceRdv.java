@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import people.Client;
 
@@ -31,7 +33,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
     /**
      * Creates new form InterfaceRdv
      */
-    public InterfaceRdv(java.awt.Frame parent, boolean modal) {
+    public InterfaceRdv(java.awt.Frame parent, boolean modal) throws IOException {
         
         super(parent, modal);
         initComponents();
@@ -51,6 +53,8 @@ public class InterfaceRdv extends javax.swing.JDialog {
         {
             System.err.println("Erreur ! ? [" + e + "]");
         }
+        Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux,oos);
+        
         dmcbTravailEntretien.addElement("Entretien annuel");
         dmcbTravailEntretien.addElement("Entretien 40000");
         dmcbTravailEntretien.addElement("Pneus hiver");
@@ -340,14 +344,18 @@ public class InterfaceRdv extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceRdv dialog = new InterfaceRdv(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                try {
+                    InterfaceRdv dialog = new InterfaceRdv(new javax.swing.JFrame(), true);
+                    dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                        @Override
+                        public void windowClosing(java.awt.event.WindowEvent e) {
+                            System.exit(0);
+                        }
+                    });
+                    dialog.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(InterfaceRdv.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

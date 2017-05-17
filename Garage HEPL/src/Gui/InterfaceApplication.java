@@ -46,44 +46,21 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
-            
-            
-            String user = System.getProperty("user.dir");
-            String separator = System.getProperty("file.separator");
-            String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
-            try
-            {
-                fos=new FileOutputStream(cheminFichier);
-                oos = new ObjectOutputStream(fos);
-            }
-            catch (FileNotFoundException e)
-            {
-                System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
-            }
-            catch (IOException e)
-            {
-                System.err.println("Erreur ! ? [" + e + "]");
-            }
-            
-            Travail.enregistrerLL(Travaux,oos);//marche pas encore
-            fos.close();
             initComponents();
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
             intNewClient = new InterfaceNewClient(this, true);
             Login.setVisible(true);
+            //cc
             /*if(Login.getRole().equals("Membre"))
             {
             Pneus.setVisible(true);
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
             }*/
-            //ne marche pas encore
             System.out.println("Vecteur "+Travaux.toString());
             PeC.ajouterVecTable();
-            //ATTENTION
-            //Normalement il faudrait mettre la linked list a charger
             String maDate;
             Date date = new Date();
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
