@@ -169,21 +169,8 @@ public class Login extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void buokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buokActionPerformed
-        String login, password;
-        
-        Hashtable hashpswd = new Hashtable();
-        hashpswd .put("Vince","123");
-        hashpswd .put("Thib","321");
-        
-        Hashtable hashrole = new Hashtable();
-        hashrole.put("Vince","Membre");
-        hashrole.put("Thib","Exterieur");
-        
-        
-        Mecanicien unMecano = new Mecanicien();
-        unMecano.setLogin("Vince");
-        unMecano.setHash(hashpswd);
-        
+        String login, password;   
+        Personne unePersonne;
         
         login=tfUser.getText();
         password=tfPw.getText();
@@ -197,7 +184,8 @@ public class Login extends java.awt.Dialog {
                     throw new ExUtilisateurInconnu("Utilisateur inconnu");
                 else
                 {
-                    if(checkPassword(login, password))
+                    unePersonne = returnPersonneInVector(login);
+                    if(unePersonne.validate(password))
                     {
                         if(!isUserAMember(login))
                         {
@@ -227,6 +215,18 @@ public class Login extends java.awt.Dialog {
        
     }//GEN-LAST:event_buokActionPerformed
 
+    public Personne returnPersonneInVector(String login)
+    {
+        for(int i=0; i<vecUtilisateurs.size(); i++)
+        {
+            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+            {
+                //Il l'a trouvé
+                return (Personne)vecUtilisateurs.elementAt(i);
+            }
+        }
+        return null;
+    }
     public boolean isUserAMember(String login)
     {
         for(int i=0; i<vecUtilisateurs.size(); i++)
@@ -246,34 +246,6 @@ public class Login extends java.awt.Dialog {
         {
             if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
                 return true;
-        }
-        return false;
-    }
-    
-    public boolean checkPassword(String login, String pswd)
-    {
-        String user = System.getProperty("user.dir");
-        String separator = System.getProperty("file.separator");
-        String TempLog[],TempPwd[];
-        String cheminFichier = user+separator+"src"+separator+"Gui"+separator+"users.properties";
-        Properties propLogin = new Properties();
-        try
-        {
-            propLogin.load (new FileInputStream (cheminFichier));
-            
-        }
-        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !"); }
-        catch (IOException e) { System.out.println("Erreur : " + e.getMessage()); }
-        TempLog=propLogin.getProperty("Id").split(",");
-        TempPwd=propLogin.getProperty("Psw").split(",");
-        
-        for(int i=0; i<TempLog.length;i++)
-        {
-            if(TempLog[i].equals(login))
-            {
-                if(TempPwd[i].equals(pswd))
-                    return true;
-            }
         }
         return false;
     }

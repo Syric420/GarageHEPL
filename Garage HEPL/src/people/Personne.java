@@ -6,9 +6,11 @@
 package people;
 
 import authenticate.AValider;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Properties;
 
 /**
  *
@@ -117,6 +119,29 @@ public abstract class Personne implements Serializable, AValider
     @Override
     public boolean validate(String mdp)
     {
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String TempLog[],TempPwd[];
+        String cheminFichier = user+separator+"src"+separator+"Gui"+separator+"users.properties";
+        Properties propLogin = new Properties();
+        try
+        {
+            propLogin.load (new FileInputStream (cheminFichier));
+            
+        }
+        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !"); }
+        catch (IOException e) { System.out.println("Erreur : " + e.getMessage()); }
+        TempLog=propLogin.getProperty("Id").split(",");
+        TempPwd=propLogin.getProperty("Psw").split(",");
+        
+        for(int i=0; i<TempLog.length;i++)
+        {
+            if(TempLog[i].equals(login))
+            {
+                if(TempPwd[i].equals(mdp))
+                    return true;
+            }
+        }
         return false;
     }
     
