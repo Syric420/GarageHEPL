@@ -24,7 +24,7 @@ public class Login extends java.awt.Dialog {
      * Creates new form Login
      */
     private String role;
-    Vector<Personne> vecUtilisateurs = new Vector<Personne>();
+    Vector vecUtilisateurs = new Vector();
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -220,7 +220,7 @@ public class Login extends java.awt.Dialog {
     {
         for(int i=0; i<vecUtilisateurs.size(); i++)
         {
-            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+            if(((Personne)vecUtilisateurs.elementAt(i)).getLogin().equals(login))
             {
                 //Il l'a trouvé
                 return (Personne)vecUtilisateurs.elementAt(i);
@@ -232,10 +232,10 @@ public class Login extends java.awt.Dialog {
     {
         for(int i=0; i<vecUtilisateurs.size(); i++)
         {
-            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+            if(((Personne)vecUtilisateurs.elementAt(i)).getLogin().equals(login))
             {
                 //Il l'a trouvé
-                if(vecUtilisateurs.elementAt(i).isMember())
+                if(((Personne)vecUtilisateurs.elementAt(i)).isMember())
                     return true;
             }
         }
@@ -245,7 +245,7 @@ public class Login extends java.awt.Dialog {
     {
         for(int i=0; i<vecUtilisateurs.size(); i++)
         {
-            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+            if(((Personne)vecUtilisateurs.elementAt(i)).getLogin().equals(login))
                 return true;
         }
         return false;

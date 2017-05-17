@@ -6,9 +6,11 @@
 package Gui;
 
 import Activites.Travail;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.*;
@@ -22,7 +24,7 @@ import people.*;
  * @author Vince
  */
 public class InterfaceApplication extends javax.swing.JFrame {
-    Login Login = new Login(this, true);
+    Login Login;
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
     InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
     InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
@@ -44,7 +46,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
+            
             initComponents();
+            Login= new Login(this,true);
+            Login.vecUtilisateurs = Personne.chargerVector();
+            System.out.println("VecUtilisateurs size = "+Login.vecUtilisateurs.size());
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
@@ -186,8 +192,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -452,9 +458,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, vecClient);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        //Enregistre le vecteur Personne
-    }//GEN-LAST:event_formWindowClosed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Personne.enregistrerVector(Login.vecUtilisateurs);
+    }//GEN-LAST:event_formWindowClosing
 
     
     public void ajoutLinkedList(Travail unTrav)

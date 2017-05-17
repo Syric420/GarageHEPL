@@ -6,11 +6,11 @@
 package people;
 
 import authenticate.AValider;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Properties;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -145,4 +145,53 @@ public abstract class Personne implements Serializable, AValider
         return false;
     }
     
+    
+    public static void enregistrerVector(Vector vecUtilisateurs)
+    {
+        //Enregistre le vecteur de Personne
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
+        
+        System.out.println("CheminFichier = "+cheminFichier);
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+        try {
+            fos = new FileOutputStream(cheminFichier);
+            oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(vecUtilisateurs);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erreur FileNotFoundException : "+ex);
+        } catch (IOException ex) {
+            System.out.println("Erreur IOException : "+ex);
+        }
+    }
+    
+    public static Vector chargerVector()
+    {
+        //Charge le vecteur de Personne
+        Vector vecPersonne = new Vector();
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
+        
+        System.out.println("CheminFichier = "+cheminFichier);
+        FileInputStream fis;
+        ObjectInputStream ois;
+        try {
+            fis = new FileInputStream(cheminFichier);
+            ois = new ObjectInputStream(fis);
+            vecPersonne = (Vector)ois.readObject();
+            
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erreur FileNotFoundException : "+ex);
+        } catch (IOException ex) {
+            System.out.println("Erreur IOException : "+ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Erreur ClassNotFoundException : "+ex);
+        }
+        return vecPersonne;
+    }
 }
