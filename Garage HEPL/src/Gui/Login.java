@@ -7,6 +7,9 @@ package Gui;
 
 import java.util.*;
 import Login.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -194,11 +197,11 @@ public class Login extends java.awt.Dialog {
                 throw new ExUtilisateurVide("Utilisateur ou mot de passe vide");
             else
             {
-                if(hashpswd.get(login)==null)
+                if(existUser(login)==false)
                     throw new ExUtilisateurInconnu("Utilisateur inconnu");
                 else
                 {
-                    if(unMecano.validate(password)==true)
+                    if(checkPassword(login, password))
                     {
                         if(!hashrole.get(login).equals(role))
                         {
@@ -213,7 +216,9 @@ public class Login extends java.awt.Dialog {
                             JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
                         }
                         this.dispose();
-                    }    
+                    }  
+                    else
+                        JOptionPane.showMessageDialog( this,"Le mot de passe est erroné", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }catch(ExUtilisateurVide ex)
@@ -226,6 +231,44 @@ public class Login extends java.awt.Dialog {
        
     }//GEN-LAST:event_buokActionPerformed
 
+    public boolean existUser(String login)
+    {
+        for(int i=0; i<vecUtilisateurs.size()-1; i++)
+        {
+            if(vecUtilisateurs.elementAt(i).getLogin().equals(login))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean checkPassword(String login, String pswd)
+    {
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String TempLog[],TempPwd[];
+        String cheminFichier = user+separator+"src"+separator+"Gui"+separator+"users.properties";
+        Properties propLogin = new Properties();
+        try
+        {
+            propLogin.load (new FileInputStream (cheminFichier));
+            
+        }
+        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !"); }
+        catch (IOException e) { System.out.println("Erreur : " + e.getMessage()); }
+        TempLog=propLogin.getProperty("Id").split(",");
+        TempPwd=propLogin.getProperty("Psw").split(",");
+        
+        for(int i=0; i<TempLog.length-1;i++)
+        {
+            if(TempLog[i].equals(login))
+            {
+                if(TempPwd[i].equals(pswd))
+                    return true;
+            }
+        }
+        return false;
+    }
+    
     private void buannulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buannulerActionPerformed
         // TODO add your handling code here:
         System.exit(0);
