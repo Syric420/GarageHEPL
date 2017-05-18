@@ -291,10 +291,4 @@ public class Login extends java.awt.Dialog {
     private java.awt.TextField tfUser;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
 }

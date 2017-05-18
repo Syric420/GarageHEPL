@@ -50,7 +50,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
             initComponents();
             Login= new Login(this,true);
             Login.vecUtilisateurs = Personne.chargerVector();
-            System.out.println("VecUtilisateurs size = "+Login.vecUtilisateurs.size());
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
