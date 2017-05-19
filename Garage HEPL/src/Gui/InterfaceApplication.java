@@ -6,9 +6,11 @@
 package Gui;
 
 import Activites.Travail;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.*;
@@ -22,7 +24,7 @@ import people.*;
  * @author Vince
  */
 public class InterfaceApplication extends javax.swing.JFrame {
-    Login Login = new Login(this, true);
+    Login Login;
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
     InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
     InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
@@ -44,7 +46,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
+            
             initComponents();
+            Login= new Login(this,true);
+            Login.vecUtilisateurs = Personne.chargerVector();
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
@@ -185,6 +190,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuAProposDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setText("Pont n 1:");
 
@@ -446,6 +456,12 @@ public class InterfaceApplication extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, vecClient);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        Personne.enregistrerVector(Login.vecUtilisateurs);
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
     
     public void ajoutLinkedList(Travail unTrav)
