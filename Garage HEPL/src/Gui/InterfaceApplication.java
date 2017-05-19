@@ -49,7 +49,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             
             initComponents();
             Login= new Login(this,true);
-            Login.vecUtilisateurs = Personne.chargerVector();
+            
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
