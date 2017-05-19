@@ -7,6 +7,7 @@ package Activites;
 import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -116,28 +117,36 @@ public abstract class Travail implements Serializable {
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
         int type=0;
-        //unTravail.nom="first";
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
         try
         {
+            System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            System.out.println(ois.available());
+            type = ois.readInt();
+            System.out.println("type" + type);
             while(type != 0)
             {
-                type = ois.readInt();
+                
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
+                    System.out.println("Reparation ajoutée");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
+                    System.out.println("Entretien ajouté");
                     VecTrav.add(unEntretien);
                 }
+                else
+                    System.out.println("Type incorrect");
+                type = ois.readInt();
             }
             fis.close();
         }
@@ -227,4 +236,5 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
+    
 }
