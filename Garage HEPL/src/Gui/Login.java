@@ -45,6 +45,8 @@ public class Login extends java.awt.Dialog {
         
         for(int i=0; i<3;i++)
             vecUtilisateurs.add(tabTechnicien[i]);
+        
+        vecUtilisateurs = Personne.chargerVector();
     }
     
 
