@@ -125,6 +125,7 @@ public class InterfaceTermine extends javax.swing.JDialog {
         ((InterfaceApplication)getParent()).VideTF(t.getPontTravail());
         ((InterfaceApplication)getParent()).TravailTermine.add(t);
         ((InterfaceApplication)getParent()).TravailEnCours.removeElement(t);
+        
     }//GEN-LAST:event_jButtonTerminerActionPerformed
 
     /**
