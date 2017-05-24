@@ -46,8 +46,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
-            TravailEnCours = Travail.charger();
-            
+            TravailEnCours = Travail.charger(1);
+            TravailTermine = Travail.charger(2);
             initComponents();
             Login= new Login(this,true);
             
@@ -64,7 +64,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
             }*/
-            System.out.println("Vecteur "+Travaux.toString());
+            //System.out.println("Vecteur "+Travaux.toString());
             PeC.ajouterVecTable();
             String maDate;
             Date date = new Date();

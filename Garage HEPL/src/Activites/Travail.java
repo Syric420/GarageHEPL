@@ -111,7 +111,7 @@ public abstract class Travail implements Serializable {
         v.add(getRemarque());
         return v;
     }
-    public static Vector charger()
+    public static Vector charger(int mode)
     {    
         Vector<Travail> VecTrav= new Vector<Travail>();
         Reparation uneReparation = new Reparation();
@@ -119,15 +119,16 @@ public abstract class Travail implements Serializable {
         int type=0;
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        String cheminFichier;
+        if(mode==1)
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+        else
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxTermine.data";
         try
         {
-            System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            System.out.println(ois.available());
             type = ois.readInt();
-            System.out.println("type" + type);
             while(type != 0)
             {
                 

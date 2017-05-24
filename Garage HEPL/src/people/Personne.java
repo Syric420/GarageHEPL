@@ -185,10 +185,13 @@ public abstract class Personne implements Serializable, AValider
             
         } catch (FileNotFoundException ex) {
             System.out.println("Erreur FileNotFoundException : "+ex);
+            return null;
         } catch (IOException ex) {
             System.out.println("Erreur IOException : "+ex);
+            return null;
         } catch (ClassNotFoundException ex) {
             System.out.println("Erreur ClassNotFoundException : "+ex);
+            return null;
         }
         return vecPersonne;
     }
