@@ -264,7 +264,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         
 
         voiture.setID(TF_Immatriculation.getText());
-        voiture.setProprietaire(new Client ("A520",CB_Proprietaire.getSelectedItem().toString(),"Jean","Adr","0478222"));
+        voiture.setProprietaire((Client)dmcbProprio.getSelectedItem());
         type.setMarque(TF_TypeVoiture.getText());
         voiture.setType(type);
         
