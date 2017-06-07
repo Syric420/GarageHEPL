@@ -7,6 +7,7 @@ package Activites;
 import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -110,34 +111,43 @@ public abstract class Travail implements Serializable {
         v.add(getRemarque());
         return v;
     }
-    public static Vector charger()
+    public static Vector charger(int mode)
     {    
         Vector<Travail> VecTrav= new Vector<Travail>();
         Reparation uneReparation = new Reparation();
         Entretien unEntretien = new Entretien();
         int type=0;
-        //unTravail.nom="first";
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        String cheminFichier;
+        if(mode==1)
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+        else
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxTermine.data";
         try
         {
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
+            type = ois.readInt();
             while(type != 0)
             {
-                type = ois.readInt();
+                
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
+                    System.out.println("Reparation ajoutée");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
+                    System.out.println("Entretien ajouté");
                     VecTrav.add(unEntretien);
                 }
+                else
+                    System.out.println("Type incorrect");
+                type = ois.readInt();
             }
             fis.close();
         }
@@ -227,4 +237,5 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
+    
 }

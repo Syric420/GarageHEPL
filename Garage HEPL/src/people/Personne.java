@@ -147,8 +147,7 @@ public abstract class Personne implements Serializable, AValider
     
     
     public static void enregistrerVector(Vector vecUtilisateurs)
-    {
-        //Enregistre le vecteur de Personne
+    {//Enregistre le vecteur de Personne
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
         String cheminFichier = user+separator+"Serialize"+separator+"Utilisateurs.data";
@@ -156,6 +155,7 @@ public abstract class Personne implements Serializable, AValider
         FileOutputStream fos;
         ObjectOutputStream oos;
         try {
+        
             fos = new FileOutputStream(cheminFichier);
             oos = new ObjectOutputStream(fos);
             
@@ -185,10 +185,13 @@ public abstract class Personne implements Serializable, AValider
             
         } catch (FileNotFoundException ex) {
             System.out.println("Erreur FileNotFoundException : "+ex);
+            return null;
         } catch (IOException ex) {
             System.out.println("Erreur IOException : "+ex);
+            return null;
         } catch (ClassNotFoundException ex) {
             System.out.println("Erreur ClassNotFoundException : "+ex);
+            return null;
         }
         return vecPersonne;
     }

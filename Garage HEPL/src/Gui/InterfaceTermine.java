@@ -6,6 +6,7 @@
 package Gui;
 
 import Activites.Travail;
+import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.ListModel;
 
@@ -106,6 +107,14 @@ public class InterfaceTermine extends javax.swing.JDialog {
         dlm.addElement(t);
         //((InterfaceApplication)getparent()).TravailEnCours
     }
+    
+    public void ajoutVector(Vector<Travail> v)
+    {
+        for(int i=0; i<v.size();i++)
+        {
+            dlm.addElement(v.elementAt(i));
+        }
+    }
     private void jButtonTerminerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminerActionPerformed
         
         int indice;
@@ -116,6 +125,7 @@ public class InterfaceTermine extends javax.swing.JDialog {
         ((InterfaceApplication)getParent()).VideTF(t.getPontTravail());
         ((InterfaceApplication)getParent()).TravailTermine.add(t);
         ((InterfaceApplication)getParent()).TravailEnCours.removeElement(t);
+        
     }//GEN-LAST:event_jButtonTerminerActionPerformed
 
     /**

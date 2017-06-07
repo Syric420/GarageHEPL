@@ -46,14 +46,16 @@ public class InterfaceApplication extends javax.swing.JFrame {
         try
         {
             Travaux = Travail.chargerLL();
-            
+            TravailEnCours = Travail.charger(1);
+            TravailTermine = Travail.charger(2);
             initComponents();
             Login= new Login(this,true);
-            Login.vecUtilisateurs = Personne.chargerVector();
+            
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
             intNewClient = new InterfaceNewClient(this, true);
+            End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
             //cc
             /*if(Login.getRole().equals("Membre"))
@@ -62,7 +64,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pieces.setVisible(true);
             Lubrifiants.setVisible(true);
             }*/
-            System.out.println("Vecteur "+Travaux.toString());
+            //System.out.println("Vecteur "+Travaux.toString());
             PeC.ajouterVecTable();
             String maDate;
             Date date = new Date();
@@ -467,6 +469,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public void ajoutLinkedList(Travail unTrav)
     {
         Travaux.add(unTrav);
+    }
+    
+    public Vector getTravauxEnCours()
+    {
+        return this.TravailEnCours;
     }
     /**
      * @param args the command line arguments
