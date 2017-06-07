@@ -200,7 +200,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceCentrale dialog1 = new InterfaceCentrale(new javax.swing.JFrame(), true , 1);
+                InterfaceCentrale dialog1 = new InterfaceCentrale(new javax.swing.JFrame(), false , 1);
                 dialog1.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -208,7 +208,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     }
                 });
                 dialog1.setVisible(true);
-                InterfaceCentrale dialog2 = new InterfaceCentrale(new javax.swing.JFrame(), true , 2);
+                InterfaceCentrale dialog2 = new InterfaceCentrale(new javax.swing.JFrame(), false , 2);
                 dialog2.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -216,7 +216,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     }
                 });
                 dialog2.setVisible(true);
-                InterfaceCentrale dialog3 = new InterfaceCentrale(new javax.swing.JFrame(), true , 3);
+                InterfaceCentrale dialog3 = new InterfaceCentrale(new javax.swing.JFrame(), false , 3);
                 dialog3.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
