@@ -63,9 +63,8 @@ public class InterfaceRdv extends javax.swing.JDialog {
         dmcbTravailReparation.addElement("Reparation clim");
         dmcbTravailReparation.addElement("Reparation phares");
         
-        dmcbProprio.addElement("Mtre Dieu");
-        dmcbProprio.addElement("ProprioThib");
-        dmcbProprio.addElement("ProprioVince");
+        for(int i=0; i<((InterfaceApplication)getParent()).vecClients.size();i++)
+            dmcbProprio.addElement(((InterfaceApplication)getParent()).vecClients.elementAt(i));
         CB_Proprietaire.setModel(dmcbProprio);
     }
 
