@@ -32,6 +32,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClient=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
+    InterfaceCommande Pieces;
+    InterfaceCommande Pneus;
+    InterfaceCommande Lubrifiant;
     InterfacePeCVeh PeC;
     InterfaceRdv Rdv;
     InterfaceTermine End;
@@ -55,6 +58,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
+            Pieces = new InterfaceCommande(this,true);
+            Pneus = new InterfaceCommande(this,true);
+            Lubrifiant = new InterfaceCommande(this,true);
             intNewClient = new InterfaceNewClient(this, true);
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
@@ -274,12 +280,27 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuCommander.setText("Commander");
 
         jMenuPiece.setText("Commander une pièce");
+        jMenuPiece.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPieceActionPerformed(evt);
+            }
+        });
         jMenuCommander.add(jMenuPiece);
 
         jMenuPneus.setText("Commander des pneus");
+        jMenuPneus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPneusActionPerformed(evt);
+            }
+        });
         jMenuCommander.add(jMenuPneus);
 
-        jMenuLub.setText("jMenuItem5");
+        jMenuLub.setText("Commander lubrifiant");
+        jMenuLub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuLubActionPerformed(evt);
+            }
+        });
         jMenuCommander.add(jMenuLub);
 
         jMateriel.add(jMenuCommander);
@@ -287,7 +308,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuReceptionner.setText("Réceptionner");
         jMateriel.add(jMenuReceptionner);
 
-        jMenuListeCommandes.setText("jMenuItem7");
+        jMenuListeCommandes.setText("Liste commandes");
         jMateriel.add(jMenuListeCommandes);
 
         jMenuBar1.add(jMateriel);
@@ -492,6 +513,21 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Personne.enregistrerVector(Login.vecUtilisateurs);
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPieceActionPerformed
+        // TODO add your handling code here:
+        Pieces.setVisible(true);  
+    }//GEN-LAST:event_jMenuPieceActionPerformed
+
+    private void jMenuPneusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPneusActionPerformed
+
+        Pneus.setVisible(true);
+    }//GEN-LAST:event_jMenuPneusActionPerformed
+
+    private void jMenuLubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLubActionPerformed
+       
+        Lubrifiant.setVisible(true);
+    }//GEN-LAST:event_jMenuLubActionPerformed
 
     
     public void ajoutLinkedList(Travail unTrav)

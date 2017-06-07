@@ -9,12 +9,12 @@ package Gui;
  *
  * @author Vince
  */
-public class InterfaceCommandePieces extends javax.swing.JDialog {
+public class InterfaceCommande extends javax.swing.JDialog {
 
     /**
      * Creates new form InterfaceCommandePieces
      */
-    public InterfaceCommandePieces(java.awt.Frame parent, boolean modal) {
+    public InterfaceCommande(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -57,11 +57,6 @@ public class InterfaceCommandePieces extends javax.swing.JDialog {
 
         jLabel2.setText("Commandes:");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jLabel3.setText("Libellé:");
@@ -69,6 +64,12 @@ public class InterfaceCommandePieces extends javax.swing.JDialog {
         jLabel4.setText("Type:");
 
         jLabel5.setText("Quantité:");
+
+        JTF_Type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTF_TypeActionPerformed(evt);
+            }
+        });
 
         JB_Envoyer.setText("Envoyer");
 
@@ -155,6 +156,10 @@ public class InterfaceCommandePieces extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JTF_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTF_TypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTF_TypeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -172,20 +177,21 @@ public class InterfaceCommandePieces extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCommandePieces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceCommande.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCommandePieces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceCommande.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCommandePieces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceCommande.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCommandePieces.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceCommande.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceCommandePieces dialog = new InterfaceCommandePieces(new javax.swing.JFrame(), true);
+                InterfaceCommande dialog = new InterfaceCommande(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
