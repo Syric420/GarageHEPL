@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Gui;
-
+import network.NetworkBasicClient;
 /**
  *
  * @author Vince
@@ -14,9 +14,24 @@ public class InterfaceCommande extends javax.swing.JDialog {
     /**
      * Creates new form InterfaceCommandePieces
      */
-    public InterfaceCommande(java.awt.Frame parent, boolean modal) {
+    int type;
+    NetworkBasicClient Client;
+    public InterfaceCommande(java.awt.Frame parent, boolean modal,int t) {
         super(parent, modal);
         initComponents();
+        type = t;
+        switch (type){
+                case 1:
+                    Client = new NetworkBasicClient("localhost",50001);
+                     break;
+                case 2:
+                    Client = new NetworkBasicClient("localhost",50002);
+                    break;
+                case 3:
+                    Client = new NetworkBasicClient("localhost",50003);
+                    break;
+        }
+  
     }
 
     /**
@@ -72,6 +87,11 @@ public class InterfaceCommande extends javax.swing.JDialog {
         });
 
         JB_Envoyer.setText("Envoyer");
+        JB_Envoyer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_EnvoyerActionPerformed(evt);
+            }
+        });
 
         JB_Annuler.setText("Annuler");
 
@@ -160,6 +180,13 @@ public class InterfaceCommande extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTF_TypeActionPerformed
 
+    private void JB_EnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnvoyerActionPerformed
+        // TODO add your handling code here:
+        //creation du message
+        String s = "Coucou je suis le " + type;
+        Client.sendString(s);
+    }//GEN-LAST:event_JB_EnvoyerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -191,7 +218,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InterfaceCommande dialog = new InterfaceCommande(new javax.swing.JFrame(), true);
+                InterfaceCommande dialog = new InterfaceCommande(new javax.swing.JFrame(), true,1);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
