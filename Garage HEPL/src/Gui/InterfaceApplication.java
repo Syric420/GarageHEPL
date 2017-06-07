@@ -25,11 +25,8 @@ import people.*;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login;
-    NetworkBasicClient Client;
+    NetworkBasicClient ClientP,ClientL,ClientPi;
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
-    InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
-    InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
-    InterfaceCentrale Lubrifiants = new InterfaceCentrale(this,false,3);
     LinkedList<Travail> Travaux=new LinkedList<Travail>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
@@ -51,21 +48,15 @@ public class InterfaceApplication extends javax.swing.JFrame {
             TravailTermine = Travail.charger(2);
             initComponents();
             Login= new Login(this,true);
-            Client = new NetworkBasicClient("localhost",50011);
+            ClientPi = new NetworkBasicClient("localhost",50001);
+            ClientP = new NetworkBasicClient("localhost",50002);
+            ClientL = new NetworkBasicClient("localhost",50003);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
             intNewClient = new InterfaceNewClient(this, true);
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
-            //cc
-            /*if(Login.getRole().equals("Membre"))
-            {
-            Pneus.setVisible(true);
-            Pieces.setVisible(true);
-            Lubrifiants.setVisible(true);
-            }*/
-            //System.out.println("Vecteur "+Travaux.toString());
             PeC.ajouterVecTable();
             String maDate;
             Date date = new Date();
