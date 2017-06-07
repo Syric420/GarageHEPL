@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Gui;
+import javax.swing.DefaultListModel;
 import network.NetworkBasicClient;
 /**
  *
@@ -16,9 +17,12 @@ public class InterfaceCommande extends javax.swing.JDialog {
      */
     int type;
     NetworkBasicClient Client;
+    DefaultListModel<String> model;
     public InterfaceCommande(java.awt.Frame parent, boolean modal,int t) {
         super(parent, modal);
         initComponents();
+        model = new DefaultListModel();
+        jList1.setModel(model);
         type = t;
         switch (type){
                 case 1:
@@ -94,6 +98,11 @@ public class InterfaceCommande extends javax.swing.JDialog {
         });
 
         JB_Annuler.setText("Annuler");
+        JB_Annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_AnnulerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,9 +192,15 @@ public class InterfaceCommande extends javax.swing.JDialog {
     private void JB_EnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnvoyerActionPerformed
         // TODO add your handling code here:
         //creation du message
-        String s = "Coucou je suis le " + type;
-        Client.sendString(s);
+        String s = "Coucou je suis le " + type,reponse;
+        reponse=Client.sendString(s);
+        model.addElement(reponse);    
     }//GEN-LAST:event_JB_EnvoyerActionPerformed
+
+    private void JB_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_AnnulerActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_JB_AnnulerActionPerformed
 
     /**
      * @param args the command line arguments

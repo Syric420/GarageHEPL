@@ -66,6 +66,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         SendAnswer.setText("Envoyer réponse");
+        SendAnswer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SendAnswerActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(Dispo);
         Dispo.setText("disponible");
@@ -187,6 +192,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         message = server.getMessage();
         TFMessage.setText(message);
     }//GEN-LAST:event_jButtonLireActionPerformed
+
+    private void SendAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendAnswerActionPerformed
+        // TODO add your handling code here:
+        if(Dispo.isSelected())
+            server.sendMessage("OK");
+        else      
+            server.sendMessage("Vincent pd");
+    }//GEN-LAST:event_SendAnswerActionPerformed
 
     /**
      * @param args the command line arguments
