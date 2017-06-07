@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package Gui;
-
+import network.NetworkBasicServer;
+import network.NetworkBasicClient;
 /**
  *
  * @author tibha
  */
 public class InterfaceCentrale extends javax.swing.JDialog {
 
+    
+     NetworkBasicServer server;
     /**
      * Creates new form InterfaceCentrale
      */
@@ -20,6 +23,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         switch (type){
                 case 1:
                     jTextArea1.setText("Pièces");
+                    server = new NetworkBasicServer(50011, getCBMessDispo());
                      break;
                 case 2:
                     jTextArea1.setText("Pneus");
@@ -42,15 +46,15 @@ public class InterfaceCentrale extends javax.swing.JDialog {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jButton1 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        SendAnswer = new javax.swing.JButton();
+        Dispo = new javax.swing.JRadioButton();
+        NonDispo = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jButtonLire = new javax.swing.JButton();
+        MessageEntrant = new javax.swing.JCheckBox();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        TFMessage = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -59,23 +63,28 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("Envoyer réponse");
+        SendAnswer.setText("Envoyer réponse");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("disponible");
+        buttonGroup1.add(Dispo);
+        Dispo.setText("disponible");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("non disponible");
+        buttonGroup1.add(NonDispo);
+        NonDispo.setText("non disponible");
 
         jLabel1.setText("Détails de la commande");
 
         jLabel2.setText("Commande en cours:");
 
-        jButton2.setText("Lire");
+        jButtonLire.setText("Lire");
+        jButtonLire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLireActionPerformed(evt);
+            }
+        });
 
-        jCheckBox1.setText("Message entrant");
+        MessageEntrant.setText("Message entrant");
 
-        jTextField1.setText(">>");
+        TFMessage.setText(">>");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,7 +118,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(79, 79, 79)
@@ -117,14 +126,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addGap(69, 69, 69)
-                                .addComponent(jRadioButton1)
+                                .addComponent(Dispo)
                                 .addGap(146, 146, 146)
-                                .addComponent(jRadioButton2)))
+                                .addComponent(NonDispo)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jCheckBox1))
+                            .addComponent(jButtonLire)
+                            .addComponent(MessageEntrant))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,7 +143,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                         .addGap(64, 64, 64))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(SendAnswer)
                 .addGap(261, 261, 261))
         );
         layout.setVerticalGroup(
@@ -144,14 +153,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
+                            .addComponent(MessageEntrant)
                             .addComponent(jLabel2))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonLire)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,15 +169,22 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(Dispo)
+                    .addComponent(NonDispo))
                 .addGap(32, 32, 32)
-                .addComponent(jButton1)
+                .addComponent(SendAnswer)
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonLireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLireActionPerformed
+
+        String message;
+        message = server.getMessage();
+        TFMessage.setText(message);
+    }//GEN-LAST:event_jButtonLireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +223,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                         System.exit(0);
                     }
                 });
-                dialog1.setVisible(true);
+                dialog1.setVisible(true);/*
                 InterfaceCentrale dialog2 = new InterfaceCentrale(new javax.swing.JFrame(), false , 2);
                 dialog2.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
@@ -223,26 +239,29 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                         System.exit(0);
                     }
                 });
-                dialog3.setVisible(true);
+                dialog3.setVisible(true);*/
             }
         });
+        
     }
-
+            public javax.swing.JCheckBox getCBMessDispo() {
+            return MessageEntrant;
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Dispo;
+    private javax.swing.JCheckBox MessageEntrant;
+    private javax.swing.JRadioButton NonDispo;
+    private javax.swing.JButton SendAnswer;
+    private javax.swing.JTextField TFMessage;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton jButtonLire;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

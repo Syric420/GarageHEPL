@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Gui;
-
+import network.NetworkBasicClient;
 import Activites.Travail;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +25,7 @@ import people.*;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login;
+    NetworkBasicClient Client;
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
     InterfaceCentrale Pneus = new InterfaceCentrale(this,false,2);
     InterfaceCentrale Pieces = new InterfaceCentrale(this,false,1);
@@ -50,7 +51,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             TravailTermine = Travail.charger(2);
             initComponents();
             Login= new Login(this,true);
-            
+            Client = new NetworkBasicClient("localhost",50011);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
