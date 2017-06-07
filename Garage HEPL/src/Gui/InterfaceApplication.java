@@ -30,7 +30,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     LinkedList<Travail> Travaux=new LinkedList<Travail>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
     Vector<Travail> TravailTermine=new Vector<Travail>();
-    Vector<Client> vecClient=new Vector<Client>();
+    Vector<Client> vecClients=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
     InterfacePeCVeh PeC;
     InterfaceRdv Rdv;
@@ -43,7 +43,19 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public InterfaceApplication() {
         try
         {
+            Client tabCli[] =
+            {
+                new Client("A520", "Peter", "Jordan", "Rue du Coq 5", "0485452536"),
+                new Client("A530", "Dove", "David", "Rue de l'Yser 187", "0445253685")
+            };
             
+            if(Client.chargerVector()==null)// Si le vecteur est null, on en rajoute par défaut
+            {
+                for(int i=0; i<tabCli.length; i++)
+                    vecClients.add(tabCli[i]);
+            }
+            else
+                vecClients = Client.chargerVector();
             Travaux = Travail.chargerLL();
             TravailEnCours = Travail.charger(1);
             TravailTermine = Travail.charger(2);
@@ -484,12 +496,13 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, vecClient);
+        JOptionPane.showMessageDialog(this, vecClients);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         Personne.enregistrerVector(Login.vecUtilisateurs);
+        Client.enregistrerVector(vecClients);
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
