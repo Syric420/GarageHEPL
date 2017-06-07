@@ -43,6 +43,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public InterfaceApplication() {
         try
         {
+            
             Travaux = Travail.chargerLL();
             TravailEnCours = Travail.charger(1);
             TravailTermine = Travail.charger(2);
@@ -148,6 +149,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -166,12 +170,18 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jLabelCom = new javax.swing.JLabel();
         JTFBuCli = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuAtelier = new javax.swing.JMenu();
         jMenuAPrevoir = new javax.swing.JMenuItem();
         jMenuPeC = new javax.swing.JMenuItem();
         jMenuTerminé = new javax.swing.JMenuItem();
         jMenuListes = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMateriel = new javax.swing.JMenu();
+        jMenuCommander = new javax.swing.JMenu();
+        jMenuPiece = new javax.swing.JMenuItem();
+        jMenuPneus = new javax.swing.JMenuItem();
+        jMenuLub = new javax.swing.JMenuItem();
+        jMenuReceptionner = new javax.swing.JMenuItem();
+        jMenuListeCommandes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -182,6 +192,12 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuAide = new javax.swing.JMenu();
         jMenuPourDebuter = new javax.swing.JMenuItem();
         jMenuAProposDe = new javax.swing.JMenuItem();
+
+        jMenu7.setText("File");
+        jMenuBar2.add(jMenu7);
+
+        jMenu8.setText("Edit");
+        jMenuBar2.add(jMenu8);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -222,7 +238,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
         jLabelCom.setText("Com");
 
-        jMenu1.setText("Atelier");
+        jMenuAtelier.setText("Atelier");
 
         jMenuAPrevoir.setText("A prévoir");
         jMenuAPrevoir.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +246,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 jMenuAPrevoirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuAPrevoir);
+        jMenuAtelier.add(jMenuAPrevoir);
 
         jMenuPeC.setText("Prise en charge");
         jMenuPeC.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +254,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 jMenuPeCActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuPeC);
+        jMenuAtelier.add(jMenuPeC);
 
         jMenuTerminé.setText("Terminé");
         jMenuTerminé.addActionListener(new java.awt.event.ActionListener() {
@@ -246,15 +262,35 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 jMenuTerminéActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuTerminé);
+        jMenuAtelier.add(jMenuTerminé);
 
         jMenuListes.setText("Listes");
-        jMenu1.add(jMenuListes);
+        jMenuAtelier.add(jMenuListes);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuAtelier);
 
-        jMenu2.setText("Matériel");
-        jMenuBar1.add(jMenu2);
+        jMateriel.setText("Matériel");
+
+        jMenuCommander.setText("Commander");
+
+        jMenuPiece.setText("Commander une pièce");
+        jMenuCommander.add(jMenuPiece);
+
+        jMenuPneus.setText("Commander des pneus");
+        jMenuCommander.add(jMenuPneus);
+
+        jMenuLub.setText("jMenuItem5");
+        jMenuCommander.add(jMenuLub);
+
+        jMateriel.add(jMenuCommander);
+
+        jMenuReceptionner.setText("Réceptionner");
+        jMateriel.add(jMenuReceptionner);
+
+        jMenuListeCommandes.setText("jMenuItem7");
+        jMateriel.add(jMenuListeCommandes);
+
+        jMenuBar1.add(jMateriel);
 
         jMenu3.setText("Clients");
 
@@ -520,22 +556,31 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBureau;
     private javax.swing.JLabel jLabelCom;
     private javax.swing.JLabel jLabelDate;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMateriel;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuItem jMenuAPrevoir;
     private javax.swing.JMenuItem jMenuAProposDe;
     private javax.swing.JMenu jMenuAide;
+    private javax.swing.JMenu jMenuAtelier;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuCommander;
     private javax.swing.JMenuItem jMenuInfoSysteme;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuListeCommandes;
     private javax.swing.JMenuItem jMenuListes;
+    private javax.swing.JMenuItem jMenuLub;
     private javax.swing.JMenuItem jMenuPeC;
+    private javax.swing.JMenuItem jMenuPiece;
+    private javax.swing.JMenuItem jMenuPneus;
     private javax.swing.JMenuItem jMenuPourDebuter;
+    private javax.swing.JMenuItem jMenuReceptionner;
     private javax.swing.JMenuItem jMenuTerminé;
     // End of variables declaration//GEN-END:variables
 }
