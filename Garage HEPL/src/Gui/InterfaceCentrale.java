@@ -23,12 +23,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         switch (type){
                 case 1:
                     jTextArea1.setText("Pièces");
-                    server = new NetworkBasicServer(50011, getCBMessDispo());
+                    server = new NetworkBasicServer(50001, getCBMessDispo());
                      break;
                 case 2:
+                    server = new NetworkBasicServer(50002, getCBMessDispo());
                     jTextArea1.setText("Pneus");
                     break;
                 case 3:
+                    server = new NetworkBasicServer(50003, getCBMessDispo());
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
@@ -223,7 +225,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                         System.exit(0);
                     }
                 });
-                dialog1.setVisible(true);/*
+                dialog1.setVisible(true);
                 InterfaceCentrale dialog2 = new InterfaceCentrale(new javax.swing.JFrame(), false , 2);
                 dialog2.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
@@ -239,7 +241,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                         System.exit(0);
                     }
                 });
-                dialog3.setVisible(true);*/
+                dialog3.setVisible(true);
             }
         });
         
