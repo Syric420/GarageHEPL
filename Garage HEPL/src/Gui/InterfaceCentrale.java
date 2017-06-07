@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Gui;
+import javax.swing.table.DefaultTableModel;
 import network.NetworkBasicServer;
 import network.NetworkBasicClient;
 /**
@@ -16,10 +17,18 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      NetworkBasicServer server;
     /**
      * Creates new form InterfaceCentrale
-     */
+     */ 
+     DefaultTableModel dtm;
     public InterfaceCentrale(java.awt.Frame parent, boolean modal,int type) {
         super(parent, modal);
         initComponents();
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {},
+        new String [] {
+        "Caractéristiques", "Valeur"
+        }
+        ));
+        dtm = (DefaultTableModel)this.jTable1.getModel();
         switch (type){
                 case 1:
                     jTextArea1.setText("Pièces");
@@ -188,9 +197,25 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
     private void jButtonLireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLireActionPerformed
 
-        String message;
+        String message,Temp[],Var[] = new String[2];
         message = server.getMessage();
-        TFMessage.setText(message);
+        if(!message.equalsIgnoreCase("RIEN"))
+        {
+            TFMessage.setText(message);
+            Temp=message.split("Libelle: ");
+            Temp=Temp[1].split("Quantite: ");
+            Var[0]="Libelle";
+            Var[1]=Temp[0];
+            dtm.addRow(Var);
+            Temp=Temp[1].split("Type: ");
+            Var[0]="Quantite";
+            Var[1]=Temp[1];
+            dtm.addRow(Var);
+            Var[0]="Type";
+            Var[1]=Temp[0];
+            dtm.addRow(Var);
+        }
+        
     }//GEN-LAST:event_jButtonLireActionPerformed
 
     private void SendAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendAnswerActionPerformed
