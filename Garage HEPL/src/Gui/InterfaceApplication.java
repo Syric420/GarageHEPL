@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Gui;
-import network.NetworkBasicClient;
 import Activites.Travail;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,7 +24,6 @@ import people.*;
  */
 public class InterfaceApplication extends javax.swing.JFrame {
     Login Login;
-    NetworkBasicClient ClientP,ClientL,ClientPi;
     InterfaceAProposDe APropos = new InterfaceAProposDe(this,true);
     LinkedList<Travail> Travaux=new LinkedList<Travail>();
     Vector<Travail> TravailEnCours=new Vector<Travail>();
@@ -52,15 +50,12 @@ public class InterfaceApplication extends javax.swing.JFrame {
             TravailTermine = Travail.charger(2);
             initComponents();
             Login= new Login(this,true);
-            ClientPi = new NetworkBasicClient("localhost",50001);
-            ClientP = new NetworkBasicClient("localhost",50002);
-            ClientL = new NetworkBasicClient("localhost",50003);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
-            Pieces = new InterfaceCommande(this,true);
-            Pneus = new InterfaceCommande(this,true);
-            Lubrifiant = new InterfaceCommande(this,true);
+            Pieces = new InterfaceCommande(this,true,1);
+            Pneus = new InterfaceCommande(this,true,2);
+            Lubrifiant = new InterfaceCommande(this,true,3);
             intNewClient = new InterfaceNewClient(this, true);
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
