@@ -63,9 +63,8 @@ public class InterfaceRdv extends javax.swing.JDialog {
         dmcbTravailReparation.addElement("Reparation clim");
         dmcbTravailReparation.addElement("Reparation phares");
         
-        dmcbProprio.addElement("Mtre Dieu");
-        dmcbProprio.addElement("ProprioThib");
-        dmcbProprio.addElement("ProprioVince");
+        for(int i=0; i<((InterfaceApplication)getParent()).vecClients.size();i++)
+            dmcbProprio.addElement(((InterfaceApplication)getParent()).vecClients.elementAt(i));
         CB_Proprietaire.setModel(dmcbProprio);
     }
 
@@ -265,7 +264,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         
 
         voiture.setID(TF_Immatriculation.getText());
-        voiture.setProprietaire(new Client ("A520",CB_Proprietaire.getSelectedItem().toString(),"Jean","Adr","0478222"));
+        voiture.setProprietaire((Client)dmcbProprio.getSelectedItem());
         type.setMarque(TF_TypeVoiture.getText());
         voiture.setType(type);
         

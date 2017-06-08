@@ -147,7 +147,8 @@ public class InterfaceNewClient extends javax.swing.JDialog {
             unClient.setNom(TF_Nom.getText());
             unClient.setPrenom(TF_Prenom.getText());
             unClient.setNumTel(TF_NumTel.getText());
-            ((InterfaceApplication)getParent()).vecClient.add(unClient);
+            ((InterfaceApplication)getParent()).vecClients.add(unClient);
+            ((InterfaceApplication)getParent()).Rdv.dmcbProprio.addElement(unClient);
             this.clearAll();
         }
         else
