@@ -517,6 +517,8 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        
+        Travail.enregistrerLL(Travaux);
         Personne.enregistrerVector(Login.vecUtilisateurs);
         Client.enregistrerVector(vecClients);
         System.exit(0);

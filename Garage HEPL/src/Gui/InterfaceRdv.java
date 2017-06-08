@@ -37,13 +37,17 @@ public class InterfaceRdv extends javax.swing.JDialog {
         
         super(parent, modal);
         initComponents();
+        
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
-        try
+        String cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+        
+         try
         {
             fos=new FileOutputStream(cheminFichier);
             oos = new ObjectOutputStream(fos);
+           
+          
         }
         catch (FileNotFoundException e)
         {
@@ -53,7 +57,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         {
             System.err.println("Erreur ! ? [" + e + "]");
         }
-        Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux,oos);
         
         dmcbTravailEntretien.addElement("Entretien annuel");
         dmcbTravailEntretien.addElement("Entretien 40000");

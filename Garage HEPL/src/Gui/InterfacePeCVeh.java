@@ -32,14 +32,14 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     /**
      * Creates new form InterfacePeCVeh
      */
-    String cheminFichier;
+    //String cheminFichier;
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        String user = System.getProperty("user.dir");
+        /*String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        //cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";*/
         
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
@@ -282,7 +282,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                 try {
                     fos = new FileOutputStream(cheminFichier);
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux, ((InterfaceApplication)getParent()).Rdv.oos);
                     Entretien.enregistrer(oos, e);
                 } catch (IOException ex) {
                     Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
@@ -340,7 +339,6 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                 try {
                     fos = new FileOutputStream(cheminFichier);
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux, ((InterfaceApplication)getParent()).Rdv.oos);
                     Reparation.enregistrer(oos, r);
                 } catch (IOException ex) {
                     Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);

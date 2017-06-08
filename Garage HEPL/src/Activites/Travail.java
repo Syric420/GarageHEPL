@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Activites;
+import Gui.InterfaceApplication;
 import Vehicules.Voiture;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -165,24 +166,44 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
-    public static void enregistrerLL(LinkedList list,ObjectOutputStream oos) throws IOException
+    public static void enregistrerLL(LinkedList list)
     {
-        int taille=list.size();
-        for(int i =0;i<taille;i++)
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        
+        try
         {
-            if(list.get(i).getClass().getName().equals("Activites.Entretien"))
-            {
-                    oos.writeInt(2);
-                    oos.writeObject(list.get(i));
-                    oos.flush();
-            }     
-            else
-            {
-                oos.writeInt(1);
-                oos.writeObject(list.get(i));
-                oos.flush();
-            }
+           FileOutputStream fos=new FileOutputStream(cheminFichier);
+           ObjectOutputStream oos = new ObjectOutputStream(fos);
+           
+           int taille=list.size();
+           for(int i =0;i<taille;i++)
+           {
+               if(list.get(i).getClass().getName().equals("Activites.Entretien"))
+               {
+                       oos.writeInt(2);
+                        oos.writeObject(list.get(i));
+                        oos.flush();
+               }     
+               else
+               {
+                   oos.writeInt(1);
+                   oos.writeObject(list.get(i));
+                   oos.flush();
+               }
+           }
         }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erreur ! ? [" + e + "]");
+        }
+        
+        
     }
     public static LinkedList chargerLL()
     {    
@@ -195,26 +216,26 @@ public abstract class Travail implements Serializable {
         String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
         try
         {
-            System.out.println("cc");
+            //System.out.println("cc");
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            System.out.println(ois.available());
+            //System.out.println(ois.available());
             type = ois.readInt();
-            System.out.println("type" + type);
+           //System.out.println("type" + type);
             while(type != 0)
             {
                 
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
-                    System.out.println("Reparation ajoutée");
+                    //System.out.println("Reparation ajoutée");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
-                    System.out.println("Entretien ajouté");
+                    //System.out.println("Entretien ajouté");
                     VecTrav.add(unEntretien);
                 }
                 else
@@ -237,5 +258,7 @@ public abstract class Travail implements Serializable {
         }
         return VecTrav;
     }
+    
+    
     
 }
