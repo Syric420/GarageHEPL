@@ -192,7 +192,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
     private void JB_EnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnvoyerActionPerformed
         // TODO add your handling code here:
         //creation du message
-        String s="Libelle: " + JTF_Libelle.getText() + "Quantite: " + JTF_Quantite.getText() + "Type: " +JTF_Type.getText(),reponse;
+        String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
         reponse=Client.sendString(s);
         if(reponse.equals("OK"))
             model.addElement(s); 

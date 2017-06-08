@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Gui;
+import java.util.Random;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import network.NetworkBasicServer;
 import network.NetworkBasicClient;
@@ -19,6 +21,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      * Creates new form InterfaceCentrale
      */ 
      DefaultTableModel dtm;
+     DefaultComboBoxModel dmcb;
     public InterfaceCentrale(java.awt.Frame parent, boolean modal,int type) {
         super(parent, modal);
         initComponents();
@@ -28,6 +31,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         "Caractéristiques", "Valeur"
         }
         ));
+        dmcb = (DefaultComboBoxModel)this.jComboBox1.getModel();
         dtm = (DefaultTableModel)this.jTable1.getModel();
         switch (type){
                 case 1:
@@ -83,9 +87,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
         buttonGroup1.add(Dispo);
         Dispo.setText("disponible");
+        Dispo.setEnabled(false);
+        Dispo.setFocusable(false);
+        Dispo.setRequestFocusEnabled(false);
 
         buttonGroup1.add(NonDispo);
         NonDispo.setText("non disponible");
+        NonDispo.setEnabled(false);
+        NonDispo.setFocusable(false);
 
         jLabel1.setText("Détails de la commande");
 
@@ -99,6 +108,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         });
 
         MessageEntrant.setText("Message entrant");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         TFMessage.setText(">>");
 
@@ -124,6 +139,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTextArea1);
 
         jButton3.setText("Vérification disponnibilité");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,34 +217,116 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
     private void jButtonLireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLireActionPerformed
 
-        String message,Temp[],Var[] = new String[2];
+        String message;
         message = server.getMessage();
         if(!message.equalsIgnoreCase("RIEN"))
         {
             TFMessage.setText(message);
-            Temp=message.split("Libelle: ");
+            AfficherJTableM(message);
+            AjouterComboBox(message);
+            /*Temp=message.split("Libelle: ");
             Temp=Temp[1].split("Quantite: ");
             Var[0]="Libelle";
             Var[1]=Temp[0];
+            libelle=Temp[0];
             dtm.addRow(Var);
             Temp=Temp[1].split("Type: ");
             Var[0]="Quantite";
             Var[1]=Temp[1];
+            piece=Temp[1];
             dtm.addRow(Var);
             Var[0]="Type";
             Var[1]=Temp[0];
-            dtm.addRow(Var);
+            pneu=Temp[0];
+            dtm.addRow(Var);*/
         }
         
     }//GEN-LAST:event_jButtonLireActionPerformed
-
+    private void AfficherJTableM(String message)
+    {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {},
+        new String [] {
+        "Caractéristiques", "Valeur"
+        }
+        ));
+        dtm = (DefaultTableModel)this.jTable1.getModel();
+        
+        String Temp[],Var[] = new String[2];
+        Temp=message.split("Libelle: ");
+        Temp=Temp[1].split(" Quantite: ");
+        Var[0]="Libelle";
+        Var[1]=Temp[0];
+        dtm.addRow(Var);
+        Temp=Temp[1].split(" Type: ");
+        Var[0]="Quantite";
+        Var[1]=Temp[1];
+        dtm.addRow(Var);
+        Var[0]="Type";
+        Var[1]=Temp[0];
+        dtm.addRow(Var);
+    }
+     private void AfficherJTableCB(String message)
+    {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {},
+        new String [] {
+        "Caractéristiques", "Valeur"
+        }
+        ));
+        dtm = (DefaultTableModel)this.jTable1.getModel();
+        
+        String Temp[],Var[] = new String[2],libelle,piece,pneu;
+        Temp=message.split(" ");
+        //Temp=Temp[1].split(" ");
+        Var[0]="Libelle";
+        Var[1]=Temp[0];
+        libelle=Temp[0];
+        dtm.addRow(Var);
+        Temp=Temp[1].split(" ");
+        Var[0]="Quantite";
+        Var[1]=Temp[1];
+        piece=Temp[1];
+        dtm.addRow(Var);
+        Var[0]="Type";
+        Var[1]=Temp[0];
+        pneu=Temp[0];
+        dtm.addRow(Var);
+    }
+    private void AjouterComboBox(String message)
+    {
+        String Temp[] = new String[2],libelle,piece,pneu;
+        Temp=message.split("Libelle: ");
+        Temp=Temp[1].split(" Quantite: ");
+        libelle=Temp[0];
+        Temp=Temp[1].split(" Type: ");
+        piece=Temp[1];
+        pneu=Temp[0];
+        message=libelle + "  " + piece + "  " + pneu;
+        dmcb.addElement(message);
+    }
+    
     private void SendAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendAnswerActionPerformed
-        // TODO add your handling code here:
         if(Dispo.isSelected())
             server.sendMessage("OK");
         else      
             server.sendMessage("Vincent pd");
     }//GEN-LAST:event_SendAnswerActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+         AfficherJTableCB(jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Random randomGenerator = new Random();
+        int D=randomGenerator.nextInt(2);
+        if(D == 1)
+            Dispo.setSelected(true);
+        else
+            NonDispo.setSelected(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
