@@ -112,7 +112,7 @@ public abstract class Travail implements Serializable {
         v.add(getRemarque());
         return v;
     }
-    public static Vector charger(int mode)
+    public static Vector chargerVec(int mode)
     {    
         Vector<Travail> VecTrav= new Vector<Travail>();
         Reparation uneReparation = new Reparation();
@@ -129,42 +129,86 @@ public abstract class Travail implements Serializable {
         {
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            type = ois.readInt();
-            while(type != 0)
-            {
-                
+            
+            while(ois.available() >0)
+           {
+               type = ois.readInt();
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
-                    System.out.println("Reparation ajoutée");
+                    //System.out.println("Reparation ajoutée");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
-                    System.out.println("Entretien ajouté");
+                    //System.out.println("Entretien ajouté");
                     VecTrav.add(unEntretien);
                 }
                 else
                     System.out.println("Type incorrect");
-                type = ois.readInt();
             }
             fis.close();
         }
         catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.out.println("Erreur FileNotFoundException :"+e);
         }
         catch (IOException e)
         {
-            System.err.println("Erreur lecture ! ? [" + e + "]");
+            System.out.println("Erreur IOException : "+e);
         }
         catch (ClassNotFoundException e)
         {
-            System.err.println("Erreur ! Classe non trouvée [" + e + "]");
+            System.out.println("Erreur ClassNotFoundException : "+e);
         }
         return VecTrav;
+    }
+    
+    public static void enregistrerVec(Vector list, int mode)
+    {
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier;
+        
+        if(mode==1)
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+        else
+            cheminFichier = user+separator+"Serialize"+separator+"TravauxTermine.data";
+        
+        try
+        {
+           FileOutputStream fos=new FileOutputStream(cheminFichier);
+           ObjectOutputStream oos = new ObjectOutputStream(fos);
+           
+           int taille=list.size();
+           for(int i =0;i<taille;i++)
+           {
+               if(list.get(i).getClass().getName().equals("Activites.Entretien"))
+               {
+                    oos.writeInt(2);
+                    oos.writeObject(list.get(i));
+                    oos.flush();
+               }     
+               else
+               {
+                   oos.writeInt(1);
+                   oos.writeObject(list.get(i));
+                   oos.flush();
+               }
+           }
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Erreur FileNotFoundException : "+e);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Erreur IOException : "+e);
+        }
+        
+        
     }
     public static void enregistrerLL(LinkedList list)
     {
@@ -196,11 +240,11 @@ public abstract class Travail implements Serializable {
         }
         catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.out.println("Erreur FileNotFoundException : "+e);
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.out.println("Erreur IOException : "+e);
         }
         
         
@@ -220,11 +264,11 @@ public abstract class Travail implements Serializable {
             FileInputStream fis = new FileInputStream(cheminFichier);
             ObjectInputStream ois = new ObjectInputStream(fis);
             //System.out.println(ois.available());
-            type = ois.readInt();
+            
            //System.out.println("type" + type);
-            while(type != 0)
-            {
-                
+           while(ois.available() >0)
+           {
+               type = ois.readInt();
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
@@ -240,21 +284,20 @@ public abstract class Travail implements Serializable {
                 }
                 else
                     System.out.println("Type incorrect");
-                type = ois.readInt();
             }
             fis.close();
         }
-        catch (FileNotFoundException e)
+       catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.out.println("Erreur FileNotFoundException : "+e);
         }
         catch (IOException e)
         {
-            System.err.println("Erreur lecture ! ? [" + e + "]");
+            System.out.println("Erreur IOException : "+e);
         }
         catch (ClassNotFoundException e)
         {
-            System.err.println("Erreur ! Classe non trouvée [" + e + "]");
+            System.out.println("Erreur ClassNotFoundException : "+e);
         }
         return VecTrav;
     }

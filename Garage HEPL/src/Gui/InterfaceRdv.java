@@ -278,7 +278,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
             unEntretien.setRemarque(TA_Instructions.getText());
             unEntretien.setVoiture(voiture);
             ((InterfaceApplication)getParent()).ajoutLinkedList(unEntretien);
-            Entretien.enregistrer(oos, unEntretien);
+            //Entretien.enregistrer(oos, unEntretien);
         }
         else
         {
@@ -286,7 +286,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
             uneReparation.setRemarque(TA_Instructions.getText());
             uneReparation.setVoiture(voiture);
             ((InterfaceApplication)getParent()).ajoutLinkedList(uneReparation);
-            Reparation.enregistrer(oos,uneReparation);
+            //Reparation.enregistrer(oos,uneReparation);
         }
         
         ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();
