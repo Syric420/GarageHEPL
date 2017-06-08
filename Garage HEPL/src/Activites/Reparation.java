@@ -15,24 +15,7 @@ import java.io.ObjectOutputStream;
  */
 public class Reparation extends Travail
 {
-    public static void enregistrer(ObjectOutputStream oos,Reparation T)
-{
-    try
-    {
-        oos.writeInt(1);
-        oos.writeObject(T);
-        oos.flush();
 
-    }
-    catch (FileNotFoundException e)
-    {
-        System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
-    }
-    catch (IOException e)
-    {
-        System.err.println("Erreur ecriture ! ? [" + e + "]");
-    }
-}
     
     
 }

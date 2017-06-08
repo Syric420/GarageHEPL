@@ -37,13 +37,17 @@ public class InterfaceRdv extends javax.swing.JDialog {
         
         super(parent, modal);
         initComponents();
+        
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
-        try
+        String cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+        
+         try
         {
             fos=new FileOutputStream(cheminFichier);
             oos = new ObjectOutputStream(fos);
+           
+          
         }
         catch (FileNotFoundException e)
         {
@@ -53,7 +57,6 @@ public class InterfaceRdv extends javax.swing.JDialog {
         {
             System.err.println("Erreur ! ? [" + e + "]");
         }
-        Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux,oos);
         
         dmcbTravailEntretien.addElement("Entretien annuel");
         dmcbTravailEntretien.addElement("Entretien 40000");
@@ -275,7 +278,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
             unEntretien.setRemarque(TA_Instructions.getText());
             unEntretien.setVoiture(voiture);
             ((InterfaceApplication)getParent()).ajoutLinkedList(unEntretien);
-            Entretien.enregistrer(oos, unEntretien);
+            //Entretien.enregistrer(oos, unEntretien);
         }
         else
         {
@@ -283,7 +286,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
             uneReparation.setRemarque(TA_Instructions.getText());
             uneReparation.setVoiture(voiture);
             ((InterfaceApplication)getParent()).ajoutLinkedList(uneReparation);
-            Reparation.enregistrer(oos,uneReparation);
+            //Reparation.enregistrer(oos,uneReparation);
         }
         
         ((InterfaceApplication)getParent()).PeC.ajouterLigneTable();

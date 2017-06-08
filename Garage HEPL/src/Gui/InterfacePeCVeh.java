@@ -32,14 +32,14 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     /**
      * Creates new form InterfacePeCVeh
      */
-    String cheminFichier;
+    //String cheminFichier;
     public InterfacePeCVeh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        String user = System.getProperty("user.dir");
+        /*String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";
+        //cheminFichier = user+separator+"Serialize"+separator+"Travaux.data";*/
         
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
@@ -219,136 +219,131 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
     }
     
     private void jBuOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuOkActionPerformed
-        int line;
-        boolean ok=false;
-        DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
-        Reparation r = new Reparation();
-        Entretien e = new Entretien();
-        Voiture voiture = new Voiture();
-        TypeVoiture type = new TypeVoiture();
-        
-        String user = System.getProperty("user.dir");
-        String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
-        FileOutputStream fos;
-        
-        
-        line=jTable1.getSelectedRow();
-        if((((InterfaceApplication)getParent()).Travaux.get(line).getClass().getName().equals("Activites.Entretien")))
-        {
-            e=(Entretien)((InterfaceApplication)getParent()).Travaux.get(line);
-            if(jRaBuSol.isSelected())
-            {
-                e.setPontTravail("Sol");
-                if(((InterfaceApplication)getParent()).isAvailable(e.getPontTravail()))
-                {
-                    ok=true;
-                }
-                else
-                    {
-                        ok=false;
-                        JOptionPane.showMessageDialog( this,"Le sol n'est pas disponible", "Attention", JOptionPane.INFORMATION_MESSAGE);
-                    }
-            }
-
-            else
-                if(jRaBuPont.isSelected())
-                {
-                    e.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
-                    if(((InterfaceApplication)getParent()).isAvailable(e.getPontTravail()))
-                        ok=true;
-                    else
-                    {
-                        ok=false;
-                        JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
-                    }
-
-                }
-
-                else
-                {
-                    ok=false;
-                    JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
-                }
-            if(ok)
-            {
-                ((InterfaceApplication)getParent()).TravailEnCours.add(e);
-
-                ((InterfaceApplication)getParent()).End.ajoutListe(e);
-                ((InterfaceApplication)getParent()).AfficheTF(e.getPontTravail(), e);
-                dtm.removeRow(line);
-                ((InterfaceApplication)getParent()).Travaux.remove(line);
-                ((InterfaceApplication)getParent()).ViderFichier(cheminFichier);
-                try {
-                    fos = new FileOutputStream(cheminFichier);
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux, ((InterfaceApplication)getParent()).Rdv.oos);
-                    Entretien.enregistrer(oos, e);
-                } catch (IOException ex) {
-                    Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                jTable1.setModel(dtm);
-                this.setVisible(false);
-            }
-        }
-        else
-        {
-            r=(Reparation)((InterfaceApplication)getParent()).Travaux.get(line);
+        FileOutputStream fos = null;
+        try {
+            int line;
+            boolean ok=false;
+            DefaultTableModel dtm = (DefaultTableModel)this.jTable1.getModel();
+            Reparation r = new Reparation();
+            Entretien e = new Entretien();
+            Voiture voiture = new Voiture();
+            TypeVoiture type = new TypeVoiture();
+            String user = System.getProperty("user.dir");
+            String separator = System.getProperty("file.separator");
+            String cheminFichier = user+separator+"Serialize"+separator+"TravauxEnCours.data";
+            fos = new FileOutputStream(cheminFichier);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
             
-            if(jRaBuSol.isSelected())
+            line=jTable1.getSelectedRow();
+            if((((InterfaceApplication)getParent()).Travaux.get(line).getClass().getName().equals("Activites.Entretien")))
             {
-                r.setPontTravail("Sol");
-                if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
+                e=(Entretien)((InterfaceApplication)getParent()).Travaux.get(line);
+                if(jRaBuSol.isSelected())
                 {
-                    ok=true;
-                }
-                else
+                    e.setPontTravail("Sol");
+                    if(((InterfaceApplication)getParent()).isAvailable(e.getPontTravail()))
+                    {
+                        ok=true;
+                    }
+                    else
                     {
                         ok=false;
                         JOptionPane.showMessageDialog( this,"Le sol n'est pas disponible", "Attention", JOptionPane.INFORMATION_MESSAGE);
                     }
-            }
-
-            else
-                if(jRaBuPont.isSelected())
-                {
-                    r.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
-                    if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
-                        ok=true;
-                    else
-                    {
-                        ok=false;
-                        JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
-                    }
-
                 }
 
                 else
+                    if(jRaBuPont.isSelected())
+                    {
+                        e.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
+                        if(((InterfaceApplication)getParent()).isAvailable(e.getPontTravail()))
+                            ok=true;
+                        else
+                        {
+                            ok=false;
+                            JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        
+                    }
+                    
+                    else
+                    {
+                        ok=false;
+                        JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                if(ok)
                 {
-                    ok=false;
-                    JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                    ((InterfaceApplication)getParent()).TravailEnCours.add(e);
+                    
+                    ((InterfaceApplication)getParent()).End.ajoutListe(e);
+                    ((InterfaceApplication)getParent()).AfficheTF(e);
+                    dtm.removeRow(line);
+                    ((InterfaceApplication)getParent()).Travaux.remove(line);
+                    ((InterfaceApplication)getParent()).ViderFichier(cheminFichier);
+                    //Entretien.enregistrer(oos, e);
+                    Travail.enregistrerVec(((InterfaceApplication)getParent()).TravailEnCours, 1);
+                    jTable1.setModel(dtm);
+                    this.setVisible(false);
                 }
-            if(ok)
-            {
-                ((InterfaceApplication)getParent()).TravailEnCours.add(r);
-
-                ((InterfaceApplication)getParent()).End.ajoutListe(r);
-                ((InterfaceApplication)getParent()).AfficheTF(r.getPontTravail(), r);
-                dtm.removeRow(line);
-                ((InterfaceApplication)getParent()).Travaux.remove(line);
-                ((InterfaceApplication)getParent()).ViderFichier(cheminFichier);
-                try {
-                    fos = new FileOutputStream(cheminFichier);
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    Travail.enregistrerLL(((InterfaceApplication)getParent()).Travaux, ((InterfaceApplication)getParent()).Rdv.oos);
-                    Reparation.enregistrer(oos, r);
-                } catch (IOException ex) {
-                    Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                jTable1.setModel(dtm);
-                this.setVisible(false);
             }
-        }
+            else
+            {
+                r=(Reparation)((InterfaceApplication)getParent()).Travaux.get(line);
+                
+                if(jRaBuSol.isSelected())
+                {
+                    r.setPontTravail("Sol");
+                    if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
+                    {
+                        ok=true;
+                    }
+                    else
+                    {
+                        ok=false;
+                        JOptionPane.showMessageDialog( this,"Le sol n'est pas disponible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+
+                else
+                    if(jRaBuPont.isSelected())
+                    {
+                        r.setPontTravail("Pont " + jComboBoxPont.getSelectedItem().toString());
+                        if(((InterfaceApplication)getParent()).isAvailable(r.getPontTravail()))
+                            ok=true;
+                        else
+                        {
+                            ok=false;
+                            JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        
+                    }
+                    
+                    else
+                    {
+                        ok=false;
+                        JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                if(ok)
+                {
+                    ((InterfaceApplication)getParent()).TravailEnCours.add(r);
+                    
+                    ((InterfaceApplication)getParent()).End.ajoutListe(r);
+                    ((InterfaceApplication)getParent()).AfficheTF(r);
+                    dtm.removeRow(line);
+                    ((InterfaceApplication)getParent()).Travaux.remove(line);
+                    ((InterfaceApplication)getParent()).ViderFichier(cheminFichier);
+                    //Reparation.enregistrer(oos, r);
+                    Travail.enregistrerVec(((InterfaceApplication)getParent()).TravailEnCours, 1);
+                    jTable1.setModel(dtm);
+                    this.setVisible(false);
+                }
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfacePeCVeh.class.getName()).log(Level.SEVERE, null, ex);
+        } 
         
     }//GEN-LAST:event_jBuOkActionPerformed
 
