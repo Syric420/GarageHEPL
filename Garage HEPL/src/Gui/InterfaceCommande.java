@@ -5,6 +5,7 @@
  */
 package Gui;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import network.NetworkBasicClient;
 /**
  *
@@ -195,9 +196,13 @@ public class InterfaceCommande extends javax.swing.JDialog {
         String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
         reponse=Client.sendString(s);
         if(reponse.equals("OK"))
-            model.addElement(s); 
+        {
+            JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+             model.addElement(s); 
+        }
+           
         else
-            //pas dispo
+            JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
             ;
            
     }//GEN-LAST:event_JB_EnvoyerActionPerformed

@@ -109,9 +109,9 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
         MessageEntrant.setText("Message entrant");
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
             }
         });
 
@@ -224,21 +224,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             TFMessage.setText(message);
             AfficherJTableM(message);
             AjouterComboBox(message);
-            /*Temp=message.split("Libelle: ");
-            Temp=Temp[1].split("Quantite: ");
-            Var[0]="Libelle";
-            Var[1]=Temp[0];
-            libelle=Temp[0];
-            dtm.addRow(Var);
-            Temp=Temp[1].split("Type: ");
-            Var[0]="Quantite";
-            Var[1]=Temp[1];
-            piece=Temp[1];
-            dtm.addRow(Var);
-            Var[0]="Type";
-            Var[1]=Temp[0];
-            pneu=Temp[0];
-            dtm.addRow(Var);*/
         }
         
     }//GEN-LAST:event_jButtonLireActionPerformed
@@ -278,20 +263,18 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         
         String Temp[],Var[] = new String[2],libelle,piece,pneu;
         Temp=message.split(" ");
-        //Temp=Temp[1].split(" ");
+        
         Var[0]="Libelle";
         Var[1]=Temp[0];
-        libelle=Temp[0];
         dtm.addRow(Var);
-        Temp=Temp[1].split(" ");
+        
         Var[0]="Quantite";
-        Var[1]=Temp[1];
-        piece=Temp[1];
+        Var[1]=Temp[2];
         dtm.addRow(Var);
         Var[0]="Type";
-        Var[1]=Temp[0];
-        pneu=Temp[0];
+        Var[1]=Temp[4];
         dtm.addRow(Var);
+
     }
     private void AjouterComboBox(String message)
     {
@@ -304,6 +287,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         pneu=Temp[0];
         message=libelle + "  " + piece + "  " + pneu;
         dmcb.addElement(message);
+        jComboBox1.setSelectedIndex(jComboBox1.getItemCount()-1);
     }
     
     private void SendAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendAnswerActionPerformed
@@ -312,11 +296,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         else      
             server.sendMessage("Vincent pd");
     }//GEN-LAST:event_SendAnswerActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-         AfficherJTableCB(jComboBox1.getSelectedItem().toString());
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -327,6 +306,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         else
             NonDispo.setSelected(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        AfficherJTableCB(jComboBox1.getSelectedItem().toString());
+        
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
