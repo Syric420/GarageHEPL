@@ -58,9 +58,16 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else
                 vecClients = Client.chargerVector();
             Travaux = Travail.chargerLL();
-            TravailEnCours = Travail.charger(1);
-            TravailTermine = Travail.charger(2);
+            TravailEnCours = Travail.chargerVec(1);
+            
+            TravailTermine = Travail.chargerVec(2);
             initComponents();
+            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts
+            for(int i=0; i<TravailEnCours.size();i++)
+            {
+                System.out.println("Pont travail : "+TravailEnCours.get(i).getPontTravail());
+                AfficheTF(TravailEnCours.get(i));
+            }
             Login= new Login(this,true);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
@@ -137,8 +144,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
             System.err.println("Erreur ! ? [" + e + "]");
         }
     }
-    public void AfficheTF(String nom,Travail t)
+    public void AfficheTF(Travail t)
     {
+        String nom = t.getPontTravail();
         if(nom.equalsIgnoreCase("Pont 1"))
             JTFPont1.setText(t.toString());
         else if(nom.equalsIgnoreCase("Pont 2"))
@@ -517,6 +525,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        Travail.enregistrerVec(this.TravailEnCours, 1);
+        Travail.enregistrerVec(this.TravailTermine, 2);
+        Travail.enregistrerLL(Travaux);
         Personne.enregistrerVector(Login.vecUtilisateurs);
         Client.enregistrerVector(vecClients);
         System.exit(0);
