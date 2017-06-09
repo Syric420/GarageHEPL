@@ -64,10 +64,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             initComponents();
             //Une fois chargés les travaux en cours doivent être remis sur les différents ponts
             for(int i=0; i<TravailEnCours.size();i++)
-            {
-                System.out.println("Pont travail : "+TravailEnCours.get(i).getPontTravail());
                 AfficheTF(TravailEnCours.get(i));
-            }
             Login= new Login(this,true);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
