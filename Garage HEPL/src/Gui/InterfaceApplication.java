@@ -5,6 +5,7 @@
  */
 package Gui;
 import Activites.Travail;
+import Date.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -37,6 +38,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceRdv Rdv;
     InterfaceTermine End;
     InterfaceNewClient intNewClient;
+    InterfaceDate intDate;
 
     /**
      * Creates new form InterfaceApplication
@@ -62,12 +64,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
             
             TravailTermine = Travail.chargerVec(2);
             initComponents();
-            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts
+            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts dans les textbox
             for(int i=0; i<TravailEnCours.size();i++)
-            {
-                System.out.println("Pont travail : "+TravailEnCours.get(i).getPontTravail());
                 AfficheTF(TravailEnCours.get(i));
-            }
             Login= new Login(this,true);
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
@@ -76,16 +75,10 @@ public class InterfaceApplication extends javax.swing.JFrame {
             Pneus = new InterfaceCommande(this,true,2);
             Lubrifiant = new InterfaceCommande(this,true,3);
             intNewClient = new InterfaceNewClient(this, true);
+            intDate = new InterfaceDate(this,true);
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
             PeC.ajouterVecTable();
-            String maDate;
-            Date date = new Date();
-            DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-            TimeZone cetTime = TimeZone.getTimeZone("CET");
-            df.setTimeZone(cetTime);
-            maDate = df.format(date);
-            jLabelDate.setText(maDate);
         }
         catch (IOException ex)
         {
@@ -167,6 +160,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else if(nom.equalsIgnoreCase("Sol"))
                 JTFSol.setText("");
     }
+    
+    public void afficheDate(String laDate)
+    {
+        jLabelDate.setText(laDate);
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -210,6 +208,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenuInfoSysteme = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuAide = new javax.swing.JMenu();
         jMenuPourDebuter = new javax.swing.JMenuItem();
         jMenuAProposDe = new javax.swing.JMenuItem();
@@ -368,6 +367,14 @@ public class InterfaceApplication extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuInfoSysteme);
+
+        jMenuItem3.setText("Format date");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem3);
 
         jMenuBar1.add(jMenu6);
 
@@ -548,6 +555,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Lubrifiant.setVisible(true);
     }//GEN-LAST:event_jMenuLubActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        intDate.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     
     public void ajoutLinkedList(Travail unTrav)
     {
@@ -628,6 +640,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuInfoSysteme;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuListeCommandes;
     private javax.swing.JMenuItem jMenuListes;
     private javax.swing.JMenuItem jMenuLub;
