@@ -5,6 +5,7 @@
  */
 package Date;
 
+import Gui.InterfaceApplication;
 import javax.swing.*;
 
 /**
@@ -16,17 +17,22 @@ public class InterfaceDate extends javax.swing.JDialog {
     /**
      * Creates new form FormatDate
      */
+    DefaultComboBoxModel dcbmPays = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmDate = new DefaultComboBoxModel();
+    DefaultComboBoxModel dcbmTemps = new DefaultComboBoxModel();
+    ThreadDate thread;
     public InterfaceDate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        DefaultComboBoxModel dcbmPays = new DefaultComboBoxModel();
-        DefaultComboBoxModel dcbmDate = new DefaultComboBoxModel();
-        DefaultComboBoxModel dcbmTemps = new DefaultComboBoxModel();
+        
         dcbmPays.addElement("France");dcbmPays.addElement("Royaume Uni");dcbmPays.addElement("Allemagne");dcbmPays.addElement("Italie");dcbmPays.addElement("U.S.A.");CB_Pays.setModel(dcbmPays);
         dcbmDate.addElement("Full");dcbmDate.addElement("Long");dcbmDate.addElement("Medium");dcbmDate.addElement("Short");CB_FormatDate.setModel(dcbmDate);
-        dcbmTemps.addElement("CET");dcbmTemps.addElement("WET");dcbmTemps.addElement("EET");dcbmTemps.addElement("PST");dcbmTemps.addElement("CST");dcbmTemps.addElement("EST");CB_FormatTemps.setModel(dcbmTemps);
+        dcbmTemps.addElement("Full");dcbmTemps.addElement("Long");dcbmTemps.addElement("Medium");dcbmTemps.addElement("Short");CB_FormatTemps.setModel(dcbmTemps);
+        //System.out.println(dcbmPays.getSelectedItem().toString() + " " + dcbmDate.getSelectedItem().toString()+" "+dcbmTemps.getSelectedItem().toString());
+        thread = new ThreadDate(dcbmPays.getSelectedItem().toString(), dcbmDate.getSelectedItem().toString(), dcbmTemps.getSelectedItem().toString());
         
-        
+        thread.setIA(((InterfaceApplication)getParent()));
+        thread.start();
     }
 
     /**
@@ -48,6 +54,7 @@ public class InterfaceDate extends javax.swing.JDialog {
         JB_Quitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Date");
         setModal(true);
         setResizable(false);
 
@@ -64,6 +71,11 @@ public class InterfaceDate extends javax.swing.JDialog {
         CB_FormatTemps.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         JB_Enregistrer.setText("Enregistrer");
+        JB_Enregistrer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_EnregistrerActionPerformed(evt);
+            }
+        });
 
         JB_Quitter.setText("Quitter");
         JB_Quitter.addActionListener(new java.awt.event.ActionListener() {
@@ -79,27 +91,17 @@ public class InterfaceDate extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CB_FormatTemps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(85, 85, 85))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(23, 23, 23)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CB_FormatDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(CB_Pays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(JB_Enregistrer)
-                        .addGap(18, 18, 18)
-                        .addComponent(JB_Quitter)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(JB_Enregistrer)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JB_Quitter)
+                    .addComponent(CB_FormatTemps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_Pays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_FormatDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +114,7 @@ public class InterfaceDate extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(CB_FormatDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(CB_FormatTemps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,7 +122,7 @@ public class InterfaceDate extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Enregistrer)
                     .addComponent(JB_Quitter))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,11 +133,18 @@ public class InterfaceDate extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_JB_QuitterActionPerformed
 
+    private void JB_EnregistrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnregistrerActionPerformed
+        // TODO add your handling code here:
+        thread.setPays(dcbmPays.getSelectedItem().toString());
+        thread.setFormatDate(dcbmDate.getSelectedItem().toString());
+        thread.setFormatTemps(dcbmTemps.getSelectedItem().toString());
+    }//GEN-LAST:event_JB_EnregistrerActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Nimbus look nd feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 

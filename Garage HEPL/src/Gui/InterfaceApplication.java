@@ -5,7 +5,7 @@
  */
 package Gui;
 import Activites.Travail;
-import Date.InterfaceDate;
+import Date.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -64,7 +64,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
             
             TravailTermine = Travail.chargerVec(2);
             initComponents();
-            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts
+            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts dans les textbox
             for(int i=0; i<TravailEnCours.size();i++)
                 AfficheTF(TravailEnCours.get(i));
             Login= new Login(this,true);
@@ -79,13 +79,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
             PeC.ajouterVecTable();
-            String maDate;
-            Date date = new Date();
-            DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-            TimeZone cetTime = TimeZone.getTimeZone("CET");
-            df.setTimeZone(cetTime);
-            maDate = df.format(date);
-            jLabelDate.setText(maDate);
         }
         catch (IOException ex)
         {
@@ -166,6 +159,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
                     JTFPont3.setText("");
             else if(nom.equalsIgnoreCase("Sol"))
                 JTFSol.setText("");
+    }
+    
+    public void afficheDate(String laDate)
+    {
+        jLabelDate.setText(laDate);
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -559,6 +557,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
+        intDate.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     
