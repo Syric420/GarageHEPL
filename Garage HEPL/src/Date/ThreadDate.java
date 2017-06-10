@@ -5,97 +5,154 @@
  */
 package Date;
 
+import Gui.InterfaceApplication;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Vince
  */
 public class ThreadDate extends Thread {
-    private String Pays;
-    private String FormatDate;
-    private String FormatTemps;
-    private String StringDate;
+    private InterfaceApplication IA;
+    private int FormatDate;
+    private Locale Pays;
+    private int FormatTemps;
 
-    public ThreadDate(String Pays, String FormatDate, String FormatTemps) {
-        this.Pays = Pays;
-        this.FormatDate = FormatDate;
-        this.FormatTemps = FormatTemps;
+    public ThreadDate(String p, String fd, String ft) {
+        setPays(p);
+        setFormatDate(fd);
+        setFormatTemps(ft);
     }
 
+    @Override
+    public String toString() {
+        String StringDate;
+        StringDate = DateFormat.getDateTimeInstance(FormatDate, FormatTemps, Pays).format(new Date());
+        return StringDate;
+    }
     
-    public void createStringDate()
+    
+    
+    @Override
+    public void run()
     {
-        switch(FormatDate)
+        while(true)
         {
-            case "Full":
-                break;
-            case "Long":
-                break;
-            case "Medium":
-                break;
-            case "Short":
-                break;
-            
+            try {
+                Thread.sleep(1000);
+                getIA().afficheDate(this.toString());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThreadDate.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        //DateFormat df = DateFormat.getDateTimeInstance(DateFormat.FULL, MIN_PRIORITY)
+        
     }
 
     /**
      * @return the Pays
      */
-    public String getPays() {
+    public Locale getPays() {
         return Pays;
-    }
-
-    /**
-     * @param Pays the Pays to set
-     */
-    public void setPays(String Pays) {
-        this.Pays = Pays;
     }
 
     /**
      * @return the FormatDate
      */
-    public String getFormatDate() {
+    public int getFormatDate() {
         return FormatDate;
-    }
-
-    /**
-     * @param FormatDate the FormatDate to set
-     */
-    public void setFormatDate(String FormatDate) {
-        this.FormatDate = FormatDate;
     }
 
     /**
      * @return the FormatTemps
      */
-    public String getFormatTemps() {
+    public int getFormatTemps() {
         return FormatTemps;
     }
 
     /**
-     * @param FormatTemps the FormatTemps to set
+     * @return the IA
      */
-    public void setFormatTemps(String FormatTemps) {
-        this.FormatTemps = FormatTemps;
+    public InterfaceApplication getIA() {
+        return IA;
     }
 
     /**
-     * @return the StringDate
+     * @param IA the IA to set
      */
-    public String getStringDate() {
-        return StringDate;
+    public void setIA(InterfaceApplication IA) {
+        this.IA = IA;
     }
 
-    @Override
-    public String toString() {
-        return StringDate;
+    /**
+     * @param fd
+     */
+    public void setFormatDate(String fd) {
+        //En fonction du format date
+        switch(fd)
+        {
+            case "Full":
+                FormatDate = DateFormat.FULL;
+                break;
+            case "Long":
+                FormatDate = DateFormat.LONG;
+                break;
+            case "Medium":
+                FormatDate = DateFormat.MEDIUM;
+                break;
+            case "Short":
+                FormatDate = DateFormat.SHORT;
+                break;
+        }
     }
-    
-    
+
+    /**
+     * @param p
+     */
+    public void setPays(String p) {
+        //En fonction du pays
+        switch(p)
+        {
+            case "France":
+                Pays = Locale.FRANCE;
+                break;
+            case "Royaume Uni":
+                Pays = Locale.UK;
+                break;
+            case "Allemagne":
+                Pays = Locale.GERMANY;
+                break;
+            case "Italie":
+                Pays = Locale.ITALY;
+                break;
+            case "U.S.A.":
+                Pays = Locale.US;
+                break;
+        }
+    }
+
+    /**
+     * @param ft
+     */
+    public void setFormatTemps(String ft) {
+        //En fonction du format temps
+        switch(ft)
+        {
+            case "Full":
+                FormatTemps = DateFormat.FULL;
+                break;
+            case "Long":
+                FormatTemps = DateFormat.LONG;
+                break;
+            case "Medium":
+                FormatTemps = DateFormat.MEDIUM;
+                break;
+            case "Short":
+                FormatTemps = DateFormat.SHORT;
+                break;
+        }
+    }
 
 }
