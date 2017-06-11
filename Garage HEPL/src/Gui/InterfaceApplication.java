@@ -117,6 +117,34 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 return false;
             
     }
+    public void TraiterMessage(String message)
+    {
+        String Temp[] = new String[2],Type,ok;
+        Temp=message.split("+");
+        Type=Temp[0];
+        ok=Temp[1];
+        
+        if(Type.equals("1"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pieces.CentralActif=true;
+            else
+                Pieces.CentralActif=false;
+        }else if(Type.equals("2"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pneus.CentralActif=true;
+            else
+                Pneus.CentralActif=false;
+        }else if(Type.equals("3"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Lubrifiant.CentralActif=true;
+            else
+                Lubrifiant.CentralActif=false;
+        }
+        
+    }
     public void ViderFichier(String cheminFichier)
     {
         //ObjectOutputStream oos;

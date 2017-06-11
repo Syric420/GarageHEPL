@@ -115,11 +115,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         });
 
         MessageEntrant.setText("Message entrant");
-        MessageEntrant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MessageEntrantActionPerformed(evt);
-            }
-        });
 
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -324,7 +319,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(Dispo.isSelected())
             server.sendMessage("OK");
         else      
-            server.sendMessage("Vincent pd");
+            server.sendMessage("Not ok");
     }//GEN-LAST:event_SendAnswerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -349,12 +344,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(BuActif.getText().equals("Actif"))
         {
             BuActif.setText("Non actif");
-            Client.sendStringWithoutWaiting("Pause");
+            Client.sendStringWithoutWaiting(type + "+Pause");
         }   
         else
         {
             BuActif.setText("Actif");
-            Client.sendStringWithoutWaiting("Actif");
+            Client.sendStringWithoutWaiting(type + "+Actif");
             String message;
             message = server.getMessage();
             while(!message.equalsIgnoreCase("rien"))
@@ -366,25 +361,13 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             
     }//GEN-LAST:event_BuActifActionPerformed
 
-    private void MessageEntrantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessageEntrantActionPerformed
-        // TODO add your handling code here:
+    private void Connection()
+    {
         String message;
         message = server.getMessage();
         TFMessage.setText(message);
-        switch (type){
-                case 1:
-                    Client = new NetworkBasicClient("localhost",50011);
-                    break;
-                case 2:
-                    Client = new NetworkBasicClient("localhost",50012);
-                    break;
-                case 3:
-                    Client = new NetworkBasicClient("localhost",50013);
-                    break;
-        }
-        
-    }//GEN-LAST:event_MessageEntrantActionPerformed
-
+        Client = new NetworkBasicClient("localhost",50011);
+    }
     /**
      * @param args the command line arguments
      */
@@ -439,6 +422,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     }
                 });
                 dialog3.setVisible(true);
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                dialog1.Connection();
+                dialog2.Connection();
+                dialog3.Connection();
             }   
         });
         

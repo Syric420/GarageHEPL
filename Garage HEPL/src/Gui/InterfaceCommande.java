@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Gui;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import network.NetworkBasicClient;
@@ -18,33 +20,37 @@ public class InterfaceCommande extends javax.swing.JDialog {
      * Creates new form InterfaceCommandePieces
      */
     int type;
+    boolean CentralActif;
     NetworkBasicClient Client;
-    NetworkBasicServer server;
     DefaultListModel<String> model;
     public InterfaceCommande(java.awt.Frame parent, boolean modal,int t) {
         super(parent, modal);
         initComponents();
+        CentralActif=true;
         model = new DefaultListModel();
         jList1.setModel(model);
         type = t;
         switch (type){
                 case 1:
                     Client = new NetworkBasicClient("localhost",50001);
-                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
-                    server = new NetworkBasicServer(50011, null);
-                     break;
+                    //server = new NetworkBasicServer(50011, getCBMessDispo());
+                    break;
                 case 2:
                     Client = new NetworkBasicClient("localhost",50002);
-                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
-                    server = new NetworkBasicServer(50012, null);
+                    //server = new NetworkBasicServer(50012, getCBMessDispo());
                     break;
                 case 3:
                     Client = new NetworkBasicClient("localhost",50003);
-                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
-                    server = new NetworkBasicServer(50013, null);
+                    //server = new NetworkBasicServer(50013, getCBMessDispo());
                     break;
         }
-        
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfaceCommande.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s=new String("Connexion avec le Client ok");
+        Client.sendStringWithoutWaiting(s);
   
     }
 
@@ -160,7 +166,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,7 +191,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(JTF_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Envoyer)
                     .addComponent(JB_Annuler))
@@ -203,8 +209,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
         // TODO add your handling code here:
         //creation du message
         String message;
-        message=server.getMessage();
-        if(!message.equalsIgnoreCase("RIEN") || message.equalsIgnoreCase("Actif"))
+        if(CentralActif)
         {
             String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
             reponse=Client.sendString(s);
@@ -218,7 +223,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
                 ;
         }
-        else if(message.equalsIgnoreCase("Pause"))
+        else if(!CentralActif)
         {
                 String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText();
                 Client.sendStringWithoutWaiting(s);
