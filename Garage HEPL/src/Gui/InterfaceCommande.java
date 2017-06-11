@@ -30,18 +30,21 @@ public class InterfaceCommande extends javax.swing.JDialog {
         switch (type){
                 case 1:
                     Client = new NetworkBasicClient("localhost",50001);
+                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
                     server = new NetworkBasicServer(50011, null);
                      break;
                 case 2:
                     Client = new NetworkBasicClient("localhost",50002);
+                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
                     server = new NetworkBasicServer(50012, null);
                     break;
                 case 3:
                     Client = new NetworkBasicClient("localhost",50003);
+                    Client.sendStringWithoutWaiting("Connexion avec le Client ok");
                     server = new NetworkBasicServer(50013, null);
                     break;
         }
-        Client.sendStringWithoutWaiting("Connexion avec le Client ok");
+        
   
     }
 

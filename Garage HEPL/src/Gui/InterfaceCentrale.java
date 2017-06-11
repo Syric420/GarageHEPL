@@ -25,9 +25,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      */ 
      DefaultTableModel dtm;
      DefaultComboBoxModel dmcb;
-    public InterfaceCentrale(java.awt.Frame parent, boolean modal,int type) {
+     int type;
+    public InterfaceCentrale(java.awt.Frame parent, boolean modal,int num) {
         super(parent, modal);
         initComponents();
+        type = num;
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
@@ -50,24 +52,9 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
-        String message;
+        /*String message;
         while(!MessageEntrant.isSelected())
-        {}
-        message = server.getMessage();
-        TFMessage.setText(message);
-        switch (type){
-                case 1:
-                    Client = new NetworkBasicClient("localhost",50011);
-                    break;
-                case 2:
-                    Client = new NetworkBasicClient("localhost",50012);
-                    break;
-                case 3:
-                    Client = new NetworkBasicClient("localhost",50013);
-                    break;
-        }
-        
-        
+        {}*/
     }
 
     /**
@@ -128,6 +115,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         });
 
         MessageEntrant.setText("Message entrant");
+        MessageEntrant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MessageEntrantActionPerformed(evt);
+            }
+        });
 
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -373,6 +365,25 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         }
             
     }//GEN-LAST:event_BuActifActionPerformed
+
+    private void MessageEntrantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessageEntrantActionPerformed
+        // TODO add your handling code here:
+        String message;
+        message = server.getMessage();
+        TFMessage.setText(message);
+        switch (type){
+                case 1:
+                    Client = new NetworkBasicClient("localhost",50011);
+                    break;
+                case 2:
+                    Client = new NetworkBasicClient("localhost",50012);
+                    break;
+                case 3:
+                    Client = new NetworkBasicClient("localhost",50013);
+                    break;
+        }
+        
+    }//GEN-LAST:event_MessageEntrantActionPerformed
 
     /**
      * @param args the command line arguments
