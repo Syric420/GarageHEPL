@@ -117,6 +117,34 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 return false;
             
     }
+    public void TraiterMessage(String message)
+    {
+        String Temp[] = new String[2],Type,ok;
+        Temp=message.split("+");
+        Type=Temp[0];
+        ok=Temp[1];
+        
+        if(Type.equals("1"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pieces.CentralActif=true;
+            else
+                Pieces.CentralActif=false;
+        }else if(Type.equals("2"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pneus.CentralActif=true;
+            else
+                Pneus.CentralActif=false;
+        }else if(Type.equals("3"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Lubrifiant.CentralActif=true;
+            else
+                Lubrifiant.CentralActif=false;
+        }
+        
+    }
     public void ViderFichier(String cheminFichier)
     {
         //ObjectOutputStream oos;
@@ -542,17 +570,25 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPieceActionPerformed
         // TODO add your handling code here:
-        Pieces.setVisible(true);  
+        if(Login.allowed)
+            Pieces.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPieceActionPerformed
 
     private void jMenuPneusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPneusActionPerformed
-
-        Pneus.setVisible(true);
+        if(Login.allowed)
+            Pneus.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPneusActionPerformed
 
     private void jMenuLubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLubActionPerformed
-       
-        Lubrifiant.setVisible(true);
+        if(Login.allowed)
+            Lubrifiant.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jMenuLubActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

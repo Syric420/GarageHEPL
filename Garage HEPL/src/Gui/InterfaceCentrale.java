@@ -5,6 +5,8 @@
  */
 package Gui;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import network.NetworkBasicServer;
@@ -17,14 +19,17 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
     
      NetworkBasicServer server;
+     NetworkBasicClient Client;
     /**
      * Creates new form InterfaceCentrale
      */ 
      DefaultTableModel dtm;
      DefaultComboBoxModel dmcb;
-    public InterfaceCentrale(java.awt.Frame parent, boolean modal,int type) {
+     int type;
+    public InterfaceCentrale(java.awt.Frame parent, boolean modal,int num) {
         super(parent, modal);
         initComponents();
+        type = num;
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
@@ -37,7 +42,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 case 1:
                     jTextArea1.setText("Pièces");
                     server = new NetworkBasicServer(50001, getCBMessDispo());
-                     break;
+                    break;
                 case 2:
                     server = new NetworkBasicServer(50002, getCBMessDispo());
                     jTextArea1.setText("Pneus");
@@ -47,8 +52,9 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
-        
-        
+        /*String message;
+        while(!MessageEntrant.isSelected())
+        {}*/
     }
 
     /**
@@ -75,6 +81,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        BuActif = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,6 +152,13 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             }
         });
 
+        BuActif.setText("Actif");
+        BuActif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuActifActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +168,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(79, 79, 79)
@@ -176,7 +189,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(42, 42, 42)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BuActif)
+                        .addGap(145, 145, 145))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SendAnswer)
@@ -197,8 +215,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BuActif)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -221,12 +242,16 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         message = server.getMessage();
         if(!message.equalsIgnoreCase("RIEN"))
         {
-            TFMessage.setText(message);
-            AfficherJTableM(message);
-            AjouterComboBox(message);
+            LireMessage(message);
         }
         
     }//GEN-LAST:event_jButtonLireActionPerformed
+    private void LireMessage(String message)
+    {
+        TFMessage.setText(message);
+        AfficherJTableM(message);
+        AjouterComboBox(message);
+    }
     private void AfficherJTableM(String message)
     {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -294,7 +319,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(Dispo.isSelected())
             server.sendMessage("OK");
         else      
-            server.sendMessage("Vincent pd");
+            server.sendMessage("Not ok");
     }//GEN-LAST:event_SendAnswerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -313,6 +338,36 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    private void BuActifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuActifActionPerformed
+        // TODO add your handling code here:
+        
+        if(BuActif.getText().equals("Actif"))
+        {
+            BuActif.setText("Non actif");
+            Client.sendStringWithoutWaiting(type + "+Pause");
+        }   
+        else
+        {
+            BuActif.setText("Actif");
+            Client.sendStringWithoutWaiting(type + "+Actif");
+            String message;
+            message = server.getMessage();
+            while(!message.equalsIgnoreCase("rien"))
+            {
+                LireMessage(message);
+                message = server.getMessage();
+            }
+        }
+            
+    }//GEN-LAST:event_BuActifActionPerformed
+
+    private void Connection()
+    {
+        String message;
+        message = server.getMessage();
+        TFMessage.setText(message);
+        Client = new NetworkBasicClient("localhost",50011);
+    }
     /**
      * @param args the command line arguments
      */
@@ -367,7 +422,15 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     }
                 });
                 dialog3.setVisible(true);
-            }
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                dialog1.Connection();
+                dialog2.Connection();
+                dialog3.Connection();
+            }   
         });
         
     }
@@ -375,6 +438,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             return MessageEntrant;
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BuActif;
     private javax.swing.JRadioButton Dispo;
     private javax.swing.JCheckBox MessageEntrant;
     private javax.swing.JRadioButton NonDispo;
