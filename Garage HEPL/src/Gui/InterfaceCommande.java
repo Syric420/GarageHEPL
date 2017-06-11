@@ -7,6 +7,7 @@ package Gui;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import network.NetworkBasicClient;
+import network.NetworkBasicServer;
 /**
  *
  * @author Vince
@@ -18,6 +19,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
      */
     int type;
     NetworkBasicClient Client;
+    NetworkBasicServer server;
     DefaultListModel<String> model;
     public InterfaceCommande(java.awt.Frame parent, boolean modal,int t) {
         super(parent, modal);
@@ -28,12 +30,15 @@ public class InterfaceCommande extends javax.swing.JDialog {
         switch (type){
                 case 1:
                     Client = new NetworkBasicClient("localhost",50001);
+                    server = new NetworkBasicServer(50011, null);
                      break;
                 case 2:
                     Client = new NetworkBasicClient("localhost",50002);
+                    server = new NetworkBasicServer(50012, null);
                     break;
                 case 3:
                     Client = new NetworkBasicClient("localhost",50003);
+                    server = new NetworkBasicServer(50013, null);
                     break;
         }
   
@@ -193,17 +198,27 @@ public class InterfaceCommande extends javax.swing.JDialog {
     private void JB_EnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnvoyerActionPerformed
         // TODO add your handling code here:
         //creation du message
-        String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
-        reponse=Client.sendString(s);
-        if(reponse.equals("OK"))
+        String message;
+        message=server.getMessage();
+        if(!message.equalsIgnoreCase("RIEN") || message.equalsIgnoreCase("Actif"))
         {
-            JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
-             model.addElement(s); 
+            String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
+            reponse=Client.sendString(s);
+            if(reponse.equals("OK"))
+            {
+                JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                 model.addElement(s); 
+            }
+
+            else
+                JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                ;
         }
-           
-        else
-            JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
-            ;
+        else if(message.equalsIgnoreCase("Pause"))
+        {
+                String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText();
+                Client.sendStringWithoutWaiting(s);
+        }
            
     }//GEN-LAST:event_JB_EnvoyerActionPerformed
 

@@ -17,6 +17,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
     
      NetworkBasicServer server;
+     NetworkBasicClient Client;
     /**
      * Creates new form InterfaceCentrale
      */ 
@@ -37,13 +38,16 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 case 1:
                     jTextArea1.setText("Pièces");
                     server = new NetworkBasicServer(50001, getCBMessDispo());
+                    Client = new NetworkBasicClient("localhost",50011);
                      break;
                 case 2:
                     server = new NetworkBasicServer(50002, getCBMessDispo());
+                    Client = new NetworkBasicClient("localhost",50012);
                     jTextArea1.setText("Pneus");
                     break;
                 case 3:
                     server = new NetworkBasicServer(50003, getCBMessDispo());
+                    Client = new NetworkBasicClient("localhost",50013);
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
@@ -75,6 +79,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        BuActif = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,6 +150,13 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             }
         });
 
+        BuActif.setText("Actif");
+        BuActif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuActifActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,7 +166,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(79, 79, 79)
@@ -176,7 +187,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(42, 42, 42)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BuActif)
+                        .addGap(145, 145, 145))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SendAnswer)
@@ -197,8 +213,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addComponent(TFMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BuActif)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -313,6 +332,22 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
+    private void BuActifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuActifActionPerformed
+        // TODO add your handling code here:
+        
+        if(BuActif.getText().equals("Actif"))
+        {
+            BuActif.setText("Non actif");
+            Client.sendStringWithoutWaiting("Pause");
+        }   
+        else
+        {
+            BuActif.setText("Actif");
+            Client.sendStringWithoutWaiting("Actif");
+        }
+            
+    }//GEN-LAST:event_BuActifActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -375,6 +410,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             return MessageEntrant;
         }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BuActif;
     private javax.swing.JRadioButton Dispo;
     private javax.swing.JCheckBox MessageEntrant;
     private javax.swing.JRadioButton NonDispo;
