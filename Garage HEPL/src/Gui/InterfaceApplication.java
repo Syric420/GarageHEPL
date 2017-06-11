@@ -542,17 +542,25 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPieceActionPerformed
         // TODO add your handling code here:
-        Pieces.setVisible(true);  
+        if(Login.allowed)
+            Pieces.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPieceActionPerformed
 
     private void jMenuPneusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPneusActionPerformed
-
-        Pneus.setVisible(true);
+        if(Login.allowed)
+            Pneus.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPneusActionPerformed
 
     private void jMenuLubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLubActionPerformed
-       
-        Lubrifiant.setVisible(true);
+        if(Login.allowed)
+            Lubrifiant.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jMenuLubActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

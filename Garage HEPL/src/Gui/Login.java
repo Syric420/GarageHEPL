@@ -24,11 +24,12 @@ public class Login extends java.awt.Dialog {
      * Creates new form Login
      */
     private String role;
+    boolean allowed;
     Vector vecUtilisateurs = new Vector();
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+        allowed = false;
         Mecanicien [] tabMecanicien = {
             new Mecanicien("Jean", "Albert", "Rue des prés 15", "0474142536", "Mec201", "Pneus", "Jeanjean"),
             new Mecanicien("Cavas", "Philippe", "Rue de Stockis", "04742578", "Mec202", "Portes", "CavaCava"),
@@ -196,11 +197,13 @@ public class Login extends java.awt.Dialog {
                             //C'est un extérieur habilité mais qu'il a coché la mauvaise case
                             if(jMembreButton.isSelected())
                                 JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                            allowed = false;
                         }
                         else
                         {
                             if(jExterieurButton.isSelected())
                                 JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                            allowed = true;
                         }
                             
                         this.dispose();
