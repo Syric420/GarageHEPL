@@ -41,6 +41,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
                     server = new NetworkBasicServer(50013, null);
                     break;
         }
+        Client.sendStringWithoutWaiting("Connexion avec le Client ok");
   
     }
 

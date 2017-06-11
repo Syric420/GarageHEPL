@@ -5,6 +5,8 @@
  */
 package Gui;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import network.NetworkBasicServer;
@@ -38,17 +40,30 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 case 1:
                     jTextArea1.setText("Pièces");
                     server = new NetworkBasicServer(50001, getCBMessDispo());
-                    Client = new NetworkBasicClient("localhost",50011);
-                     break;
+                    break;
                 case 2:
                     server = new NetworkBasicServer(50002, getCBMessDispo());
-                    Client = new NetworkBasicClient("localhost",50012);
                     jTextArea1.setText("Pneus");
                     break;
                 case 3:
                     server = new NetworkBasicServer(50003, getCBMessDispo());
-                    Client = new NetworkBasicClient("localhost",50013);
                     jTextArea1.setText("Lubrifiants");
+                    break;
+        }
+        String message;
+        while(!MessageEntrant.isSelected())
+        {}
+        message = server.getMessage();
+        TFMessage.setText(message);
+        switch (type){
+                case 1:
+                    Client = new NetworkBasicClient("localhost",50011);
+                    break;
+                case 2:
+                    Client = new NetworkBasicClient("localhost",50012);
+                    break;
+                case 3:
+                    Client = new NetworkBasicClient("localhost",50013);
                     break;
         }
         
@@ -413,7 +428,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     }
                 });
                 dialog3.setVisible(true);
-            }
+            }   
         });
         
     }
