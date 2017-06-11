@@ -240,12 +240,16 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         message = server.getMessage();
         if(!message.equalsIgnoreCase("RIEN"))
         {
-            TFMessage.setText(message);
-            AfficherJTableM(message);
-            AjouterComboBox(message);
+            LireMessage(message);
         }
         
     }//GEN-LAST:event_jButtonLireActionPerformed
+    private void LireMessage(String message)
+    {
+        TFMessage.setText(message);
+        AfficherJTableM(message);
+        AjouterComboBox(message);
+    }
     private void AfficherJTableM(String message)
     {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -344,6 +348,13 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         {
             BuActif.setText("Actif");
             Client.sendStringWithoutWaiting("Actif");
+            String message;
+            message = server.getMessage();
+            while(!message.equalsIgnoreCase("rien"))
+            {
+                LireMessage(message);
+                message = server.getMessage();
+            }
         }
             
     }//GEN-LAST:event_BuActifActionPerformed
