@@ -17,19 +17,20 @@ import network.NetworkBasicServer;
  */
 public class ThreadCentraleDonnee extends Thread {
     NetworkBasicServer server;
-    private javax.swing.JCheckBox MessageEntrant;
+   // private javax.swing.JCheckBox MessageEntrant;
     private InterfaceApplication IA;
-    public ThreadCentraleDonnee() {
-        MessageEntrant = new javax.swing.JCheckBox();
-        server = new NetworkBasicServer(50011, getCBMessDispo());
+    public ThreadCentraleDonnee(int port) {
+        //MessageEntrant = new javax.swing.JCheckBox();
+        server = new NetworkBasicServer(port, null);
     }
     
-        public javax.swing.JCheckBox getCBMessDispo() {
+        /*public javax.swing.JCheckBox getCBMessDispo() {
             return MessageEntrant;
-        }
+        }*/
     @Override
     public void run()
     {
+        String message;
         while(true)
         {
             try {
@@ -37,7 +38,7 @@ public class ThreadCentraleDonnee extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadCentraleDonnee.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String message;
+            
             message = server.getMessage();
             if(!message.equalsIgnoreCase("RIEN"))
             {
