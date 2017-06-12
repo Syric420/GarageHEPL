@@ -127,7 +127,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public void TraiterMessage(String message)
     {
         String Temp[] = new String[2],Type,ok;
-        Temp=message.split("+");
+        Temp=message.split(" ");
         Type=Temp[0];
         ok=Temp[1];
         System.out.println("Message recu: "+message);

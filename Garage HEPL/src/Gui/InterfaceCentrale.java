@@ -344,12 +344,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(BuActif.getText().equals("Actif"))
         {
             BuActif.setText("Non actif");
-            Client.sendStringWithoutWaiting(type + "+Pause");
+            System.out.println("Envoyé" + type + " Pause");
+            Client.sendStringWithoutWaiting(type + " Pause");
         }   
         else
         {
             BuActif.setText("Actif");
-            Client.sendStringWithoutWaiting(type + "+Actif");
+            System.out.println("Envoyé" + type + " Pause");
+            Client.sendStringWithoutWaiting(type + " Actif");
             String message;
             message = server.getMessage();
             while(!message.equalsIgnoreCase("rien"))
