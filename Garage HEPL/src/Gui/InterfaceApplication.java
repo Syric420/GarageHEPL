@@ -6,6 +6,7 @@
 package Gui;
 import Activites.Travail;
 import Date.*;
+import Reseau.ThreadCentraleDonnee;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,6 +40,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceTermine End;
     InterfaceNewClient intNewClient;
     InterfaceDate intDate;
+    ThreadCentraleDonnee threadCentral;
 
     /**
      * Creates new form InterfaceApplication
@@ -68,6 +70,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
             for(int i=0; i<TravailEnCours.size();i++)
                 AfficheTF(TravailEnCours.get(i));
             Login= new Login(this,true);
+            
+            threadCentral = new ThreadCentraleDonnee();
+            threadCentral.setIA(((InterfaceApplication)this));
+            threadCentral.start();
+            
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);

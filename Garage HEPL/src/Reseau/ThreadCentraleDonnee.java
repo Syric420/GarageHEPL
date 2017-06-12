@@ -45,5 +45,8 @@ public class ThreadCentraleDonnee extends Thread {
         public InterfaceApplication getIA() {
         return IA;
     }
+        public void setIA(InterfaceApplication IA) {
+        this.IA = IA;
+    }
 
 }
