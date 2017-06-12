@@ -130,7 +130,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Temp=message.split("+");
         Type=Temp[0];
         ok=Temp[1];
-        
+        System.out.println("Message recu: "+message);
         if(Type.equals("1"))
         {
             if(ok.equalsIgnoreCase("Actif"))
