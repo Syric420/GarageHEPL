@@ -6,6 +6,7 @@
 package Gui;
 import Activites.Travail;
 import Date.*;
+import Reseau.ThreadCentraleDonnee;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,6 +40,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceTermine End;
     InterfaceNewClient intNewClient;
     InterfaceDate intDate;
+    ThreadCentraleDonnee threadCentral;
 
     /**
      * Creates new form InterfaceApplication
@@ -68,6 +70,11 @@ public class InterfaceApplication extends javax.swing.JFrame {
             for(int i=0; i<TravailEnCours.size();i++)
                 AfficheTF(TravailEnCours.get(i));
             Login= new Login(this,true);
+            
+            threadCentral = new ThreadCentraleDonnee();
+            threadCentral.setIA(((InterfaceApplication)this));
+            threadCentral.start();
+            
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
             End = new InterfaceTermine(this,true);
@@ -116,6 +123,34 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else
                 return false;
             
+    }
+    public void TraiterMessage(String message)
+    {
+        String Temp[] = new String[2],Type,ok;
+        Temp=message.split("+");
+        Type=Temp[0];
+        ok=Temp[1];
+        System.out.println("Message recu: "+message);
+        if(Type.equals("1"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pieces.CentralActif=true;
+            else
+                Pieces.CentralActif=false;
+        }else if(Type.equals("2"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Pneus.CentralActif=true;
+            else
+                Pneus.CentralActif=false;
+        }else if(Type.equals("3"))
+        {
+            if(ok.equalsIgnoreCase("Actif"))
+                Lubrifiant.CentralActif=true;
+            else
+                Lubrifiant.CentralActif=false;
+        }
+        
     }
     public void ViderFichier(String cheminFichier)
     {
@@ -542,17 +577,25 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
     private void jMenuPieceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPieceActionPerformed
         // TODO add your handling code here:
-        Pieces.setVisible(true);  
+        if(Login.allowed)
+            Pieces.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPieceActionPerformed
 
     private void jMenuPneusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPneusActionPerformed
-
-        Pneus.setVisible(true);
+        if(Login.allowed)
+            Pneus.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuPneusActionPerformed
 
     private void jMenuLubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLubActionPerformed
-       
-        Lubrifiant.setVisible(true);
+        if(Login.allowed)
+            Lubrifiant.setVisible(true);
+        else
+            JOptionPane.showMessageDialog( this,"Pas d'autorisation de commander", "Attention", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jMenuLubActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package Gui;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import network.NetworkBasicClient;
+import network.NetworkBasicServer;
 /**
  *
  * @author Vince
@@ -17,25 +20,37 @@ public class InterfaceCommande extends javax.swing.JDialog {
      * Creates new form InterfaceCommandePieces
      */
     int type;
+    boolean CentralActif;
     NetworkBasicClient Client;
     DefaultListModel<String> model;
     public InterfaceCommande(java.awt.Frame parent, boolean modal,int t) {
         super(parent, modal);
         initComponents();
+        CentralActif=true;
         model = new DefaultListModel();
         jList1.setModel(model);
         type = t;
         switch (type){
                 case 1:
                     Client = new NetworkBasicClient("localhost",50001);
-                     break;
+                    //server = new NetworkBasicServer(50011, getCBMessDispo());
+                    break;
                 case 2:
                     Client = new NetworkBasicClient("localhost",50002);
+                    //server = new NetworkBasicServer(50012, getCBMessDispo());
                     break;
                 case 3:
                     Client = new NetworkBasicClient("localhost",50003);
+                    //server = new NetworkBasicServer(50013, getCBMessDispo());
                     break;
         }
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfaceCommande.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String s=new String("Connexion avec le Client ok");
+        Client.sendStringWithoutWaiting(s);
   
     }
 
@@ -151,7 +166,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -176,7 +191,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(JTF_Quantite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JB_Envoyer)
                     .addComponent(JB_Annuler))
@@ -193,17 +208,26 @@ public class InterfaceCommande extends javax.swing.JDialog {
     private void JB_EnvoyerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EnvoyerActionPerformed
         // TODO add your handling code here:
         //creation du message
-        String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
-        reponse=Client.sendString(s);
-        if(reponse.equals("OK"))
+        String message;
+        if(CentralActif)
         {
-            JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
-             model.addElement(s); 
+            String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText(),reponse;
+            reponse=Client.sendString(s);
+            if(reponse.equals("OK"))
+            {
+                JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                 model.addElement(s); 
+            }
+
+            else
+                JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                ;
         }
-           
-        else
-            JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
-            ;
+        else if(!CentralActif)
+        {
+                String s="Libelle: " + JTF_Libelle.getText() + " Quantite: " + JTF_Quantite.getText() + " Type: " +JTF_Type.getText();
+                Client.sendStringWithoutWaiting(s);
+        }
            
     }//GEN-LAST:event_JB_EnvoyerActionPerformed
 
