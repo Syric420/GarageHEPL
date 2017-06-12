@@ -19,9 +19,9 @@ public class ThreadCentraleDonnee extends Thread {
     NetworkBasicServer server;
    // private javax.swing.JCheckBox MessageEntrant;
     private InterfaceApplication IA;
-    public ThreadCentraleDonnee() {
+    public ThreadCentraleDonnee(int port) {
         //MessageEntrant = new javax.swing.JCheckBox();
-        server = new NetworkBasicServer(50011, null);
+        server = new NetworkBasicServer(port, null);
     }
     
         /*public javax.swing.JCheckBox getCBMessDispo() {
@@ -40,7 +40,6 @@ public class ThreadCentraleDonnee extends Thread {
             }
             
             message = server.getMessage();
-            System.out.println("Mesage recu thread: " + message);
             if(!message.equalsIgnoreCase("RIEN"))
             {
                 getIA().TraiterMessage(message);
