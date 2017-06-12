@@ -40,7 +40,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     InterfaceTermine End;
     InterfaceNewClient intNewClient;
     InterfaceDate intDate;
-    ThreadCentraleDonnee threadCentral;
+    ThreadCentraleDonnee threadCentralPieces;
+    ThreadCentraleDonnee threadCentralPneus;
+    ThreadCentraleDonnee threadCentralLubrifiant;
 
     /**
      * Creates new form InterfaceApplication
@@ -71,9 +73,17 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 AfficheTF(TravailEnCours.get(i));
             Login= new Login(this,true);
             
-            threadCentral = new ThreadCentraleDonnee();
-            threadCentral.setIA(((InterfaceApplication)this));
-            threadCentral.start();
+            threadCentralPieces = new ThreadCentraleDonnee(50011);
+            threadCentralPieces.setIA(((InterfaceApplication)this));
+            threadCentralPieces.start();
+            
+            threadCentralPneus = new ThreadCentraleDonnee(50012);
+            threadCentralPneus.setIA(((InterfaceApplication)this));
+            threadCentralPneus.start();
+            
+            threadCentralLubrifiant = new ThreadCentraleDonnee(50013);
+            threadCentralLubrifiant.setIA(((InterfaceApplication)this));
+            threadCentralLubrifiant.start();
             
             PeC= new InterfacePeCVeh(this, true);
             Rdv = new InterfaceRdv(this, true);
@@ -127,10 +137,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
     public void TraiterMessage(String message)
     {
         String Temp[] = new String[2],Type,ok;
-        Temp=message.split("+");
+        Temp=message.split(" ");
         Type=Temp[0];
         ok=Temp[1];
-        System.out.println("Message recu: "+message);
         if(Type.equals("1"))
         {
             if(ok.equalsIgnoreCase("Actif"))

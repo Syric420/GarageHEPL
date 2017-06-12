@@ -344,12 +344,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(BuActif.getText().equals("Actif"))
         {
             BuActif.setText("Non actif");
-            Client.sendStringWithoutWaiting(type + "+Pause");
+            System.out.println("Envoyé" + type + " Pause");
+            Client.sendStringWithoutWaiting(type + " Pause");
         }   
         else
         {
             BuActif.setText("Actif");
-            Client.sendStringWithoutWaiting(type + "+Actif");
+            System.out.println("Envoyé" + type + " Pause");
+            Client.sendStringWithoutWaiting(type + " Actif");
             String message;
             message = server.getMessage();
             while(!message.equalsIgnoreCase("rien"))
@@ -361,12 +363,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             
     }//GEN-LAST:event_BuActifActionPerformed
 
-    private void Connection()
+    private void Connection(int port)
     {
         String message;
         message = server.getMessage();
         TFMessage.setText(message);
-        Client = new NetworkBasicClient("localhost",50011);
+        Client = new NetworkBasicClient("localhost",port);
     }
     /**
      * @param args the command line arguments
@@ -428,9 +430,9 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                dialog1.Connection();
-                dialog2.Connection();
-                dialog3.Connection();
+                dialog1.Connection(50011);
+                dialog2.Connection(50012);
+                dialog3.Connection(50013);
             }   
         });
         
