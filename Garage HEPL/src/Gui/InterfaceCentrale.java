@@ -427,6 +427,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
                 dialog1.Connection();
                 dialog2.Connection();
                 dialog3.Connection();

@@ -17,12 +17,16 @@ import network.NetworkBasicServer;
  */
 public class ThreadCentraleDonnee extends Thread {
     NetworkBasicServer server;
+    private javax.swing.JCheckBox MessageEntrant;
     private InterfaceApplication IA;
     public ThreadCentraleDonnee() {
-        server = new NetworkBasicServer(50011, null);
+        MessageEntrant = new javax.swing.JCheckBox();
+        server = new NetworkBasicServer(50011, getCBMessDispo());
     }
     
-    
+        public javax.swing.JCheckBox getCBMessDispo() {
+            return MessageEntrant;
+        }
     @Override
     public void run()
     {
@@ -44,6 +48,9 @@ public class ThreadCentraleDonnee extends Thread {
     }
         public InterfaceApplication getIA() {
         return IA;
+    }
+        public void setIA(InterfaceApplication IA) {
+        this.IA = IA;
     }
 
 }
