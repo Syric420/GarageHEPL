@@ -39,7 +39,7 @@ public class ReicivingBean {
     public void run()
     {
         //setCommande("Salut");//Juste pour test
-        /*String message;
+        String message;
         message = server.getMessage();
         while(true)
         {
@@ -56,7 +56,7 @@ public class ReicivingBean {
             }
             message = server.getMessage();
             
-        }*/
+        }
         
         
     }
