@@ -94,7 +94,6 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          }
          
          ReicivingBean.addPropertyChangeListener(SearchBean);
-         ReicivingBean.run();
     }
 
     /**
@@ -403,6 +402,10 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             
     }//GEN-LAST:event_BuActifActionPerformed
 
+    private void InstantiateBean()
+    {
+        ReicivingBean.run();
+    }
     private void Connection(int port)
     {
         String message;
@@ -471,8 +474,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 }
                 
                 dialog1.Connection(50011);
+                dialog1.InstantiateBean();
                 dialog2.Connection(50012);
+                dialog2.InstantiateBean();
                 dialog3.Connection(50013);
+                dialog3.InstantiateBean();
             }   
         });
         
