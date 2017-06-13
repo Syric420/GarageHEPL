@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Gui;
+import Bean.*;
+import java.beans.Beans;
+import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +28,8 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      */ 
      DefaultTableModel dtm;
      DefaultComboBoxModel dmcb;
+     ReicivingBean ReicivingBean;
+     SearchBean SearchBean;
      int type;
     public InterfaceCentrale(java.awt.Frame parent, boolean modal,int num) {
         super(parent, modal);
@@ -52,9 +57,32 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
-        /*String message;
-        while(!MessageEntrant.isSelected())
-        {}*/
+        
+        ReicivingBean = null;
+         try {
+             ReicivingBean = (ReicivingBean) Beans.instantiate(null, "Bean.ReicivingBean");
+             
+             /*String message;
+             while(!MessageEntrant.isSelected())
+             {}*/
+         } catch (IOException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         SearchBean = null;
+         
+         try {
+             SearchBean = (SearchBean) Beans.instantiate(null, "Bean.SearchBean");
+         } catch (IOException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+         ReicivingBean.addPropertyChangeListener(SearchBean);
+         ReicivingBean.run();
     }
 
     /**
