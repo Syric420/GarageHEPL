@@ -159,7 +159,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
             else
                 Lubrifiant.CentralActif=false;
         }
-        
     }
     public void ViderFichier(String cheminFichier)
     {
