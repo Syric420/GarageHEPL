@@ -46,14 +46,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         switch (type){
                 case 1:
                     jTextArea1.setText("Pièces");
-                    server = new NetworkBasicServer(50001, getCBMessDispo());
+                    //server = new NetworkBasicServer(50001, getCBMessDispo());
                     break;
                 case 2:
-                    server = new NetworkBasicServer(50002, getCBMessDispo());
+                   // server = new NetworkBasicServer(50002, getCBMessDispo());
                     jTextArea1.setText("Pneus");
                     break;
                 case 3:
-                    server = new NetworkBasicServer(50003, getCBMessDispo());
+                    //server = new NetworkBasicServer(50003, getCBMessDispo());
                     jTextArea1.setText("Lubrifiants");
                     break;
         }
@@ -62,6 +62,18 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          try {
              ReicivingBean = (ReicivingBean) Beans.instantiate(null, "Bean.ReicivingBean");
              
+              switch (type){
+                case 1:
+                   
+                    ReicivingBean.setServer(50001,getCBMessDispo());
+                    break;
+                case 2:
+                    ReicivingBean.setServer(50002,getCBMessDispo());
+                    break;
+                case 3:
+                    ReicivingBean.setServer(50003,getCBMessDispo());
+                    break;
+              }
              /*String message;
              while(!MessageEntrant.isSelected())
              {}*/
