@@ -49,8 +49,8 @@ public class InterfaceCommande extends javax.swing.JDialog {
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfaceCommande.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String s=new String("Connexion avec le Client ok");
-        Client.sendStringWithoutWaiting(s);
+        /*String s=new String("Connexion avec le Client ok");
+        Client.sendStringWithoutWaiting(s);*/
   
     }
 

@@ -94,6 +94,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          }
          
          ReicivingBean.addPropertyChangeListener(SearchBean);
+         ReicivingBean.setIc(this);
     }
 
     /**
@@ -285,7 +286,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         }
         
     }//GEN-LAST:event_jButtonLireActionPerformed
-    private void LireMessage(String message)
+    public void LireMessage(String message)
     {
         TFMessage.setText(message);
         AfficherJTableM(message);
@@ -406,7 +407,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
     {
         ReicivingBean.run();
     }
-    private void Connection(int port)
+    public void Connection(int port)
     {
         String message;
         message = server.getMessage();
