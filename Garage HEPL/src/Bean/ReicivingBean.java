@@ -34,12 +34,11 @@ public class ReicivingBean {
     {
         server = new NetworkBasicServer(port,cb);//besoin d'une methode pour acceder a l interface centrale
         
-        
     }
     public void run()
     {
         //setCommande("Salut");//Juste pour test
-        /*String message;
+        String message;
         message = server.getMessage();
         while(true)
         {
@@ -56,7 +55,7 @@ public class ReicivingBean {
             }
             message = server.getMessage();
             
-        }*/
+        }
         
         
     }
