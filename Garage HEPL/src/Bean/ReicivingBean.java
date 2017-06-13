@@ -19,6 +19,7 @@ public class ReicivingBean {
     NetworkBasicServer server;
     protected PropertyChangeSupport GestProp = new PropertyChangeSupport(this);
     private String Commande;
+    private InterfaceCentrale Ic;
 
     public ReicivingBean() {
         Commande = null;
@@ -35,6 +36,7 @@ public class ReicivingBean {
         server = new NetworkBasicServer(port,cb);//besoin d'une methode pour acceder a l interface centrale
         
     }
+    
     public void run()
     {
         //setCommande("Salut");//Juste pour test
@@ -46,7 +48,9 @@ public class ReicivingBean {
             if(!message.equalsIgnoreCase("RIEN"))
             {
                 //send event
+                Ic.LireMessage(message);
                 setCommande(message);
+                
             }
             try {
                 Thread.sleep(1000);
@@ -84,6 +88,20 @@ public class ReicivingBean {
         String ancienneCommande = this.Commande;
         this.Commande = Commande;
         GestProp.firePropertyChange("Commande", ancienneCommande, this.Commande);
+    }
+
+    /**
+     * @return the Ic
+     */
+    public InterfaceCentrale getIc() {
+        return Ic;
+    }
+
+    /**
+     * @param Ic the Ic to set
+     */
+    public void setIc(InterfaceCentrale Ic) {
+        this.Ic = Ic;
     }
     
 }
