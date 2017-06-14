@@ -5,8 +5,10 @@
  */
 package Gui;
 import Activites.Travail;
+import Bean.FichierLog;
 import Date.*;
 import Reseau.ThreadCentraleDonnee;
+import java.beans.Beans;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,6 +34,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     Vector<Travail> TravailTermine=new Vector<Travail>();
     Vector<Client> vecClients=new Vector<Client>();
     Vector <String> temp = new Vector<String>();
+    FichierLog fl;
     InterfaceCommande Pieces;
     InterfaceCommande Pneus;
     InterfaceCommande Lubrifiant;
@@ -48,8 +51,18 @@ public class InterfaceApplication extends javax.swing.JFrame {
      * Creates new form InterfaceApplication
      */
     public InterfaceApplication() {
+        String user = System.getProperty("user.dir");
+        String separator = System.getProperty("file.separator");
+        String cheminFichier = user+separator+"Serialize"+separator+"FichierLog.txt";
         try
         {
+            
+            fl = null;
+            
+            fl = (FichierLog)Beans.instantiate(null, "Bean.FichierLog");
+            fl.setNomFichier(cheminFichier);
+            
+            
             Client tabCli[] =
             {
                 new Client("A520", "Peter", "Jordan", "Rue du Coq 5", "0485452536"),
@@ -63,10 +76,13 @@ public class InterfaceApplication extends javax.swing.JFrame {
             }
             else
                 vecClients = Client.chargerVector();
+            fl.ecritLigne("VecClients chargé");
             Travaux = Travail.chargerLL();
+            fl.ecritLigne("vecTravaux chargé");
             TravailEnCours = Travail.chargerVec(1);
-            
+            fl.ecritLigne("VecTravailEnCours chargé");
             TravailTermine = Travail.chargerVec(2);
+            fl.ecritLigne("vecTravailTerminé chargé");
             initComponents();
             //Une fois chargés les travaux en cours doivent être remis sur les différents ponts dans les textbox
             for(int i=0; i<TravailEnCours.size();i++)
@@ -96,9 +112,15 @@ public class InterfaceApplication extends javax.swing.JFrame {
             End.ajoutVector(TravailEnCours);
             Login.setVisible(true);
             PeC.ajouterVecTable();
+            
+            
+            
+            
         }
         catch (IOException ex)
         {
+            Logger.getLogger(InterfaceApplication.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(InterfaceApplication.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -136,6 +158,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
     }
     public void TraiterMessage(String message)
     {
+        fl.ecritLigne("Traiter message");
         String Temp[] = new String[2],Type,ok;
         Temp=message.split(" ");
         Type=Temp[0];
@@ -165,6 +188,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         //ObjectOutputStream oos;
         try
         {
+            fl.ecritLigne("Vider fichier : "+cheminFichier);
             Rdv.fos.close();
             Rdv.fos=null;
             Rdv.oos=null;
@@ -471,12 +495,16 @@ public class InterfaceApplication extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabelBureau))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelBureau)
+                        .addGap(11, 11, 11))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 584, Short.MAX_VALUE)
                 .addComponent(jLabelDate)
                 .addGap(57, 57, 57))
         );
@@ -580,6 +608,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Travail.enregistrerLL(Travaux);
         Personne.enregistrerVector(Login.vecUtilisateurs);
         Client.enregistrerVector(vecClients);
+        fl.ecritLigne("Enregistrement des différents vecteurs");
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 

@@ -129,7 +129,7 @@ public abstract class Personne implements Serializable, AValider
             propLogin.load (new FileInputStream (cheminFichier));
             
         }
-        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé !"); }
+        catch (FileNotFoundException e) { System.out.println("Fichier de propriétés non trouvé :" + e); }
         catch (IOException e) { System.out.println("Erreur : " + e.getMessage()); }
         TempLog=propLogin.getProperty("Id").split(",");
         TempPwd=propLogin.getProperty("Psw").split(",");
