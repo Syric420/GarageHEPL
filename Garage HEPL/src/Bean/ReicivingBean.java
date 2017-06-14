@@ -15,7 +15,7 @@ import network.NetworkBasicServer;
  *
  * @author Vince
  */
-public class ReicivingBean {
+public class ReicivingBean implements InStockListener{
     NetworkBasicServer server;
     protected PropertyChangeSupport GestProp = new PropertyChangeSupport(this);
     private String Commande;
@@ -63,7 +63,10 @@ public class ReicivingBean {
         
         
     }
-    
+     private void SendAnswer(String message) 
+     {                                           
+        server.sendMessage(message);
+    }
     
     public void addPropertyChangeListener(PropertyChangeListener l)
     {
@@ -102,6 +105,11 @@ public class ReicivingBean {
      */
     public void setIc(InterfaceCentrale Ic) {
         this.Ic = Ic;
+    }
+
+    @Override
+    public void InStockEventDetected(InStockEvent e) {
+        server.sendMessage(e.getLibelle());
     }
     
 }

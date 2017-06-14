@@ -364,7 +364,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(Dispo.isSelected())
             server.sendMessage("OK");
         else      
-            server.sendMessage("Not ok");
+            server.sendMessage("NOT OK");
     }//GEN-LAST:event_SendAnswerActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
