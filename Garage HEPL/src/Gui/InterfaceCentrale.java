@@ -21,8 +21,8 @@ import network.NetworkBasicClient;
 public class InterfaceCentrale extends javax.swing.JDialog {
 
     
-     NetworkBasicServer server;
-     NetworkBasicClient Client;
+    NetworkBasicServer server;
+    NetworkBasicClient Client;
     /**
      * Creates new form InterfaceCentrale
      */ 
@@ -278,6 +278,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
 
     private void jButtonLireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLireActionPerformed
 
+        ReicivingBean.run();
         String message;
         message = server.getMessage();
         if(!message.equalsIgnoreCase("RIEN"))
@@ -475,11 +476,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
                 }
                 
                 dialog1.Connection(50011);
-                dialog1.InstantiateBean();
                 dialog2.Connection(50012);
-                dialog2.InstantiateBean();
                 dialog3.Connection(50013);
-                dialog3.InstantiateBean();
+                /*dialog1.InstantiateBean();
+                dialog2.InstantiateBean();
+                dialog3.InstantiateBean();*/
             }   
         });
         
