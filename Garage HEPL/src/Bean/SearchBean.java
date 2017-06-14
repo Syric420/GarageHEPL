@@ -82,8 +82,7 @@ public class SearchBean implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
         String Commande = pce.getNewValue().toString();
-        System.out.println("Commande = "+ Commande);
-        
+        System.out.println("Commande = "+ Commande);      
         Enregistrer(Commande);
     }
     

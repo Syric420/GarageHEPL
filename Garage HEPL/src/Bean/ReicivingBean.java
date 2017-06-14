@@ -50,14 +50,14 @@ public class ReicivingBean {
                 //send event
                 Ic.LireMessage(message);
                 setCommande(message);
-                
+                break;
             }
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ReicivingBean.class.getName()).log(Level.SEVERE, null, ex);
             }
-            message = server.getMessage();
+            //message = server.getMessage();
             
         }
         
