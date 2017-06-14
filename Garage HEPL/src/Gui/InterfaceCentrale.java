@@ -30,6 +30,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      DefaultComboBoxModel dmcb;
      ReicivingBean ReicivingBean;
      SearchBean SearchBean;
+     PrepareOrderBean PrepareOrderBean;
      public int type;
     public InterfaceCentrale(java.awt.Frame parent, boolean modal,int num) {
         super(parent, modal);
@@ -94,8 +95,20 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          } catch (ClassNotFoundException ex) {
              Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
          }
+         PrepareOrderBean = null;
+         try {
+             
+             PrepareOrderBean = (PrepareOrderBean) Beans.instantiate(null, "Bean.PrepareOrderBean");
+         } catch (IOException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (ClassNotFoundException ex) {
+             Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
          
          ReicivingBean.addPropertyChangeListener(SearchBean);
+         SearchBean.addBeanAalerter(PrepareOrderBean);
+         PrepareOrderBean.addBeanAalerter(ReicivingBean);
          ReicivingBean.setIc(this);
          SearchBean.Charger();
          

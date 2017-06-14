@@ -110,6 +110,7 @@ public class ReicivingBean implements InStockListener{
     @Override
     public void InStockEventDetected(InStockEvent e) {
         server.sendMessage(e.getLibelle());
+        
     }
     
 }

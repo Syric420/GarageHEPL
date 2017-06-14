@@ -27,14 +27,11 @@ public class PrepareOrderBean implements SearchFoundListener {
         int D=randomGenerator.nextInt(10);
         System.out.println("Date calendrier = " + c.getTime());
         c.add(Calendar.DAY_OF_MONTH, D);
-        
-        
-        
-        
         if(e.isSucces())
-            setMessage("OK+" + e.getLibelle() + "Livraison prevue le: " + c);
+            setMessage("OK!" + e.getLibelle() + "Livraison prevue le: " + c);
         else
-            setMessage("NOT OK+" + e.getLibelle() + "Livraison prevue le: " + c);
+            setMessage("NOT OK!" + e.getLibelle() + "Livraison prevue le: " + c);
+        notifyEvent(); 
     }
 
     
@@ -53,7 +50,7 @@ public class PrepareOrderBean implements SearchFoundListener {
         this.message = message;
     }
         
-    public void notifyEvent(String lib, boolean succ)
+    public void notifyEvent()
     {
         InStockEvent e = new InStockEvent(this, getMessage());
         
@@ -66,7 +63,7 @@ public class PrepareOrderBean implements SearchFoundListener {
         }
     }
     
-    public void addBeanAalerter(SearchFoundListener al)
+    public void addBeanAalerter(InStockListener al)
     {
         if (!vecBeanAalerter.contains(al))
         {
@@ -74,7 +71,7 @@ public class PrepareOrderBean implements SearchFoundListener {
         }
     }
     
-    public void removeBeanAalerter(SearchFoundListener al)
+    public void removeBeanAalerter(InStockListener al)
     {
         if (!vecBeanAalerter.contains(al))
         {
