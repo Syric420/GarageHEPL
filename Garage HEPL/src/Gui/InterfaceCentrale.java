@@ -30,7 +30,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
      DefaultComboBoxModel dmcb;
      ReicivingBean ReicivingBean;
      SearchBean SearchBean;
-     int type;
+     public int type;
     public InterfaceCentrale(java.awt.Frame parent, boolean modal,int num) {
         super(parent, modal);
         initComponents();
@@ -86,7 +86,9 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          SearchBean = null;
          
          try {
+             
              SearchBean = (SearchBean) Beans.instantiate(null, "Bean.SearchBean");
+             SearchBean.setIc(this);
          } catch (IOException ex) {
              Logger.getLogger(InterfaceCentrale.class.getName()).log(Level.SEVERE, null, ex);
          } catch (ClassNotFoundException ex) {
@@ -95,6 +97,8 @@ public class InterfaceCentrale extends javax.swing.JDialog {
          
          ReicivingBean.addPropertyChangeListener(SearchBean);
          ReicivingBean.setIc(this);
+         SearchBean.Charger();
+         
     }
 
     /**
@@ -279,12 +283,12 @@ public class InterfaceCentrale extends javax.swing.JDialog {
     private void jButtonLireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLireActionPerformed
 
         ReicivingBean.run();
-        String message;
+        /*String message;
         message = server.getMessage();
         if(!message.equalsIgnoreCase("RIEN"))
         {
             LireMessage(message);
-        }
+        }*/
         
     }//GEN-LAST:event_jButtonLireActionPerformed
     public void LireMessage(String message)
@@ -368,9 +372,19 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         Random randomGenerator = new Random();
         int D=randomGenerator.nextInt(2);
         if(D == 1)
+        {
             Dispo.setSelected(true);
+            SearchBean.notifyEvent(TFMessage.getText(), true);
+        }
+            
         else
+        {
             NonDispo.setSelected(true);
+            SearchBean.notifyEvent(TFMessage.getText(), false);
+        }
+            
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
@@ -404,15 +418,11 @@ public class InterfaceCentrale extends javax.swing.JDialog {
             
     }//GEN-LAST:event_BuActifActionPerformed
 
-    private void InstantiateBean()
-    {
-        ReicivingBean.run();
-    }
     public void Connection(int port)
     {
-        String message;
+        /*String message;
         message = server.getMessage();
-        TFMessage.setText(message);
+        TFMessage.setText(message);*/
         Client = new NetworkBasicClient("localhost",port);
     }
     /**
