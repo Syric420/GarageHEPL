@@ -15,8 +15,11 @@ public class SearchFoundEvent extends EventObject {
     private String Libelle;
     private boolean succes;
     
-    public SearchFoundEvent(Object o) {
+    public SearchFoundEvent(Object o, String lib, boolean succ) {
         super(o);
+        setLibelle(lib);
+        setSucces(succ);
+        System.out.println(lib + " "+ succ);
     }
 
     /**

@@ -5,6 +5,7 @@
  */
 package Bean;
 
+import Gui.InterfaceCentrale;
 import java.beans.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,17 +28,19 @@ public class SearchBean implements PropertyChangeListener {
     ObjectOutputStream oos;
     FileInputStream fis ;
     ObjectInputStream ois;
+    private InterfaceCentrale Ic;
+    Vector vecBeanAalerter;
 
     public SearchBean() {
         vecCommandes = new Vector();
-        //Charger();
+        vecBeanAalerter = new Vector();
     }
 
     public void Enregistrer(String s)
     {
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Commandes.data";
+        String cheminFichier = user+separator+"Serialize"+separator+"Commandes"+Ic.type+".data";
         
          try
         {
@@ -49,11 +52,11 @@ public class SearchBean implements PropertyChangeListener {
         }
         catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.out.println("Erreur ! Fichier non trouvé [" + e + "]");
         }
         catch (IOException e)
         {
-            System.err.println("Erreur ! ? [" + e + "]");
+            System.out.println("Erreur ! ? [" + e + "]");
         }
     }
     
@@ -61,7 +64,7 @@ public class SearchBean implements PropertyChangeListener {
     {
         String user = System.getProperty("user.dir");
         String separator = System.getProperty("file.separator");
-        String cheminFichier = user+separator+"Serialize"+separator+"Commandes.data";
+        String cheminFichier = user+separator+"Serialize"+separator+"Commandes"+Ic.type+".data";
         
          try
         {
@@ -69,11 +72,11 @@ public class SearchBean implements PropertyChangeListener {
             ois = new ObjectInputStream(fis);
             vecCommandes=(Vector) ois.readObject();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(SearchBean.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erreur ! ? [" + ex + "]");
         } catch (IOException ex) {
-            Logger.getLogger(SearchBean.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erreur ! ? [" + ex + "]");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SearchBean.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erreur ! ? [" + ex + "]");
         }
 
     }
@@ -82,8 +85,52 @@ public class SearchBean implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent pce) {
         String Commande = pce.getNewValue().toString();
-        System.out.println("Commande = "+ Commande);      
+        System.out.println("Commande = "+ Commande);
+        
         Enregistrer(Commande);
+    }
+
+    /**
+     * @return the Ic
+     */
+    public InterfaceCentrale getIc() {
+        return Ic;
+    }
+
+    /**
+     * @param Ic the Ic to set
+     */
+    public void setIc(InterfaceCentrale Ic) {
+        this.Ic = Ic;
+    }
+    
+    public void notifyEvent(String lib, boolean succ)
+    {
+        SearchFoundEvent e = new SearchFoundEvent(this, lib, succ);
+        
+        int n = vecBeanAalerter.size();
+        for (int i=0; i<n; i++)
+        // activation de la méthode AlertDetected pour chaque objet à l'écoute
+        {
+            SearchFoundListener obj = (SearchFoundListener) vecBeanAalerter.elementAt(i);
+            obj.SearchFoundDetected(e);
+        }
+    }
+    
+    public void addBeanAalerter(SearchFoundListener al)
+    {
+        if (!vecBeanAalerter.contains(al))
+        {
+            vecBeanAalerter.addElement(al);
+        }
+    }
+    
+    public void removeBeanAalerter(SearchFoundListener al)
+    {
+        if (!vecBeanAalerter.contains(al))
+        {
+            vecBeanAalerter.removeElement(al);
+        }
     }
     
 }
