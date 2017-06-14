@@ -30,7 +30,7 @@ public class SearchBean implements PropertyChangeListener {
 
     public SearchBean() {
         vecCommandes = new Vector();
-        Charger();
+        //Charger();
     }
 
     public void Enregistrer(String s)
