@@ -418,6 +418,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         else
         {
             BuActif.setText("Actif");
+            ReicivingBean.viderMessages();
             System.out.println("Envoyé" + type + " Pause");
             Client.sendStringWithoutWaiting(type + " Actif");
             String message;

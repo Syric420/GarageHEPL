@@ -143,19 +143,25 @@ public class InterfaceApplication extends javax.swing.JFrame {
         if(Type.equals("1"))
         {
             if(ok.equalsIgnoreCase("Actif"))
-                Pieces.CentralActif=true;
+            {
+                Pieces.CentralActif=true;          
+            }
             else
                 Pieces.CentralActif=false;
         }else if(Type.equals("2"))
         {
             if(ok.equalsIgnoreCase("Actif"))
-                Pneus.CentralActif=true;
+            {
+                Pneus.CentralActif=true;     
+            }
             else
                 Pneus.CentralActif=false;
         }else if(Type.equals("3"))
         {
             if(ok.equalsIgnoreCase("Actif"))
-                Lubrifiant.CentralActif=true;
+            {
+                Lubrifiant.CentralActif=true;           
+            }
             else
                 Lubrifiant.CentralActif=false;
         }

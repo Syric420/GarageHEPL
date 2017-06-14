@@ -33,7 +33,7 @@ public class PrepareOrderBean implements SearchFoundListener {
             setMessage("NOT OK!" + e.getLibelle() + "Livraison prevue le: " + c);
         notifyEvent(); 
     }
-
+    
     
     
     /**

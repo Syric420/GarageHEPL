@@ -29,7 +29,11 @@ public class ReicivingBean implements InStockListener{
     public ReicivingBean(String Commande) {
         this.Commande = Commande;
     }
+    public void viderMessages()
+    {
+    while(!server.getMessage().equalsIgnoreCase("RIEN"));
     
+    }
     
     public void setServer(int port,javax.swing.JCheckBox cb)
     {
@@ -42,15 +46,14 @@ public class ReicivingBean implements InStockListener{
         //setCommande("Salut");//Juste pour test
         String message;
         message = server.getMessage();
-        while(true)
-        {
+        /*while(true)
+        {*/
             //message recu
             if(!message.equalsIgnoreCase("RIEN"))
             {
                 //send event
                 Ic.LireMessage(message);
                 setCommande(message);
-                break;
             }
             try {
                 Thread.sleep(1000);
@@ -59,7 +62,7 @@ public class ReicivingBean implements InStockListener{
             }
             //message = server.getMessage();
             
-        }
+        //}
         
         
     }

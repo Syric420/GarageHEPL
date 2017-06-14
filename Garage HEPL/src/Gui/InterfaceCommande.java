@@ -39,6 +39,7 @@ public class InterfaceCommande extends javax.swing.JDialog {
                     Client = new NetworkBasicClient("localhost",50002);
                     //server = new NetworkBasicServer(50012, getCBMessDispo());
                     break;
+                    
                 case 3:
                     Client = new NetworkBasicClient("localhost",50003);
                     //server = new NetworkBasicServer(50013, getCBMessDispo());
