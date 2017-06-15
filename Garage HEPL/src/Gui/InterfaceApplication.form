@@ -29,7 +29,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuAPrevoir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="A pr&#xe9;voir"/>
+                <Property name="text" type="java.lang.String" value="A prevoir"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAPrevoirActionPerformed"/>
@@ -43,12 +43,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuPeCActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuTermin&#xe9;">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuTermine">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Termin&#xe9;"/>
+                <Property name="text" type="java.lang.String" value="Termine"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuTermin&#xe9;ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuTermineActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuListes">
@@ -60,7 +60,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMateriel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mat&#xe9;riel"/>
+            <Property name="text" type="java.lang.String" value="Materiel"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenuCommander">
@@ -70,7 +70,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuPiece">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Commander une pi&#xe8;ce"/>
+                    <Property name="text" type="java.lang.String" value="Commander une piece"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuPieceActionPerformed"/>
@@ -96,7 +96,7 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuReceptionner">
               <Properties>
-                <Property name="text" type="java.lang.String" value="R&#xe9;ceptionner"/>
+                <Property name="text" type="java.lang.String" value="Receptionner"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuListeCommandes">
@@ -146,12 +146,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Param&#xe8;tres"/>
+            <Property name="text" type="java.lang.String" value="Parametres"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuInfoSysteme">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Infos syst&#xe8;mes"/>
+                <Property name="text" type="java.lang.String" value="Infos systemes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuInfoSystemeActionPerformed"/>
@@ -174,7 +174,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuPourDebuter">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pour d&#xe9;buter"/>
+                <Property name="text" type="java.lang.String" value="Pour debuter"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuPourDebuterActionPerformed"/>

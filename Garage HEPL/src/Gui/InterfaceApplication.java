@@ -265,7 +265,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenuAtelier = new javax.swing.JMenu();
         jMenuAPrevoir = new javax.swing.JMenuItem();
         jMenuPeC = new javax.swing.JMenuItem();
-        jMenuTerminé = new javax.swing.JMenuItem();
+        jMenuTermine = new javax.swing.JMenuItem();
         jMenuListes = new javax.swing.JMenuItem();
         jMateriel = new javax.swing.JMenu();
         jMenuCommander = new javax.swing.JMenu();
@@ -333,7 +333,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
         jMenuAtelier.setText("Atelier");
 
-        jMenuAPrevoir.setText("A prévoir");
+        jMenuAPrevoir.setText("A prevoir");
         jMenuAPrevoir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuAPrevoirActionPerformed(evt);
@@ -349,24 +349,24 @@ public class InterfaceApplication extends javax.swing.JFrame {
         });
         jMenuAtelier.add(jMenuPeC);
 
-        jMenuTerminé.setText("Terminé");
-        jMenuTerminé.addActionListener(new java.awt.event.ActionListener() {
+        jMenuTermine.setText("Termine");
+        jMenuTermine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuTerminéActionPerformed(evt);
+                jMenuTermineActionPerformed(evt);
             }
         });
-        jMenuAtelier.add(jMenuTerminé);
+        jMenuAtelier.add(jMenuTermine);
 
         jMenuListes.setText("Listes");
         jMenuAtelier.add(jMenuListes);
 
         jMenuBar1.add(jMenuAtelier);
 
-        jMateriel.setText("Matériel");
+        jMateriel.setText("Materiel");
 
         jMenuCommander.setText("Commander");
 
-        jMenuPiece.setText("Commander une pièce");
+        jMenuPiece.setText("Commander une piece");
         jMenuPiece.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuPieceActionPerformed(evt);
@@ -392,7 +392,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
         jMateriel.add(jMenuCommander);
 
-        jMenuReceptionner.setText("Réceptionner");
+        jMenuReceptionner.setText("Receptionner");
         jMateriel.add(jMenuReceptionner);
 
         jMenuListeCommandes.setText("Liste commandes");
@@ -431,9 +431,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
         jMenu5.setRolloverEnabled(false);
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Paramètres");
+        jMenu6.setText("Parametres");
 
-        jMenuInfoSysteme.setText("Infos systèmes");
+        jMenuInfoSysteme.setText("Infos systemes");
         jMenuInfoSysteme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuInfoSystemeActionPerformed(evt);
@@ -453,7 +453,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
 
         jMenuAide.setText("Aide");
 
-        jMenuPourDebuter.setText("Pour débuter");
+        jMenuPourDebuter.setText("Pour debuter");
         jMenuPourDebuter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuPourDebuterActionPerformed(evt);
@@ -570,9 +570,9 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Rdv.setVisible(true);
     }//GEN-LAST:event_jMenuAPrevoirActionPerformed
 
-    private void jMenuTerminéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTerminéActionPerformed
+    private void jMenuTermineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTermineActionPerformed
         End.setVisible(true);
-    }//GEN-LAST:event_jMenuTerminéActionPerformed
+    }//GEN-LAST:event_jMenuTermineActionPerformed
 
     private void jMenuPeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPeCActionPerformed
         PeC.setVisible(true);
@@ -735,6 +735,6 @@ public class InterfaceApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuPneus;
     private javax.swing.JMenuItem jMenuPourDebuter;
     private javax.swing.JMenuItem jMenuReceptionner;
-    private javax.swing.JMenuItem jMenuTerminé;
+    private javax.swing.JMenuItem jMenuTermine;
     // End of variables declaration//GEN-END:variables
 }
