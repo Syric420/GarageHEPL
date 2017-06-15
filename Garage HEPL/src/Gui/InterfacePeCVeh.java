@@ -44,7 +44,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
-        "Type voiture", "Immatriculation", "Propriétaire","Travail","Remarques"
+        "Type voiture", "Immatriculation", "Proprietaire","Travail","Remarques"
         }
         ));
 
@@ -261,7 +261,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                         else
                         {
                             ok=false;
-                            JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog( this,"Le pont numero " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
                         }
                         
                     }
@@ -269,7 +269,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                     else
                     {
                         ok=false;
-                        JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog( this,"Veuillez selectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
                     }
                 if(ok)
                 {
@@ -313,7 +313,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                         else
                         {
                             ok=false;
-                            JOptionPane.showMessageDialog( this,"Le pont numéro " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog( this,"Le pont numero " + jComboBoxPont.getSelectedItem().toString() + " n'est pas disponnible", "Attention", JOptionPane.INFORMATION_MESSAGE);
                         }
                         
                     }
@@ -321,7 +321,7 @@ public class InterfacePeCVeh extends javax.swing.JDialog {
                     else
                     {
                         ok=false;
-                        JOptionPane.showMessageDialog( this,"Veuillez sélectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog( this,"Veuillez selectionner un pont ou le sol ", "Attention", JOptionPane.INFORMATION_MESSAGE);
                     }
                 if(ok)
                 {

@@ -51,7 +51,7 @@ public class InterfaceRdv extends javax.swing.JDialog {
         }
         catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.err.println("Erreur ! Fichier non trouve [" + e + "]");
         }
         catch (IOException e)
         {

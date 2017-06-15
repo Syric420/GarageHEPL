@@ -220,12 +220,12 @@ public class InterfaceCommande extends javax.swing.JDialog {
             //reponse.contains("NOT")
             if(!reponse.contains("NOT"))
             {
-                JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                JOptionPane.showMessageDialog(this, "OK pour : "+ s, "Reponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
                  model.addElement(s); 
             }
 
             else
-                JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Réponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
+                JOptionPane.showMessageDialog(this, "Echec pour : "+ s, "Reponse de la centrale", JOptionPane.INFORMATION_MESSAGE, null);
                 ;
         }
         else if(!CentralActif)

@@ -31,7 +31,7 @@ public class Login extends java.awt.Dialog {
         initComponents();
         allowed = false;
         Mecanicien [] tabMecanicien = {
-            new Mecanicien("Jean", "Albert", "Rue des prés 15", "0474142536", "Mec201", "Pneus", "Jeanjean"),
+            new Mecanicien("Jean", "Albert", "Rue des pres 15", "0474142536", "Mec201", "Pneus", "Jeanjean"),
             new Mecanicien("Cavas", "Philippe", "Rue de Stockis", "04742578", "Mec202", "Portes", "CavaCava"),
             new Mecanicien("Poluche", "Remy", "Boulevard des anes", "04642541", "Mec205", "Electronique", "Vince")
         };
@@ -194,22 +194,22 @@ public class Login extends java.awt.Dialog {
                     {
                         if(!isUserAMember(login))
                         {
-                            //C'est un extérieur habilité mais qu'il a coché la mauvaise case
+                            //C'est un exterieur habilite mais qu'il a coche la mauvaise case
                             if(jMembreButton.isSelected())
-                                JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog( this,"La qualite du membre est erronee", "Attention", JOptionPane.INFORMATION_MESSAGE);
                             allowed = false;
                         }
                         else
                         {
                             if(jExterieurButton.isSelected())
-                                JOptionPane.showMessageDialog( this,"La qualité du membre est erronée", "Attention", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog( this,"La qualite du membre est erronee", "Attention", JOptionPane.INFORMATION_MESSAGE);
                             allowed = true;
                         }
                             
                         this.dispose();
                     }  
                     else
-                        JOptionPane.showMessageDialog( this,"Le mot de passe est erroné", "Erreur", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog( this,"Le mot de passe est errone", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }catch(ExUtilisateurVide ex)
@@ -228,7 +228,7 @@ public class Login extends java.awt.Dialog {
         {
             if(((Personne)vecUtilisateurs.elementAt(i)).getLogin().equals(login))
             {
-                //Il l'a trouvé
+                //Il l'a trouve
                 return (Personne)vecUtilisateurs.elementAt(i);
             }
         }
@@ -240,7 +240,7 @@ public class Login extends java.awt.Dialog {
         {
             if(((Personne)vecUtilisateurs.elementAt(i)).getLogin().equals(login))
             {
-                //Il l'a trouvé
+                //Il l'a trouve
                 if(((Personne)vecUtilisateurs.elementAt(i)).isMember())
                     return true;
             }

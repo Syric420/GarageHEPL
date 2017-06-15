@@ -56,7 +56,7 @@ public class PrepareOrderBean implements SearchFoundListener {
         
         int n = vecBeanAalerter.size();
         for (int i=0; i<n; i++)
-        // activation de la méthode AlertDetected pour chaque objet à l'écoute
+        // activation de la methode AlertDetected pour chaque objet à l'ecoute
         {
             InStockListener obj = (InStockListener) vecBeanAalerter.elementAt(i);
             obj.InStockEventDetected(e);

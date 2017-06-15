@@ -39,7 +39,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
-        "Caractéristiques", "Valeur"
+        "Caracteristiques", "Valeur"
         }
         ));
         dmcb = (DefaultComboBoxModel)this.jComboBox1.getModel();
@@ -315,7 +315,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
-        "Caractéristiques", "Valeur"
+        "Caracteristiques", "Valeur"
         }
         ));
         dtm = (DefaultTableModel)this.jTable1.getModel();
@@ -339,7 +339,7 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {},
         new String [] {
-        "Caractéristiques", "Valeur"
+        "Caracteristiques", "Valeur"
         }
         ));
         dtm = (DefaultTableModel)this.jTable1.getModel();
@@ -412,14 +412,14 @@ public class InterfaceCentrale extends javax.swing.JDialog {
         if(BuActif.getText().equals("Actif"))
         {
             BuActif.setText("Non actif");
-            System.out.println("Envoyé" + type + " Pause");
+            System.out.println("Envoye" + type + " Pause");
             Client.sendStringWithoutWaiting(type + " Pause");
         }   
         else
         {
             BuActif.setText("Actif");
             ReicivingBean.viderMessages();
-            System.out.println("Envoyé" + type + " Pause");
+            System.out.println("Envoye" + type + " Pause");
             Client.sendStringWithoutWaiting(type + " Actif");
             String message;
             message = server.getMessage();

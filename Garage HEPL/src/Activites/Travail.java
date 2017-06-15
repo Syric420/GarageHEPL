@@ -136,14 +136,14 @@ public abstract class Travail implements Serializable {
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
-                    //System.out.println("Reparation ajoutée");
+                    //System.out.println("Reparation ajoutee");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
-                    //System.out.println("Entretien ajouté");
+                    //System.out.println("Entretien ajoute");
                     VecTrav.add(unEntretien);
                 }
                 else
@@ -272,14 +272,14 @@ public abstract class Travail implements Serializable {
                 if(type == 1)
                 {
                     uneReparation = (Reparation)ois.readObject();
-                    //System.out.println("Reparation ajoutée");
+                    //System.out.println("Reparation ajoutee");
                     VecTrav.add(uneReparation);
                 }
                     
                 else if(type == 2)
                 {
                     unEntretien = (Entretien)ois.readObject();
-                    //System.out.println("Entretien ajouté");
+                    //System.out.println("Entretien ajoute");
                     VecTrav.add(unEntretien);
                 }
                 else

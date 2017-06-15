@@ -52,7 +52,7 @@ public class SearchBean implements PropertyChangeListener {
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.out.println("Erreur ! Fichier non trouve [" + e + "]");
         }
         catch (IOException e)
         {
@@ -110,7 +110,7 @@ public class SearchBean implements PropertyChangeListener {
         
         int n = vecBeanAalerter.size();
         for (int i=0; i<n; i++)
-        // activation de la méthode AlertDetected pour chaque objet à l'écoute
+        // activation de la methode AlertDetected pour chaque objet à l'ecoute
         {
             SearchFoundListener obj = (SearchFoundListener) vecBeanAalerter.elementAt(i);
             obj.SearchFoundDetected(e);

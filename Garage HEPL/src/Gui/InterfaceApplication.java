@@ -69,22 +69,22 @@ public class InterfaceApplication extends javax.swing.JFrame {
                 new Client("A530", "Dove", "David", "Rue de l'Yser 187", "0445253685")
             };
             
-            if(Client.chargerVector()==null)// Si le vecteur est null, on en rajoute par défaut
+            if(Client.chargerVector()==null)// Si le vecteur est null, on en rajoute par defaut
             {
                 for(int i=0; i<tabCli.length; i++)
                     vecClients.add(tabCli[i]);
             }
             else
                 vecClients = Client.chargerVector();
-            fl.ecritLigne("VecClients chargé");
+            fl.ecritLigne("VecClients charge");
             Travaux = Travail.chargerLL();
-            fl.ecritLigne("vecTravaux chargé");
+            fl.ecritLigne("vecTravaux charge");
             TravailEnCours = Travail.chargerVec(1);
-            fl.ecritLigne("VecTravailEnCours chargé");
+            fl.ecritLigne("VecTravailEnCours charge");
             TravailTermine = Travail.chargerVec(2);
-            fl.ecritLigne("vecTravailTerminé chargé");
+            fl.ecritLigne("vecTravailTermine charge");
             initComponents();
-            //Une fois chargés les travaux en cours doivent être remis sur les différents ponts dans les textbox
+            //Une fois charges les travaux en cours doivent être remis sur les differents ponts dans les textbox
             for(int i=0; i<TravailEnCours.size();i++)
                 AfficheTF(TravailEnCours.get(i));
             Login= new Login(this,true);
@@ -203,7 +203,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         }
         catch (FileNotFoundException e)
         {
-            System.err.println("Erreur ! Fichier non trouvé [" + e + "]");
+            System.err.println("Erreur ! Fichier non trouve [" + e + "]");
         }
         catch (IOException e)
         {
@@ -614,7 +614,7 @@ public class InterfaceApplication extends javax.swing.JFrame {
         Travail.enregistrerLL(Travaux);
         Personne.enregistrerVector(Login.vecUtilisateurs);
         Client.enregistrerVector(vecClients);
-        fl.ecritLigne("Enregistrement des différents vecteurs");
+        fl.ecritLigne("Enregistrement des differents vecteurs");
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
